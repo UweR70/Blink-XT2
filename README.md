@@ -81,7 +81,7 @@ My part was just to convert it into a full functional and well designed C# appli
 
 # How to install, compile and run
 Good news first:<br>
-<a href="https://github.com/UweR70/Blink-XT2/tree/master/Blink/Compiled_Versions/V_0.01">Here</a><br>
+<a href="https://github.com/UweR70/Blink-XT2/blob/master/Blink-XT2/Compiled_Versions/UweR70_Blink-XT2_V_0.02.7z">Here</a><br>
 you will find a ziped but runable setup.exe.<br>
 <br>
 The bad news:<br>
