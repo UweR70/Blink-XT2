@@ -2,7 +2,6 @@
 using System;
 using System.Diagnostics;
 using System.Drawing;
-using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -36,6 +35,7 @@ namespace Blink
             this.Text = Config.TitleAppNameAndVersion;
             IsDownloadRunning =  false;
             EmptyInfoText = true;
+            p0_txtBox_SaveDirectory.Text = Config.DefaultRootStoragePart;
             p0_txtBox_Email.Focus();
 
             DisableOrEnableAllTabPagesExceptTheFirst(false);
@@ -222,20 +222,32 @@ namespace Blink
             return true;
         }
 
-        delegate void SetTextCallback(string message);
-        public void Log(string message)
+        delegate void SetTextCallback(string message, bool append = true);
+        public void SetLog(string message, bool append = true)
         {
             if (this.p0_txtBox_Info.InvokeRequired)
             {
-                SetTextCallback d = new SetTextCallback(Log);
-                this.Invoke(d, new object[] { message });
+                SetTextCallback d = new SetTextCallback(SetLog);
+                this.Invoke(d, new object[] { message, append });
             }
             else
             {
-                this.p0_txtBox_Info.Text += string.Format("{0}\t{1}\r\n", DateTime.Now, message);
+                if (append)
+                {
+                    this.p0_txtBox_Info.Text += string.Format("{0}\t{1}\r\n", DateTime.Now, message);
+                }
+                else
+                {
+                    this.p0_txtBox_Info.Text = message;
+                }
                 p0_txtBox_Info.SelectionStart = p0_txtBox_Info.TextLength;
                 p0_txtBox_Info.ScrollToCaret();
             }
+        }
+
+        public string GetLog()
+        {
+            return p0_txtBox_Info.Text;
         }
 
         private string HelpEmailAndPassword()

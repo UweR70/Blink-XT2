@@ -12,10 +12,10 @@ namespace Blink.Classes
         {
             try
             {
-                form.Log("Started.");
-                form.Log(string.Empty);
+                form.SetLog("Started.");
+                form.SetLog(string.Empty);
 
-                // var common = new Common();
+                var common = new Common();
                 var uweR70_FireCommand = new UweR70_FireCommand();
                 var uweR70_Get = new UweR70_Get();
 
@@ -143,14 +143,14 @@ namespace Blink.Classes
                         NetworkId = baseData.Networks[i].Id
                     };
 
-                    form.Log($"Network id >{baseData.Networks[i].Id}<");
-                    form.Log($"Network name >{baseData.Networks[i].Name}<");
-                    form.Log($"camera count >{blinkNetwork.networks[i].cameras.Length}<");
+                    form.SetLog($"Network id >{baseData.Networks[i].Id}<");
+                    form.SetLog($"Network name >{baseData.Networks[i].Name}<");
+                    form.SetLog($"camera count >{blinkNetwork.networks[i].cameras.Length}<");
 
                     for (var n = 0; n < blinkNetwork.networks[i].cameras.Length; n++)
                     {
-                        form.Log(string.Empty);
-                        form.Log($"camera #{n + 1:D2}");
+                        form.SetLog(string.Empty);
+                        form.SetLog($"camera #{n + 1:D2}");
 
                         baseData.Networks[i].Cameras.Add(new BaseData.Camera
                         {
@@ -161,8 +161,8 @@ namespace Blink.Classes
 
                         minData.CameraId = baseData.Networks[i].Cameras[n].Id;
 
-                        form.Log($"camera id >{baseData.Networks[i].Cameras[n].Id}<");
-                        form.Log($"camera name >{baseData.Networks[i].Cameras[n].Name}<");
+                        form.SetLog($"camera id >{baseData.Networks[i].Cameras[n].Id}<");
+                        form.SetLog($"camera name >{baseData.Networks[i].Cameras[n].Name}<");
 
                         var blinkCamera = uweR70_Get.CameraInfoAsync(minData).Result;
 
@@ -189,8 +189,8 @@ namespace Blink.Classes
                                                             ? "yyyy.MM.dd__hh_mm_ss"
                                                             : "yyyy.MM.dd__HH_mm_ss_tt";
                 var pageCounter = 0;
-                form.Log(string.Empty);
-                form.Log($"Try to download videos.");
+                form.SetLog(string.Empty);
+                form.SetLog($"Try to download videos.");
                 do
                 {
                     pageCounter++;
@@ -201,19 +201,26 @@ namespace Blink.Classes
                         break;
                     }
 
-                    form.Log(string.Empty);
-                    form.Log($"Page #{pageCounter} contains {media.media.Length} videos.");
+                    form.SetLog(string.Empty);
+                    form.SetLog($"Page #{pageCounter} contains {media.media.Length} videos.");
+
                     var counterMarkedAsDeleted = 0;
                     var counterAlreadyBeforeDownloaded = 0;
                     var counterDownloaded = 0;
+
+                    form.SetLog($"\tMarked as deleted #{counterMarkedAsDeleted}.");
+                    form.SetLog($"\tAlready before downloaded #{counterAlreadyBeforeDownloaded}.");
+                    form.SetLog($"\tDownloaded #{counterDownloaded}.");
+
                     for (var i = 0; i < media.media.Length; i++)
                     {
                         if (media.media[i].deleted)
                         {
                             counterMarkedAsDeleted++;
+                            AdjustInfo(form, common, $"\tMarked as deleted #{counterMarkedAsDeleted - 1}.", $"\tMarked as deleted #{counterMarkedAsDeleted}.");
                             continue;
                         }
-
+                        
                         var networkObject = baseData.Networks.Where(x => x.Id == media.media[i].network_id).ToList();
                         if (networkObject == null || networkObject.Count() != 1)
                         {
@@ -236,32 +243,30 @@ namespace Blink.Classes
                             var videoByteArray = uweR70_Get.VideoAsync(baseData, media.media[i].media).Result;
                             File.WriteAllBytes(videoPathAndFileName, videoByteArray);
                             counterDownloaded++;
+                            AdjustInfo(form, common, $"\tDownloaded #{counterDownloaded - 1}.", $"\tDownloaded #{counterDownloaded}.");
                         }
                         else
                         {
                             counterAlreadyBeforeDownloaded++;
+                            AdjustInfo(form, common, $"\tAlready before downloaded #{counterAlreadyBeforeDownloaded - 1}.", $"\tAlready before downloaded #{counterAlreadyBeforeDownloaded}.");
                         }
                     }
-                    form.Log($"Page #{pageCounter} summary:");
-                    form.Log($"\tMarked as deleted #{counterMarkedAsDeleted}.");
-                    form.Log($"\tAlready before downloaded #{counterAlreadyBeforeDownloaded}.");
-                    form.Log($"\tDownloaded #{counterDownloaded}.");
                 } while (true);
-
-                form.Log(string.Empty);
-                form.Log("Done!");
+                
+                form.SetLog(string.Empty);
+                form.SetLog("Done!");
                 return baseData;
             }
             catch (Exception ex)
             {
-                form.Log(string.Empty);
-                form.Log($"### ERROR ###");
+                form.SetLog(string.Empty);
+                form.SetLog($"### ERROR ###");
                 var errorMessage = ex.Message;
                 if (ex.InnerException != null && !string.IsNullOrEmpty(ex.InnerException.Message))
                 {
                     errorMessage = ex.InnerException.Message;
                 }
-                form.Log($"\t{errorMessage}");
+                form.SetLog($"\t{errorMessage}");
                 return null;
             }
         }
@@ -299,6 +304,13 @@ namespace Blink.Classes
             var firstPart = originalFileName.Replace(timestampPart, string.Empty);
             var ret = $"{timestampPart.Substring(1)}___{firstPart}.jpg";
             return ret;
+        }
+
+        private void AdjustInfo(Form1 form, Common common, string toBeReplaced, string replacement)
+        {
+            var completeMessage = form.GetLog();
+            var result = common.ReplaceParts(completeMessage, toBeReplaced, replacement);
+            form.SetLog(result, false);
         }
     }
 }
