@@ -36,7 +36,7 @@ namespace Blink.Classes
                 CameraId = cameraObject.Id
             };
 
-            /*
+            
             var commandArm = uweR70_FireCommand.ArmAsync(minData).Result;
             var commandDisarm = uweR70_FireCommand.DisarmAsync(minData).Result;
             
@@ -58,7 +58,7 @@ namespace Blink.Classes
             var network = uweR70_Get.NetworkAsync(baseData).Result;
             var thumbnailImage = uweR70_Get.ThumbnailImageAsync(minData, "<enter valid data here>").Result;
             var video = uweR70_Get.VideoAsync(baseData, "<enter valid data here>").Result;
-            var media = uweR70_Get.MediaAsync(baseData, 0);
+            var media = uweR70_Get.MediaAsync(baseData, 0).Result;
             
             var cameraInfo = uweR70_Get.CameraInfoAsync(minData).Result;
             var cameraSignals = uweR70_Get.CameraSignalsAsync(minData).Result;
@@ -76,7 +76,7 @@ namespace Blink.Classes
             var homescreen = uweR70_Get.HomeScreenAsync(minData).Result;
             var regions = uweR70_Get.RegionsAsync(baseData).Result;
             var syncModules = uweR70_Get.SyncModulesAsync(minData).Result;
-            */
+            
         }
     }
 }

@@ -40,6 +40,7 @@
             this.p0_txtBox_SaveDirectory = new System.Windows.Forms.TextBox();
             this.tabControl0 = new System.Windows.Forms.TabControl();
             this.tabControl0_tabPage0_InitAndDownload = new System.Windows.Forms.TabPage();
+            this.p0_btn_SelectSavePath = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.tabControl0_tabPage1_InitSummary = new System.Windows.Forms.TabPage();
             this.p1_pictureBox1 = new System.Windows.Forms.PictureBox();
@@ -74,11 +75,11 @@
             // 
             // p0_btn_Start
             // 
-            this.p0_btn_Start.Location = new System.Drawing.Point(464, 161);
+            this.p0_btn_Start.Location = new System.Drawing.Point(459, 159);
             this.p0_btn_Start.Margin = new System.Windows.Forms.Padding(4);
             this.p0_btn_Start.Name = "p0_btn_Start";
             this.p0_btn_Start.Size = new System.Drawing.Size(211, 42);
-            this.p0_btn_Start.TabIndex = 5;
+            this.p0_btn_Start.TabIndex = 6;
             this.p0_btn_Start.Text = "Start";
             this.p0_btn_Start.UseVisualStyleBackColor = true;
             this.p0_btn_Start.Click += new System.EventHandler(this.p0_btn_Start_Click);
@@ -89,11 +90,11 @@
             this.p0_checkBox_AreYouInGermany.AutoSize = true;
             this.p0_checkBox_AreYouInGermany.Checked = true;
             this.p0_checkBox_AreYouInGermany.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.p0_checkBox_AreYouInGermany.Location = new System.Drawing.Point(26, 168);
+            this.p0_checkBox_AreYouInGermany.Location = new System.Drawing.Point(26, 167);
             this.p0_checkBox_AreYouInGermany.Margin = new System.Windows.Forms.Padding(4);
             this.p0_checkBox_AreYouInGermany.Name = "p0_checkBox_AreYouInGermany";
             this.p0_checkBox_AreYouInGermany.Size = new System.Drawing.Size(222, 29);
-            this.p0_checkBox_AreYouInGermany.TabIndex = 4;
+            this.p0_checkBox_AreYouInGermany.TabIndex = 5;
             this.p0_checkBox_AreYouInGermany.Text = "Are you in Germany?";
             this.p0_checkBox_AreYouInGermany.UseVisualStyleBackColor = true;
             this.p0_checkBox_AreYouInGermany.MouseEnter += new System.EventHandler(this.p0_checkBox_AreYouInGermany_MouseEnter);
@@ -120,7 +121,7 @@
             // lbl_Password
             // 
             this.lbl_Password.AutoSize = true;
-            this.lbl_Password.Location = new System.Drawing.Point(348, 17);
+            this.lbl_Password.Location = new System.Drawing.Point(347, 15);
             this.lbl_Password.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lbl_Password.Name = "lbl_Password";
             this.lbl_Password.Size = new System.Drawing.Size(104, 25);
@@ -129,7 +130,7 @@
             // 
             // p0_txtBox_Password
             // 
-            this.p0_txtBox_Password.Location = new System.Drawing.Point(354, 44);
+            this.p0_txtBox_Password.Location = new System.Drawing.Point(352, 44);
             this.p0_txtBox_Password.Margin = new System.Windows.Forms.Padding(4);
             this.p0_txtBox_Password.Name = "p0_txtBox_Password";
             this.p0_txtBox_Password.PasswordChar = '*';
@@ -139,14 +140,14 @@
             // 
             // p0_txtBox_Info
             // 
-            this.p0_txtBox_Info.Location = new System.Drawing.Point(26, 210);
+            this.p0_txtBox_Info.Location = new System.Drawing.Point(25, 209);
             this.p0_txtBox_Info.Margin = new System.Windows.Forms.Padding(4);
             this.p0_txtBox_Info.Multiline = true;
             this.p0_txtBox_Info.Name = "p0_txtBox_Info";
             this.p0_txtBox_Info.ReadOnly = true;
             this.p0_txtBox_Info.ScrollBars = System.Windows.Forms.ScrollBars.Both;
             this.p0_txtBox_Info.Size = new System.Drawing.Size(1100, 670);
-            this.p0_txtBox_Info.TabIndex = 6;
+            this.p0_txtBox_Info.TabIndex = 7;
             this.p0_txtBox_Info.WordWrap = false;
             // 
             // lbl_SaveDirectory
@@ -161,12 +162,12 @@
             // 
             // p0_txtBox_SaveDirectory
             // 
-            this.p0_txtBox_SaveDirectory.Location = new System.Drawing.Point(26, 114);
+            this.p0_txtBox_SaveDirectory.Location = new System.Drawing.Point(26, 116);
             this.p0_txtBox_SaveDirectory.Margin = new System.Windows.Forms.Padding(6);
             this.p0_txtBox_SaveDirectory.Name = "p0_txtBox_SaveDirectory";
-            this.p0_txtBox_SaveDirectory.Size = new System.Drawing.Size(646, 29);
+            this.p0_txtBox_SaveDirectory.ReadOnly = true;
+            this.p0_txtBox_SaveDirectory.Size = new System.Drawing.Size(425, 29);
             this.p0_txtBox_SaveDirectory.TabIndex = 3;
-            this.p0_txtBox_SaveDirectory.Text = "C:\\Temp";
             this.p0_txtBox_SaveDirectory.MouseEnter += new System.EventHandler(this.p0_txtBox_SaveDirectory_MouseEnter);
             // 
             // tabControl0
@@ -183,6 +184,7 @@
             // 
             // tabControl0_tabPage0_InitAndDownload
             // 
+            this.tabControl0_tabPage0_InitAndDownload.Controls.Add(this.p0_btn_SelectSavePath);
             this.tabControl0_tabPage0_InitAndDownload.Controls.Add(this.label1);
             this.tabControl0_tabPage0_InitAndDownload.Controls.Add(this.lbl_Email);
             this.tabControl0_tabPage0_InitAndDownload.Controls.Add(this.p0_txtBox_SaveDirectory);
@@ -202,10 +204,20 @@
             this.tabControl0_tabPage0_InitAndDownload.Text = "Init and Download";
             this.tabControl0_tabPage0_InitAndDownload.UseVisualStyleBackColor = true;
             // 
+            // p0_btn_SelectSavePath
+            // 
+            this.p0_btn_SelectSavePath.Location = new System.Drawing.Point(459, 110);
+            this.p0_btn_SelectSavePath.Name = "p0_btn_SelectSavePath";
+            this.p0_btn_SelectSavePath.Size = new System.Drawing.Size(211, 42);
+            this.p0_btn_SelectSavePath.TabIndex = 4;
+            this.p0_btn_SelectSavePath.Text = "Select save path";
+            this.p0_btn_SelectSavePath.UseVisualStyleBackColor = true;
+            this.p0_btn_SelectSavePath.Click += new System.EventHandler(this.p0_btn_SelectSavePath_Click);
+            // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(20, 906);
+            this.label1.Location = new System.Drawing.Point(21, 899);
             this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(531, 350);
@@ -539,6 +551,7 @@
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.PictureBox p1_pictureBox1;
         private System.Windows.Forms.Button p99_btn_Start;
+        private System.Windows.Forms.Button p0_btn_SelectSavePath;
     }
 }
 

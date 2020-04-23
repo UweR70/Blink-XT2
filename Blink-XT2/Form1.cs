@@ -2,6 +2,7 @@
 using System;
 using System.Diagnostics;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -32,7 +33,7 @@ namespace Blink
 
         private void Form1_Shown(object sender, EventArgs e)
         {
-            this.Text = $"{Config.AppName} ({Config.AppVersion})";
+            this.Text = Config.TitleAppNameAndVersion;
             IsDownloadRunning =  false;
             EmptyInfoText = true;
             p0_txtBox_Email.Focus();
@@ -41,13 +42,36 @@ namespace Blink
         }
 
         #region tabPage0 - "Download And Init"
+        private void p0_btn_SelectSavePath_Click(object sender, EventArgs e)
+        {
+            using (var folderBrowserDialog = new FolderBrowserDialog())
+            {
+                if (string.IsNullOrEmpty(p0_txtBox_SaveDirectory.Text))
+                {
+                    folderBrowserDialog.SelectedPath = @"C:\Temp";
+                }
+                else
+                {
+                    folderBrowserDialog.SelectedPath = p0_txtBox_SaveDirectory.Text;
+                }
+                if (folderBrowserDialog.ShowDialog() == DialogResult.OK)
+                {
+                    p0_txtBox_SaveDirectory.Text = folderBrowserDialog.SelectedPath;
+                }
+            }
+        }
+
         private void p0_btn_Start_Click(object sender, EventArgs e)
         {
             if (!IsDownloadRunning)
             {
+                if (!AreAllNeededValuesGiven())
+                {
+                    return;
+                }
                 EmptyInfoText = false;
                 p0_txtBox_Info.Text = string.Empty;
-                p0_txtBox_Email.Enabled = p0_txtBox_Password.Enabled = p0_txtBox_SaveDirectory.Enabled = p0_checkBox_AreYouInGermany.Enabled = p0_btn_Start.Enabled = false;
+                p0_txtBox_Email.Enabled = p0_txtBox_Password.Enabled = p0_checkBox_AreYouInGermany.Enabled = p0_btn_SelectSavePath.Enabled = p0_btn_Start.Enabled = false;
                 p0_btn_Start.Text = "Running ...";
 
                 DisableOrEnableAllTabPagesExceptTheFirst(false);
@@ -67,7 +91,7 @@ namespace Blink
                     {
                         if (MessageBox.Show(
                                 "Should the storage path be opened?",
-                                $"{Config.AppName} ({Config.AppVersion})",
+                                Config.TitleAppNameAndVersion,
                                 MessageBoxButtons.YesNo, MessageBoxIcon.Question)
                             == DialogResult.Yes)
                         {
@@ -97,7 +121,7 @@ namespace Blink
             {
                 EmptyInfoText = true;
                 p0_txtBox_Info.Text = HelpStart();
-                p0_txtBox_Email.Enabled = p0_txtBox_Password.Enabled = p0_txtBox_SaveDirectory.Enabled = p0_checkBox_AreYouInGermany.Enabled = p0_btn_Start.Enabled = true;
+                p0_txtBox_Email.Enabled = p0_txtBox_Password.Enabled = p0_checkBox_AreYouInGermany.Enabled = p0_btn_SelectSavePath.Enabled = p0_btn_Start.Enabled = true;
                 p0_btn_Start.Text = "Start";
 
                 DisableOrEnableAllTabPagesExceptTheFirst(false);
@@ -156,6 +180,46 @@ namespace Blink
             }
         }
 
+        private bool AreAllNeededValuesGiven()
+        {
+            if (string.IsNullOrEmpty(p0_txtBox_Email.Text))
+            {
+                MessageBox.Show(
+                    $"Please provide your Blink log in email address.",
+                    Config.TitleErrorAppNameAndVersion,
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Error
+                    );
+                p0_txtBox_Email.Focus();
+                return false;
+            }
+
+            if (string.IsNullOrEmpty(p0_txtBox_Password.Text))
+            {
+                MessageBox.Show(
+                    $"Please provide your Blink log password.",
+                    Config.TitleErrorAppNameAndVersion,
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Error
+                    );
+                p0_txtBox_Password.Focus();
+                return false;
+            }
+
+            if (string.IsNullOrEmpty(p0_txtBox_SaveDirectory.Text))
+            {
+                MessageBox.Show(
+                    $"Please provide a valid path to store everything.",
+                    Config.TitleErrorAppNameAndVersion,
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Error
+                    );
+                p0_btn_SelectSavePath.Focus();
+                return false;
+            }
+            return true;
+        }
+
         delegate void SetTextCallback(string message);
         public void Log(string message)
         {
@@ -185,6 +249,10 @@ namespace Blink
 
         private string HelpSaveDirectory()
         {
+            var savePath = string.IsNullOrEmpty(p0_txtBox_SaveDirectory.Text) 
+                                ? "C:\\Temp"
+                                : p0_txtBox_SaveDirectory.Text;
+
             return "Field 'Save directory:'\r\n" +
                 "\r\n" +
                 "The root directory part were everything will be stored.\r\n" +
@@ -193,12 +261,12 @@ namespace Blink
                 "Imagine you added your Blink system to your Wifi 'HomeSweetHome'\r\n" +
                 "and you have three cameras named 'Front', 'Backyard' and 'Garage'.\r\n" +
                 "\r\n" +
-                "Imagine furthermore you select here 'C:\\Temp'.\r\n" +
+                $"Imagine furthermore you select here '{savePath}'.\r\n" +
                 "\r\n" +
                 "In this case are these directories created and used to store everything:\r\n" +
-                "\t1.) C:\\Temp\\HomeSweetHome\\Backyard\r\n" +
-                "\t2.) C:\\Temp\\HomeSweetHome\\Front\r\n" +
-                "\t3.) C:\\Temp\\HomeSweetHome\\Garage\r\n";
+                $"\t1) {savePath}\\HomeSweetHome\\Backyard\r\n" +
+                $"\t2) {savePath}\\HomeSweetHome\\Front\r\n" +
+                $"\t3) {savePath}\\HomeSweetHome\\Garage\r\n";
         }
 
         private string HelpAreYouInGermany()
