@@ -247,7 +247,7 @@ Follow these steps to fix this (in Visual Studio):
        }
     }
     </code></pre>
-    Select in Visual Studio (2017) "File" -> "Special Paste" -> 'Paste JSON as Classes'<br>
+    Select in Visual Studio (2017) "Edit" -> "Special Paste" -> 'Paste JSON as Classes'<br>
     After Visual Studio generated and added the new class remove the 'wrapping' Rootobject.<br>
     But of course do not remove the properties.<br>
     Done.<br>
