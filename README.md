@@ -44,7 +44,7 @@ var login = uweR70_Get.LoginAsync(baseData, new UweR70_Get.LoginBody
 var network = uweR70_Get.NetworkAsync(baseData).Result;
 var thumbnailImage = uweR70_Get.ThumbnailImageAsync(minData, "enter valid data here").Result;
 var video = uweR70_Get.VideoAsync(baseData, "enter valid data here").Result;
-var media = uweR70_Get.MediaAsync(baseData, 0);
+var media = uweR70_Get.MediaAsync(baseData, 0).Result;
 <br>        
 var cameraInfo = uweR70_Get.CameraInfoAsync(minData).Result;
 var cameraSignals = uweR70_Get.CameraSignalsAsync(minData).Result;
