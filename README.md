@@ -44,7 +44,7 @@ var login = uweR70_Get.LoginAsync(baseData, new UweR70_Get.LoginBody
 var network = uweR70_Get.NetworkAsync(baseData).Result;
 var thumbnailImage = uweR70_Get.ThumbnailImageAsync(minData, "enter valid data here").Result;
 var video = uweR70_Get.VideoAsync(baseData, "enter valid data here").Result;
-var media = uweR70_Get.MediaAsync(baseData, 0);
+var media = uweR70_Get.MediaAsync(baseData, 0).Result;
 <br>        
 var cameraInfo = uweR70_Get.CameraInfoAsync(minData).Result;
 var cameraSignals = uweR70_Get.CameraSignalsAsync(minData).Result;
@@ -81,7 +81,7 @@ My part was just to convert it into a full functional and well designed C# appli
 
 # How to install, compile and run
 Good news first:<br>
-<a href="https://github.com/UweR70/Blink-XT2/tree/master/Blink/Compiled_Versions/V_0.01">Here</a><br>
+<a href="https://github.com/UweR70/Blink-XT2/blob/master/Blink-XT2/Compiled_Versions/UweR70_Blink-XT2_V_0.02.7z">Here</a><br>
 you will find a ziped but runable setup.exe.<br>
 <br>
 The bad news:<br>
@@ -247,7 +247,7 @@ Follow these steps to fix this (in Visual Studio):
        }
     }
     </code></pre>
-    Select in Visual Studio (2017) "File" -> "Special Paste" -> 'Paste JSON as Classes'<br>
+    Select in Visual Studio (2017) "Edit" -> "Special Paste" -> 'Paste JSON as Classes'<br>
     After Visual Studio generated and added the new class remove the 'wrapping' Rootobject.<br>
     But of course do not remove the properties.<br>
     Done.<br>
