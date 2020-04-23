@@ -5,6 +5,17 @@ namespace Blink.Classes
 {
     public class Common
     {
+        public string ReplaceParts(string completeInfo, string toBeReplaced, string replacement)
+        {
+            var lastIndexOf = completeInfo.LastIndexOf(toBeReplaced);
+            if (lastIndexOf == -1)
+            {
+                return completeInfo;
+            }
+            var result = completeInfo.Remove(lastIndexOf, toBeReplaced.Length).Insert(lastIndexOf, replacement);
+            return result;
+        }
+
         public BlinkRegionsAdjustedByUweR70 ConvertBlinkRegions(BlinkRegions blinkRegions)
         {
             if (blinkRegions == null)
