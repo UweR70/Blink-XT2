@@ -48,15 +48,17 @@ namespace Blink
             {
                 if (string.IsNullOrEmpty(p0_txtBox_SaveDirectory.Text))
                 {
-                    folderBrowserDialog.SelectedPath = @"C:\Temp";
+                    folderBrowserDialog.SelectedPath = Config.DefaultRootStoragePart;
                 }
                 else
                 {
                     folderBrowserDialog.SelectedPath = p0_txtBox_SaveDirectory.Text;
                 }
+
                 if (folderBrowserDialog.ShowDialog() == DialogResult.OK)
                 {
                     p0_txtBox_SaveDirectory.Text = folderBrowserDialog.SelectedPath;
+                    p0_txtBox_Info.Text = HelpSaveDirectory();
                 }
             }
         }
@@ -250,7 +252,7 @@ namespace Blink
         private string HelpSaveDirectory()
         {
             var savePath = string.IsNullOrEmpty(p0_txtBox_SaveDirectory.Text) 
-                                ? "C:\\Temp"
+                                ? Config.DefaultRootStoragePart
                                 : p0_txtBox_SaveDirectory.Text;
 
             return "Field 'Save directory:'\r\n" +
