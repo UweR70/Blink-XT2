@@ -6,7 +6,7 @@ namespace Blink.Classes
     public class Quicktest
     {
         /// <summary>
-        /// Demo implenetation to show which data the api call needs and how the api calls are made.
+        /// Demo implementation to show which data the api calls are requiering and how the api calls are made.
         /// </summary>
         /// <param name="form">Reference to the 'form1' instance.</param>
         /// <param name="baseData">The data recieved while the login/authentification were made.</param>
@@ -36,7 +36,7 @@ namespace Blink.Classes
                 CameraId = cameraObject.Id
             };
 
-            
+            /*
             var commandArm = uweR70_FireCommand.ArmAsync(minData).Result;
             var commandDisarm = uweR70_FireCommand.DisarmAsync(minData).Result;
             
@@ -64,7 +64,7 @@ namespace Blink.Classes
             var cameraSignals = uweR70_Get.CameraSignalsAsync(minData).Result;
 
             var events = uweR70_Get.EventsAsync(minData).Result;
-            var typeList = new[] { "scheduled_disarm", "first_boot", "battery", "armed", "disarmed", "heartbeat", "scheduled_arm" };
+            var typeList = new[] { "first_boot", "battery", "armed", "disarmed", "scheduled_arm", "scheduled_disarm", "heartbeat" };
             var blinkEvents = events._event;
             var count = blinkEvents.Length;
             for (int i = 0; i < typeList.Length; i++)
@@ -76,7 +76,7 @@ namespace Blink.Classes
             var homescreen = uweR70_Get.HomeScreenAsync(minData).Result;
             var regions = uweR70_Get.RegionsAsync(baseData).Result;
             var syncModules = uweR70_Get.SyncModulesAsync(minData).Result;
-            
+            */
         }
     }
 }
