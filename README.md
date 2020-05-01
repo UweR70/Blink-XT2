@@ -81,8 +81,8 @@ My part was just to convert it into a full functional and well designed C# appli
 
 # How to install, compile and run
 Good news first:<br>
-<a href="https://github.com/UweR70/Blink-XT2/blob/master/Blink-XT2/Compiled_Versions/UweR70_Blink-XT2_V_0.02.7z">Here</a><br>
-you will find a ziped but runable setup.exe.<br>
+<a href="https://github.com/UweR70/Blink-XT2/blob/master/Blink-XT2/Compiled_Versions/UweR70_Blink-XT2_V_0.03.7z">Here</a><br>
+you will find a ziped but runable setup.exe (version 0.03).<br>
 <br>
 The bad news:<br>
 Sorry, figured currently not out how to add the 'Newtonsoft.Json' packages to the repository :-(<br>
