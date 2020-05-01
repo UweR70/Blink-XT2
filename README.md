@@ -1,5 +1,13 @@
 # Blink-XT2
-Blink (XT2) Win 10 / C# application to download all videos and the thumbnails from each camera of all networks.<br>
+Blink (XT2) Win 10 / C# application to 
+<ul>
+  <li>
+    download all videos and the thumbnails from each camera of all networks.
+  </li>
+  <li>
+    take a snapshot/thumbnail every x seconds
+  </li>
+</ul>
 <br>
 Plus:<br>
 All currently known Blink (XT2) API calls are fully developed and ready to use. Out-of-the box.<br>
