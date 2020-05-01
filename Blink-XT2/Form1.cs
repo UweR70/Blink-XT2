@@ -14,6 +14,10 @@ namespace Blink
 
         public bool IsDownloadRunning;
         public bool EmptyInfoText;
+
+        public bool IsSnapshotRunning;
+        public Snapshot SnapshotInstance;
+        
         public class ComboboxItem
         {
             public string Text { get; set; }
@@ -31,14 +35,23 @@ namespace Blink
         }
 
         private void Form1_Shown(object sender, EventArgs e)
-        {
+        {   
             this.Text = Config.TitleAppNameAndVersion;
             IsDownloadRunning =  false;
             EmptyInfoText = true;
             p0_txtBox_SaveDirectory.Text = Config.DefaultRootStoragePart;
             p0_txtBox_Email.Focus();
 
-            DisableOrEnableAllTabPagesExceptTheFirst(false);
+            p2_numUpDown_Seconds.Value = Config.IntervallMinimumTimeInSeconds;
+            IsSnapshotRunning = false;
+            SnapshotInstance = new Snapshot();
+
+            DisableOrEnableallTabPagesExceptTheGiven(false, 0);
+        }
+
+        private void Form1_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            new Snapshot().StopTakingSnapshots();
         }
 
         #region tabPage0 - "Download And Init"
@@ -76,8 +89,9 @@ namespace Blink
                 p0_txtBox_Email.Enabled = p0_txtBox_Password.Enabled = p0_checkBox_AreYouInGermany.Enabled = p0_btn_SelectSavePath.Enabled = p0_btn_Start.Enabled = false;
                 p0_btn_Start.Text = "Running ...";
 
-                DisableOrEnableAllTabPagesExceptTheFirst(false);
+                DisableOrEnableallTabPagesExceptTheGiven(false, 0);
                 ResetTabPage01Values();
+                ResetTabPage02Values();
                 ResetTabPage99Values();
                 // ToDo: Do NOT remove this "ToDo" line and add here a "ResetTabPage_xx_Values();" method call in case a new tabPage is added to "tabControl0"!
 
@@ -89,7 +103,7 @@ namespace Blink
                         return;
                     }
                     
-                    if (!string.IsNullOrWhiteSpace(BaseData.RootStoragePath))
+                    if (!string.IsNullOrWhiteSpace(BaseData.StoragePathNetwork))
                     {
                         if (MessageBox.Show(
                                 "Should the storage path be opened?",
@@ -97,7 +111,7 @@ namespace Blink
                                 MessageBoxButtons.YesNo, MessageBoxIcon.Question)
                             == DialogResult.Yes)
                         {
-                            Process.Start(BaseData.RootStoragePath);
+                            Process.Start(BaseData.StoragePathMain);
                         }
                     }
                 }).ContinueWith(result =>
@@ -106,12 +120,13 @@ namespace Blink
                     // And: Except PageTab it must also be worked out in case "StartAsyny(...)" returned "null" in error case!
                     if (BaseData != null)
                     {
-                        DisableOrEnableAllTabPagesExceptTheFirst(true);
+                        DisableOrEnableallTabPagesExceptTheGiven(true, 0);
                     }
                     p0_btn_Start.Enabled = true;
                     p0_btn_Start.Text = "Reset application";
 
                     SetTabPage01Values(BaseData);
+                    SetTabPage02Values(BaseData);
                     SetTabPage99Values(BaseData);
                     // ToDo: Do NOT remove this "ToDo" line and add here a "SetTabPage_xx_Values(BaseData);" method call in case a new tabPage is added to "tabControl0"!
                 }, TaskScheduler.FromCurrentSynchronizationContext());
@@ -126,8 +141,9 @@ namespace Blink
                 p0_txtBox_Email.Enabled = p0_txtBox_Password.Enabled = p0_checkBox_AreYouInGermany.Enabled = p0_btn_SelectSavePath.Enabled = p0_btn_Start.Enabled = true;
                 p0_btn_Start.Text = "Start";
 
-                DisableOrEnableAllTabPagesExceptTheFirst(false);
+                DisableOrEnableallTabPagesExceptTheGiven(false, 0);
                 ResetTabPage01Values();
+                ResetTabPage02Values();
                 ResetTabPage99Values();
                 // ToDo: Do NOT remove this "ToDo" line and add here a "ResetTabPage_xx_Values();" method call in case a new tabPage is added to "tabControl0"!
             }
@@ -174,11 +190,22 @@ namespace Blink
             }
         }
 
-        private void DisableOrEnableAllTabPagesExceptTheFirst(bool enableThem)
+        private void XX_DisableOrEnableAllTabPagesExceptTheFirst(bool enableThem)
         {
             for (int i = 1; i < tabControl0.TabPages.Count; i++)    // Note: starting by 1
             {
                 ((Control)tabControl0.TabPages[i]).Enabled = enableThem;
+            }
+        }
+
+        private void DisableOrEnableallTabPagesExceptTheGiven(bool enableThem, int NumberOfTabPageThatShouldNotBeChanged)
+        {
+            for (int i = 0; i < tabControl0.TabPages.Count; i++)
+            {
+                if (i != NumberOfTabPageThatShouldNotBeChanged)
+                {
+                    ((Control)tabControl0.TabPages[i]).Enabled = enableThem;
+                }
             }
         }
 
@@ -191,7 +218,7 @@ namespace Blink
                     Config.TitleErrorAppNameAndVersion,
                     MessageBoxButtons.OK,
                     MessageBoxIcon.Error
-                    );
+                );
                 p0_txtBox_Email.Focus();
                 return false;
             }
@@ -203,7 +230,7 @@ namespace Blink
                     Config.TitleErrorAppNameAndVersion,
                     MessageBoxButtons.OK,
                     MessageBoxIcon.Error
-                    );
+                );
                 p0_txtBox_Password.Focus();
                 return false;
             }
@@ -215,19 +242,19 @@ namespace Blink
                     Config.TitleErrorAppNameAndVersion,
                     MessageBoxButtons.OK,
                     MessageBoxIcon.Error
-                    );
+                );
                 p0_btn_SelectSavePath.Focus();
                 return false;
             }
             return true;
         }
 
-        delegate void SetTextCallback(string message, bool append = true);
-        public void SetLog(string message, bool append = true)
+        delegate void SetP0TxtBoxInfoTextCallback(string message, bool append = true);
+        public void SetP0TxtBoxInfoText(string message, bool append = true)
         {
             if (this.p0_txtBox_Info.InvokeRequired)
             {
-                SetTextCallback d = new SetTextCallback(SetLog);
+                var d = new SetP0TxtBoxInfoTextCallback(SetP0TxtBoxInfoText);
                 this.Invoke(d, new object[] { message, append });
             }
             else
@@ -269,18 +296,18 @@ namespace Blink
 
             return "Field 'Save directory:'\r\n" +
                 "\r\n" +
-                "The root directory part were everything will be stored.\r\n" +
+                "The root directory part where the downloaded videos and thumbnails will be stored.\r\n" +
                 "\r\n" +
                 "But pay attention:\r\n" +
                 "Imagine you added your Blink system to your Wifi 'HomeSweetHome'\r\n" +
                 "and you have three cameras named 'Front', 'Backyard' and 'Garage'.\r\n" +
                 "\r\n" +
-                $"Imagine furthermore you select here '{savePath}'.\r\n" +
+                $"Imagine furthermore you selected here '{savePath}'.\r\n" +
                 "\r\n" +
-                "In this case are these directories created and used to store everything:\r\n" +
-                $"\t1) {savePath}\\HomeSweetHome\\Backyard\r\n" +
-                $"\t2) {savePath}\\HomeSweetHome\\Front\r\n" +
-                $"\t3) {savePath}\\HomeSweetHome\\Garage\r\n";
+                "In this case are these directories created and used to store:\r\n" +
+                $"\t1) {savePath}\\Blink_XT2\\HomeSweetHome\\Main\\Backyard\r\n" +
+                $"\t2) {savePath}\\Blink_XT2\\HomeSweetHome\\Main\\Front\r\n" +
+                $"\t3) {savePath}\\Blink_XT2\\HomeSweetHome\\Main\\Garage\r\n";
         }
 
         private string HelpAreYouInGermany()
@@ -322,7 +349,7 @@ namespace Blink
             p1_txtBox_Region.Text = $"{baseData.RegionPropertyName} / {baseData.RegionValue}";
             p1_txtBox_AuthToken.Text = baseData.AuthToken;
             p1_txtBox_AccountId.Text = baseData.AccountId.ToString();
-            p1_txtBox_RootStoragePath.Text = baseData.RootStoragePath;
+            p1_txtBox_RootStoragePath.Text = baseData.StoragePathNetwork;
 
             p1_comboBox_Networks.Items.Clear();
             p1_comboBox_Networks.Text = string.Empty;
@@ -468,7 +495,262 @@ namespace Blink
         }
         #endregion
 
-        #region tabPage99 - "Test A"
+        #region tabPage02 - "Snapshots"
+        private void SetTabPage02Values(BaseData baseData, bool emptyAlsoInfo = true)
+        {
+            if (baseData == null)
+            {
+                return;
+            }
+            p2_txtBox_Email.Text = baseData.Email;
+            p2_txtBox_Region.Text = $"{baseData.RegionPropertyName} / {baseData.RegionValue}";
+            p2_txtBox_AuthToken.Text = baseData.AuthToken;
+            p2_txtBox_AccountId.Text = baseData.AccountId.ToString();
+            p2_txtBox_RootStoragePath.Text = baseData.StoragePathNetwork;
+
+            p2_comboBox_Networks.Items.Clear();
+            p2_comboBox_Networks.Text = string.Empty;
+            for (int i = 0; i < baseData.Networks.Count; i++)
+            {
+                p2_comboBox_Networks.Items.Add(new ComboboxItem
+                {
+                    Text = $"{BaseData.Networks[i].Name} ({BaseData.Networks[i].Id})",
+                    Value = BaseData.Networks[i].Id
+                });
+            }
+
+            p2_comboBox_Cameras.Items.Clear();
+            p2_comboBox_Cameras.Text = string.Empty;
+
+            p2_numUpDown_Days.Value = p2_numUpDown_Hours.Value = p2_numUpDown_Minutes.Value = 0;
+            p2_numUpDown_Seconds.Value = Config.IntervallMinimumTimeInSeconds;
+
+            p2_btn_Start.Text = "Start";
+            if (emptyAlsoInfo)
+            {
+                p2_txtBox_Info.Text = string.Empty;
+            } else
+            {
+                SetP2TxtBoxInfoText(string.Empty);
+                SetP2TxtBoxInfoText("All page fields except this textbox were reset.");
+            }
+        }
+
+        private void ResetTabPage02Values()
+        {
+            p2_txtBox_Email.Text =
+            p2_txtBox_Region.Text =
+            p2_txtBox_AuthToken.Text =
+            p2_txtBox_AccountId.Text =
+            p2_txtBox_RootStoragePath.Text = string.Empty;
+
+            p2_comboBox_Networks.Items.Clear();
+            p2_comboBox_Networks.Text = string.Empty;
+
+            p2_comboBox_Cameras.Items.Clear();
+            p2_comboBox_Cameras.Text = string.Empty;
+
+            p2_numUpDown_Days.Value = p2_numUpDown_Hours.Value = p2_numUpDown_Minutes.Value = 0;
+            p2_numUpDown_Seconds.Value = Config.IntervallMinimumTimeInSeconds;
+
+            p2_btn_Start.Text = "Start";
+            p2_txtBox_Info.Text = string.Empty;
+        }
+
+        private void p2_comboBox_Networks_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            var selectedObject = p2_comboBox_Networks.SelectedItem as ComboboxItem;
+            if (selectedObject == null)
+            {
+                p2_comboBox_Cameras.Items.Clear();
+                p2_comboBox_Cameras.Text = string.Empty;
+                
+                return;
+            }
+            var networkId = selectedObject.Value;
+
+            var networkObject = BaseData.Networks.Where(x => x.Id == networkId).ToList();
+            if (networkObject == null || networkObject.Count() != 1)
+            {
+                // Should never be true!
+                return;
+            }
+
+            p2_comboBox_Cameras.Items.Clear();
+            p2_comboBox_Cameras.Text = string.Empty;
+            for (int i = 0; i < networkObject[0].Cameras.Count; i++)
+            {
+                p2_comboBox_Cameras.Items.Add(new ComboboxItem
+                {
+                    Text = $"{networkObject[0].Cameras[i].Name} ({networkObject[0].Cameras[i].Id})",
+                    Value = networkObject[0].Cameras[i].Id
+                });
+            }
+        }
+
+        private decimal GetIntervallInSeconds()
+        {
+            return p2_numUpDown_Days.Value * 86400 +
+                p2_numUpDown_Hours.Value * 3600 +
+                p2_numUpDown_Minutes.Value * 60 + 
+                p2_numUpDown_Seconds.Value;
+        }
+
+        private void DisplayCurrentInterval()
+        {
+            var intervalInSeconds = (int)GetIntervallInSeconds();
+            if (intervalInSeconds < Config.IntervallMinimumTimeInSeconds)
+            {
+                p2_lbl_SelectedInterval.Text = Config.IntervallErrorText;
+            }
+            else
+            {
+                p2_lbl_SelectedInterval.Text = $"Take a snapshot every {intervalInSeconds:N0} seconds.";
+            }
+        }
+
+        private void p2_numUpDown_Days_ValueChanged(object sender, EventArgs e)
+        {
+            DisplayCurrentInterval();
+        }
+
+        private void p2_numUpDown_Hours_ValueChanged(object sender, EventArgs e)
+        {
+            DisplayCurrentInterval();
+        }
+
+        private void p2_numUpDown_Minutes_ValueChanged(object sender, EventArgs e)
+        {
+            DisplayCurrentInterval();
+        }
+        private void p2_numUpDown_Seconds_ValueChanged(object sender, EventArgs e)
+        {
+            DisplayCurrentInterval();
+        }
+
+        private void p2_btn_Start_Click(object sender, EventArgs e)
+        {
+            if (!IsSnapshotRunning)
+            {
+                if (!AreAllSnapshotValuesGiven())
+                {
+                    return;
+                }
+                p2_txtBox_Info.Text = string.Empty;
+                p2_comboBox_Networks.Enabled = p2_comboBox_Cameras.Enabled = p2_numUpDown_Days.Enabled = p2_numUpDown_Hours.Enabled = p2_numUpDown_Minutes.Enabled = p2_numUpDown_Seconds.Enabled = false;
+                p2_btn_Start.Text = "Running ...";
+
+                DisableOrEnableallTabPagesExceptTheGiven(false, 2);
+
+                var intervalInSeconds = (int)GetIntervallInSeconds();
+
+                var networkSelectedIndex = p2_comboBox_Networks.SelectedIndex;
+                var networkComboBoxItem = p2_comboBox_Networks.Items[networkSelectedIndex] as ComboboxItem;
+                if (networkComboBoxItem == null)
+                {
+                    return;
+                }
+                var networkId = networkComboBoxItem.Value;
+
+                var cameraSelectedIndex = p2_comboBox_Cameras.SelectedIndex;
+                var cameraComboBoxItem = p2_comboBox_Cameras.Items[cameraSelectedIndex] as ComboboxItem;
+                if (cameraComboBoxItem == null)
+                {
+                    return;
+                }
+                var cameraId = cameraComboBoxItem.Value;
+
+                SnapshotInstance.StartTakingSnapshots(this, BaseData, intervalInSeconds, networkId, cameraId);
+            }
+            else
+            {
+                SnapshotInstance.StopTakingSnapshots();
+
+                SetTabPage02Values(BaseData, false);
+
+                p2_comboBox_Networks.Enabled = p2_comboBox_Cameras.Enabled = p2_numUpDown_Days.Enabled = p2_numUpDown_Hours.Enabled = p2_numUpDown_Minutes.Enabled = p2_numUpDown_Seconds.Enabled = true;
+                p2_btn_Start.Text = "Start";
+
+                DisableOrEnableallTabPagesExceptTheGiven(true, -1); // "-1" is a non-extsing tabPage, means all tabPages will be changed.
+
+                if (MessageBox.Show(
+                               "Should the image snaphot storage path be opened?",
+                               Config.TitleAppNameAndVersion,
+                               MessageBoxButtons.YesNo, MessageBoxIcon.Question)
+                           == DialogResult.Yes)
+                {
+                    Process.Start(SnapshotInstance.BaseStoragePathSnapshot);    // Set while "SnapshotInstance.StartTakingSnapshots(...)" where worked out.
+                }
+            }
+            IsSnapshotRunning = !IsSnapshotRunning;
+        }
+
+        private bool AreAllSnapshotValuesGiven()
+        {
+            if(p2_comboBox_Networks.SelectedIndex == -1)
+            {
+                MessageBox.Show(
+                   $"Please select a network.",
+                   Config.TitleErrorAppNameAndVersion,
+                   MessageBoxButtons.OK,
+                   MessageBoxIcon.Error
+                );
+                p2_comboBox_Networks.Focus();
+                return false;
+            }
+
+            if (p2_comboBox_Cameras.SelectedIndex == -1)
+            {
+                MessageBox.Show(
+                   $"Please select a camera.",
+                   Config.TitleErrorAppNameAndVersion,
+                   MessageBoxButtons.OK,
+                   MessageBoxIcon.Error
+                );
+                p2_comboBox_Cameras.Focus();
+                return false;
+            }
+
+            var intervalInSeconds = (int)GetIntervallInSeconds();
+            if (intervalInSeconds < Config.IntervallMinimumTimeInSeconds)
+            {
+                MessageBox.Show(
+                  $"Please provide an interval of minumum {Config.IntervallMinimumTimeInSeconds} seconds.",
+                  Config.TitleErrorAppNameAndVersion,
+                  MessageBoxButtons.OK,
+                  MessageBoxIcon.Error
+                );
+                p2_numUpDown_Days.Focus();
+                return false;
+            }
+            return true;
+        }
+
+        delegate void SetP2TxtBoxInfoTextCallback(string message, bool append = true);
+        public void SetP2TxtBoxInfoText(string message, bool append = true)
+        {
+            if (this.p0_txtBox_Info.InvokeRequired)
+            {
+                var d = new SetP2TxtBoxInfoTextCallback(SetP2TxtBoxInfoText);
+                this.Invoke(d, new object[] { message, append });
+            }
+            else
+            {
+                if (append)
+                {
+                    this.p2_txtBox_Info.Text += string.Format("{0}\t{1}\r\n", DateTime.Now, message);
+                }
+                else
+                {
+                    this.p2_txtBox_Info.Text = message;
+                }
+                p2_txtBox_Info.SelectionStart = p2_txtBox_Info.TextLength;
+                p2_txtBox_Info.ScrollToCaret();
+            }
+        }
+        #endregion
+
+        #region tabPage99 - "Quciktest"
         private void SetTabPage99Values(BaseData baseData)
         {
             if (baseData == null)

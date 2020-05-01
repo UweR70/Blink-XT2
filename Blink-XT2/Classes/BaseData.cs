@@ -12,7 +12,12 @@ namespace Blink.Classes
         public string AuthToken;
         public int AccountId;     
 
-        public string RootStoragePath;
+        public string StoragePathNetwork;           // C:\Temp\Blink_XT2\Home
+        public string StoragePathMain;              // C:\Temp\Blink_XT2\Home\Main
+        public string StoragePathSnapshots;         // C:\Temp\Blink_XT2\Home\Snapshots
+        public string StoragePathSnapshotsImages;   // C:\Temp\Blink_XT2\Home\Snapshots\Images
+        public string StoragePathSnapshotsVideos;   // C:\Temp\Blink_XT2\Home\Snapshots\Videos   // ToDo: Info: Currently not used. But already added for further releases.
+
 
         public List<Network> Networks;
     

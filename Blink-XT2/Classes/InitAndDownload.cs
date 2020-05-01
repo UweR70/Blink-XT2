@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Globalization;
 using System.IO;
 using System.Linq;
 
@@ -8,12 +7,14 @@ namespace Blink.Classes
 {
     public class InitAndDownload
     {
+        private const int MagicNumberVideosPerPage = 25;
+
         public BaseData Start(Form1 form, string email, string password, string saveDirectory, bool isGerman)
         {
             try
             {
-                form.SetLog("Started.");
-                form.SetLog(string.Empty);
+                form.SetP0TxtBoxInfoText("Started.");
+                form.SetP0TxtBoxInfoText(string.Empty);
 
                 var common = new Common();
                 var uweR70_FireCommand = new UweR70_FireCommand();
@@ -143,14 +144,14 @@ namespace Blink.Classes
                         NetworkId = baseData.Networks[i].Id
                     };
 
-                    form.SetLog($"Network id >{baseData.Networks[i].Id}<");
-                    form.SetLog($"Network name >{baseData.Networks[i].Name}<");
-                    form.SetLog($"camera count >{blinkNetwork.networks[i].cameras.Length}<");
+                    form.SetP0TxtBoxInfoText($"Network id >{baseData.Networks[i].Id}<");
+                    form.SetP0TxtBoxInfoText($"Network name >{baseData.Networks[i].Name}<");
+                    form.SetP0TxtBoxInfoText($"camera count >{blinkNetwork.networks[i].cameras.Length}<");
 
                     for (var n = 0; n < blinkNetwork.networks[i].cameras.Length; n++)
                     {
-                        form.SetLog(string.Empty);
-                        form.SetLog($"camera #{n + 1:D2}");
+                        form.SetP0TxtBoxInfoText(string.Empty);
+                        form.SetP0TxtBoxInfoText($"camera #{n + 1:D2}");
 
                         baseData.Networks[i].Cameras.Add(new BaseData.Camera
                         {
@@ -161,17 +162,22 @@ namespace Blink.Classes
 
                         minData.CameraId = baseData.Networks[i].Cameras[n].Id;
 
-                        form.SetLog($"camera id >{baseData.Networks[i].Cameras[n].Id}<");
-                        form.SetLog($"camera name >{baseData.Networks[i].Cameras[n].Name}<");
+                        form.SetP0TxtBoxInfoText($"camera id >{baseData.Networks[i].Cameras[n].Id}<");
+                        form.SetP0TxtBoxInfoText($"camera name >{baseData.Networks[i].Cameras[n].Name}<");
 
                         var blinkCamera = uweR70_Get.CameraInfoAsync(minData).Result;
 
                         var cameraThumbnail = blinkCamera.camera_status.thumbnail;
 
-                        var storagePath = GetStoragePath(saveDirectory, baseData.Networks[i].Name, blinkNetwork.networks[i].cameras[n].name);
-                        if (string.IsNullOrEmpty(baseData.RootStoragePath))
-                        {
-                            baseData.RootStoragePath = Path.Combine(saveDirectory, $"{Config.StoragePart}\\{baseData.Networks[i].Name}");
+                        var networkNameAndId = common.CombineNameAndId(baseData.Networks[i].Name, baseData.Networks[i].Id);
+                        var cameraNameAndId = common.CombineNameAndId(blinkNetwork.networks[i].cameras[n].name, blinkNetwork.networks[i].cameras[n].id);
+                        var storagePath = GetStoragePath(saveDirectory, networkNameAndId, cameraNameAndId);
+                        if (string.IsNullOrEmpty(baseData.StoragePathNetwork))
+                        {   /* Both folligng directories where created while  "GetStoragePath(...)" worked out!
+                               because the there combined path contains all parts of the following two combined directories.
+                            */
+                            baseData.StoragePathNetwork = Path.Combine(saveDirectory, $"{Config.StoragePartBase}\\{networkNameAndId}");
+                            baseData.StoragePathMain = $"{baseData.StoragePathNetwork}\\{Config.StoragePartMain}";
                         }
                         var cameraThumbnailFileName = GetAdjustedCameraThumbnailFileName(Path.GetFileName(cameraThumbnail));
                         var cameraThumbnailPathAndFileName = $"{storagePath}\\{cameraThumbnailFileName}";
@@ -185,12 +191,12 @@ namespace Blink.Classes
                     }
                 }
 
-                var timestampFormatter = CultureInfo.CurrentCulture.Name.ToUpperInvariant().Equals("DE-DE")
-                                                            ? "yyyy.MM.dd__hh_mm_ss"
-                                                            : "yyyy.MM.dd__HH_mm_ss_tt";
+                var timestampFormatter = common.GetTimestampFormatter();
+
                 var pageCounter = 0;
-                form.SetLog(string.Empty);
-                form.SetLog($"Try to download videos.");
+                var aborted = false;
+                form.SetP0TxtBoxInfoText(string.Empty);
+                form.SetP0TxtBoxInfoText($"Try to download videos.");
                 do
                 {
                     pageCounter++;
@@ -201,16 +207,16 @@ namespace Blink.Classes
                         break;
                     }
 
-                    form.SetLog(string.Empty);
-                    form.SetLog($"Page #{pageCounter} contains {media.media.Length} videos.");
+                    form.SetP0TxtBoxInfoText(string.Empty);
+                    form.SetP0TxtBoxInfoText($"Page #{pageCounter} contains {media.media.Length} videos.");
 
                     var counterMarkedAsDeleted = 0;
                     var counterAlreadyBeforeDownloaded = 0;
                     var counterDownloaded = 0;
 
-                    form.SetLog($"\tMarked as deleted #{counterMarkedAsDeleted}.");
-                    form.SetLog($"\tAlready before downloaded #{counterAlreadyBeforeDownloaded}.");
-                    form.SetLog($"\tDownloaded #{counterDownloaded}.");
+                    form.SetP0TxtBoxInfoText($"\tMarked as deleted #{counterMarkedAsDeleted}.");
+                    form.SetP0TxtBoxInfoText($"\tAlready before downloaded #{counterAlreadyBeforeDownloaded}.");
+                    form.SetP0TxtBoxInfoText($"\tDownloaded #{counterDownloaded}.");
 
                     for (var i = 0; i < media.media.Length; i++)
                     {
@@ -218,6 +224,13 @@ namespace Blink.Classes
                         {
                             counterMarkedAsDeleted++;
                             AdjustInfo(form, common, $"\tMarked as deleted #{counterMarkedAsDeleted - 1}.", $"\tMarked as deleted #{counterMarkedAsDeleted}.");
+
+                            if (counterMarkedAsDeleted == MagicNumberVideosPerPage)
+                            {
+                                form.SetP0TxtBoxInfoText($"Download aborted becasue current page cantains {MagicNumberVideosPerPage} as deleted marked videos!");
+                                aborted = true;
+                                break;
+                            }
                             continue;
                         }
                         
@@ -234,7 +247,10 @@ namespace Blink.Classes
                             continue;
                         }
 
-                        var storagePath = GetStoragePath(saveDirectory, media.media[i].network_name, media.media[i].device_name);
+                        // Method called and not just path combined because called method creates directory if it does not exist.
+                        var networkNameAndId = common.CombineNameAndId(media.media[i].network_name, media.media[i].network_id);
+                        var cameraNameAndId = common.CombineNameAndId(media.media[i].device_name, media.media[i].device_id);
+                        var storagePath = GetStoragePath(saveDirectory, networkNameAndId, cameraNameAndId);
                         var videoFileName = media.media[i].created_at.ToString(timestampFormatter) + ".mp4";
                         var videoPathAndFileName = $"{storagePath}\\{videoFileName}";
                         cameraObject[0].Media.PathAndFileNameVideos.Add(videoPathAndFileName);
@@ -251,29 +267,29 @@ namespace Blink.Classes
                             AdjustInfo(form, common, $"\tAlready before downloaded #{counterAlreadyBeforeDownloaded - 1}.", $"\tAlready before downloaded #{counterAlreadyBeforeDownloaded}.");
                         }
                     }
-                } while (true);
+                } while (!aborted);
                 
-                form.SetLog(string.Empty);
-                form.SetLog("Done!");
+                form.SetP0TxtBoxInfoText(string.Empty);
+                form.SetP0TxtBoxInfoText("Done!");
                 return baseData;
             }
             catch (Exception ex)
             {
-                form.SetLog(string.Empty);
-                form.SetLog($"### ERROR ###");
+                form.SetP0TxtBoxInfoText(string.Empty);
+                form.SetP0TxtBoxInfoText($"### ERROR ###");
                 var errorMessage = ex.Message;
                 if (ex.InnerException != null && !string.IsNullOrEmpty(ex.InnerException.Message))
                 {
                     errorMessage = ex.InnerException.Message;
                 }
-                form.SetLog($"\t{errorMessage}");
+                form.SetP0TxtBoxInfoText($"\t{errorMessage}");
                 return null;
             }
         }
 
-        private string GetStoragePath(string baseStoragePath, string networkName, string cameraName)
+        private string GetStoragePath(string baseStoragePath, string networkNameAndId, string cameraNameAndId)
         {
-            var storagePath = Path.Combine(baseStoragePath, $"{Config.StoragePart}\\{networkName}\\{cameraName}");
+            var storagePath = Path.Combine(baseStoragePath, $"{Config.StoragePartBase}\\{networkNameAndId}\\{Config.StoragePartMain}\\{cameraNameAndId}");
             if (!Directory.Exists(storagePath))
             {
                 Directory.CreateDirectory(storagePath);
@@ -310,7 +326,7 @@ namespace Blink.Classes
         {
             var completeMessage = form.GetLog();
             var result = common.ReplaceParts(completeMessage, toBeReplaced, replacement);
-            form.SetLog(result, false);
+            form.SetP0TxtBoxInfoText(result, false);
         }
     }
 }
