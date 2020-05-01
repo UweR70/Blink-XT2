@@ -13,7 +13,7 @@
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
     <Deterministic>true</Deterministic>
     <IsWebBootstrapper>false</IsWebBootstrapper>
-    <PublishUrl>publish\V._0.02\</PublishUrl>
+    <PublishUrl>publish\V._0.03\</PublishUrl>
     <Install>true</Install>
     <InstallFrom>Disk</InstallFrom>
     <UpdateEnabled>false</UpdateEnabled>
@@ -23,8 +23,8 @@
     <UpdatePeriodically>false</UpdatePeriodically>
     <UpdateRequired>false</UpdateRequired>
     <MapFileExtensions>true</MapFileExtensions>
-    <ApplicationRevision>3</ApplicationRevision>
-    <ApplicationVersion>0.0.2.%2a</ApplicationVersion>
+    <ApplicationRevision>0</ApplicationRevision>
+    <ApplicationVersion>0.0.3.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <PublishWizardCompleted>true</PublishWizardCompleted>
     <BootstrapperEnabled>true</BootstrapperEnabled>
@@ -98,6 +98,7 @@
     <Compile Include="Classes\Config.cs" />
     <Compile Include="Classes\InitAndDownload.cs" />
     <Compile Include="Classes\Quicktest.cs" />
+    <Compile Include="Classes\Snapshot.cs" />
     <Compile Include="Classes\UweR70_FireCommand.cs" />
     <Compile Include="Classes\UweR70_Get.cs" />
     <Compile Include="Form1.cs">
@@ -122,6 +123,7 @@
     </Compile>
     <None Include="Blink-XT2_TemporaryKey.pfx" />
     <None Include="Compiled_Versions\UweR70_Blink-XT2_V_0.02.7z" />
+    <None Include="Compiled_Versions\UweR70_Blink-XT2_V_0.03.7z" />
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>

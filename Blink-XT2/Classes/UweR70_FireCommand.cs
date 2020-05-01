@@ -66,6 +66,7 @@ namespace Blink.Classes
             var ret = JsonConvert.DeserializeObject<BlinkCommandThumbnail>(retString);
             return ret;
         }
+
         public async Task<BlinkCommandClip> ClipAsync(MinimumData minData)
         {
             var uri = $"https://rest.{minData.RegionPropertyName}.immedia-semi.com/network/{minData.NetworkId}/camera/{minData.CameraId}/clip";

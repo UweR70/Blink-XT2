@@ -120,8 +120,9 @@
   <data name="label1.Text" xml:space="preserve">
     <value>The functionality of the currently locked pages 
 - 'Init Summary'
+- 'Snapshots'
 and
-- 'Test A'
+- 'Quicktest'
 are requiering some basic informations like 'region',
 'authentification token, 'account id', 'network id',
 'network name', and n times 'camera id', ' camera name'.
@@ -129,7 +130,7 @@ are requiering some basic informations like 'region',
 While gathering all of them it makes sense to download 
 all thumbnails and videos of all networks and cameras.
 
-So please enter all on this page 'Download And Init' needed 
+So please enter all on this page 'Init and Download' needed 
 information and press the 'Start' button to 'unlock' the other 
 pages.</value>
   </data>
