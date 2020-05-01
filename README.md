@@ -108,7 +108,7 @@ Follow these steps to fix this (in Visual Studio):
     Select 'Solution Explorer'.
   </li>
   <li>
-    Select 'References' in the 'Blink' project.
+    Select 'References' in the 'Blink-XT2' project.
   </li>
   <li>
     Right mouse click -> Select 'Manage NuGet Packages ...' in the context menu.
