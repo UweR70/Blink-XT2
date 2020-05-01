@@ -114,7 +114,7 @@ Follow these steps to fix this (in Visual Studio):
     Right mouse click -> Select 'Manage NuGet Packages ...' in the context menu.
   </li>
   <li>
-    A new window/tab should be opened in Visual Studio: 'NuGet: Blink'.
+    A new window/tab should be opened in Visual Studio: 'NuGet: Blink-XT2'.
   </li>
   <li>
     This window/tab contains top most a yellow part that says:<br>
