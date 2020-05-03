@@ -5,7 +5,7 @@ Blink (XT2) Win 10 / C# application to
     download all videos and the thumbnails from each camera of all networks.
   </li>
   <li>
-    take a snapshot/thumbnail every x seconds
+    take a snapshot/thumbnail every x seconds and <b>to create a video from these</b> 
   </li>
 </ul>
 <br>
