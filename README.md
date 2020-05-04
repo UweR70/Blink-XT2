@@ -8,6 +8,9 @@ Blink (XT2) Win 10 / C# application to
     take a snapshot/thumbnail every x seconds and <b>to create a video from these</b> 
   </li>
 </ul>
+See my 
+<a href="https://github.com/UweR70/Blink-XT2/wiki">wiki site</a>
+to get a visual impression.
 <br>
 Plus:<br>
 All currently known Blink (XT2) API calls are fully developed and ready to use. Out-of-the box.<br>
