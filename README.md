@@ -1,5 +1,13 @@
 # Blink-XT2
-Blink (XT2) Win 10 / C# application to download all videos and the thumbnails from each camera of all networks.<br>
+Blink (XT2) Win 10 / C# application to 
+<ul>
+  <li>
+    download all videos and the thumbnails from each camera of all networks.
+  </li>
+  <li>
+    take a snapshot/thumbnail every x seconds and <b>to create a video from these</b> 
+  </li>
+</ul>
 <br>
 Plus:<br>
 All currently known Blink (XT2) API calls are fully developed and ready to use. Out-of-the box.<br>
@@ -81,8 +89,8 @@ My part was just to convert it into a full functional and well designed C# appli
 
 # How to install, compile and run
 Good news first:<br>
-<a href="https://github.com/UweR70/Blink-XT2/blob/master/Blink-XT2/Compiled_Versions/UweR70_Blink-XT2_V_0.02.7z">Here</a><br>
-you will find a ziped but runable setup.exe.<br>
+<a href="https://github.com/UweR70/Blink-XT2/blob/master/Blink-XT2/Compiled_Versions/UweR70_Blink-XT2_V_0.03.7z">Here</a><br>
+you will find a ziped but runable setup.exe (version 0.03).<br>
 <br>
 The bad news:<br>
 Sorry, figured currently not out how to add the 'Newtonsoft.Json' packages to the repository :-(<br>
@@ -100,13 +108,13 @@ Follow these steps to fix this (in Visual Studio):
     Select 'Solution Explorer'.
   </li>
   <li>
-    Select 'References' in the 'Blink' project.
+    Select 'References' in the 'Blink-XT2' project.
   </li>
   <li>
     Right mouse click -> Select 'Manage NuGet Packages ...' in the context menu.
   </li>
   <li>
-    A new window/tab should be opened in Visual Studio: 'NuGet: Blink'.
+    A new window/tab should be opened in Visual Studio: 'NuGet: Blink-XT2'.
   </li>
   <li>
     This window/tab contains top most a yellow part that says:<br>
