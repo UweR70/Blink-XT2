@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using static Blink.Classes.StoreIt;
 
 namespace Blink.Classes
 {
@@ -19,13 +20,15 @@ namespace Blink.Classes
                 var common = new Common();
                 var uweR70_FireCommand = new UweR70_FireCommand();
                 var uweR70_Get = new UweR70_Get();
+                var storeIt = new StoreIt();
 
                 var baseData = new BaseData
                 {
                     Email = email,
                     ApiServer = isGerman
                                     ? "prde.immedia-semi.com"
-                                    : "prod.immedia-semi.com"
+                                    : "prod.immedia-semi.com",
+                     Networks = new List<BaseData.Network>()
                 };
 
                 #region Comment
@@ -112,20 +115,44 @@ namespace Blink.Classes
                 //baseData.RegionValue = regionObject[0].Dns;
                 #endregion
 
-                // Authentification api call
-                var login = uweR70_Get.LoginAsync(baseData, new UweR70_Get.LoginBody
+
+                var alreadyStoredAuthTokens = storeIt.ReadAuthToken();
+                var alreadyStoredMainData = storeIt.ReadMainData();
+                var storeMainDataAndAuthToken = true;
+                /* ATTENTION:
+                 * Notice the "... || true)" part in the following if statement.
+                 * This is done to force always the login API call.
+                 * Deep dive in the "else tree" and the two before made "storeIt. ..." method calls to get an idea what MAY BE developed next ...
+                 */
+                if (alreadyStoredAuthTokens == null || alreadyStoredAuthTokens.Count == 0 || alreadyStoredMainData == null /*|| true*/)
                 {
-                    email = email,
-                    password = password
-                }).Result;
+                    // Authentification api call
+                    var login = uweR70_Get.LoginAsync(baseData, new UweR70_Get.LoginBody
+                    {
+                        email = email,
+                        password = password
+                    }).Result;
 
-                baseData.RegionPropertyName = nameof(login.region.e001);         // Change to that "login.region.xxx" value that is in your case not equal to null!
-                baseData.RegionValue = login.region.e001;
-                baseData.AuthToken = login.authtoken.authtoken;
-                baseData.AccountId = login.account.id;
-                baseData.Networks = new List<BaseData.Network>();
+                    baseData.RegionPropertyName = nameof(login.region.e001);         // Change to that "login.region.xxx" value that is in your case not equal to null!
+                    baseData.RegionValue = login.region.e001;
+                    baseData.AuthToken = login.authtoken.authtoken;
+                    baseData.AccountId = login.account.id;
+                }
+                else
+                {
+                    baseData.RegionPropertyName = alreadyStoredMainData.RegionPropertyName;
+                    baseData.RegionValue = alreadyStoredMainData.RegionValue;
+                    baseData.AuthToken = alreadyStoredAuthTokens[alreadyStoredAuthTokens.Count - 1].Token;
+                    baseData.AccountId = alreadyStoredMainData.AccountId;
+                    storeMainDataAndAuthToken = false;  // Because we are using "old" data which are already stored.
+                }
+               
+                var blinkNetwork = uweR70_Get.NetworkAsync(baseData).Result;
 
-                var blinkNetwork = uweR70_Get.NetworkAsync(baseData).Result;//
+                if (storeMainDataAndAuthToken)
+                {
+                    storeIt.StoreData(baseData, blinkNetwork);
+                }
 
                 for (var i = 0; i < blinkNetwork.networks.Length; i++)
                 {
