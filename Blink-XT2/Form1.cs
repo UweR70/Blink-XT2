@@ -17,7 +17,9 @@ namespace Blink
 
         public bool IsSnapshotRunning;
         public Snapshot SnapshotInstance;
-        
+        private decimal FrameRateOldValue;
+        private bool FrameRateValueChangedViaClickOnControlUpButton;
+
         public class ComboboxItem
         {
             public string Text { get; set; }
@@ -44,6 +46,8 @@ namespace Blink
 
             p2_numUpDown_Seconds.Value = Config.IntervallMinimumTimeInSeconds;
             IsSnapshotRunning = false;
+            FrameRateOldValue = -1;
+            FrameRateValueChangedViaClickOnControlUpButton = false;
             SnapshotInstance = new Snapshot();
 
             DisableOrEnableallTabPagesExceptTheGiven(false, 0);
@@ -525,6 +529,10 @@ namespace Blink
             p2_numUpDown_Days.Value = p2_numUpDown_Hours.Value = p2_numUpDown_Minutes.Value = 0;
             p2_numUpDown_Seconds.Value = Config.IntervallMinimumTimeInSeconds;
 
+            p2_checkBox_CreateVideo.Checked = true;
+            p2_numericUpDown_FrameRate.Value = Config.DefaultFrameRate;
+            DisplayHintTextImagesFrameRateVideoLength(Config.DefaultSnapshots, Config.DefaultFrameRate);   // Default values!
+
             p2_btn_Start.Text = "Start";
             if (emptyAlsoInfo)
             {
@@ -535,7 +543,7 @@ namespace Blink
                 SetP2TxtBoxInfoText("All page fields except this textbox were reset.");
             }
         }
-
+                
         private void ResetTabPage02Values()
         {
             p2_txtBox_Email.Text =
@@ -552,6 +560,10 @@ namespace Blink
 
             p2_numUpDown_Days.Value = p2_numUpDown_Hours.Value = p2_numUpDown_Minutes.Value = 0;
             p2_numUpDown_Seconds.Value = Config.IntervallMinimumTimeInSeconds;
+
+            p2_checkBox_CreateVideo.Checked = true;
+            p2_numericUpDown_FrameRate.Value = Config.DefaultFrameRate;
+            DisplayHintTextImagesFrameRateVideoLength(Config.DefaultSnapshots, Config.DefaultFrameRate);   // Default values!
 
             p2_btn_Start.Text = "Start";
             p2_txtBox_Info.Text = string.Empty;
@@ -628,6 +640,59 @@ namespace Blink
             DisplayCurrentInterval();
         }
 
+        private void p2_checkBox_CreateVideo_CheckedChanged(object sender, EventArgs e)
+        {
+            if (p2_checkBox_CreateVideo.Checked)
+            {
+                p2_numericUpDown_FrameRate.Enabled = true;
+                DisplayHintTextImagesFrameRateVideoLength(Config.DefaultSnapshots, (int)p2_numericUpDown_FrameRate.Value);
+            }
+            else
+            {
+                p2_numericUpDown_FrameRate.Enabled = false;
+                p2_numericUpDown_FrameRate.Value = Config.DefaultFrameRate;
+                DisplayHintTextImagesFrameRateVideoLength(Config.DefaultSnapshots, Config.DefaultFrameRate);   // Default values!
+            }
+        }
+
+        private void p2_numericUpDown_FrameRate_KeyUp(object sender, KeyEventArgs e)
+        {
+           FrameRateValueChangedViaClickOnControlUpButton = false;
+        }
+        
+        private void p2_numericUpDown_FrameRate_ValueChanged(object sender, EventArgs e)
+        {
+            if (FrameRateValueChangedViaClickOnControlUpButton 
+                && p2_numericUpDown_FrameRate.Value != p2_numericUpDown_FrameRate.Minimum
+                && p2_numericUpDown_FrameRate.Value % p2_numericUpDown_FrameRate.Increment != 0)
+            {
+                var x = (int)(p2_numericUpDown_FrameRate.Value / p2_numericUpDown_FrameRate.Increment);
+                if (FrameRateOldValue > p2_numericUpDown_FrameRate.Value)
+                {
+                    // value decreased
+                    p2_numericUpDown_FrameRate.Value = (x + 1) * p2_numericUpDown_FrameRate.Increment;
+                } else if (FrameRateOldValue < p2_numericUpDown_FrameRate.Value)
+                {
+                    // Value increased
+                    p2_numericUpDown_FrameRate.Value = x * p2_numericUpDown_FrameRate.Increment;
+                }
+            }
+
+            FrameRateOldValue = p2_numericUpDown_FrameRate.Value;
+            FrameRateValueChangedViaClickOnControlUpButton = true;
+
+            DisplayHintTextImagesFrameRateVideoLength(Config.DefaultSnapshots, (int)p2_numericUpDown_FrameRate.Value);
+        }
+
+        private void DisplayHintTextImagesFrameRateVideoLength(int imageCount, int frameRate)
+        {
+            var divisionResult = (double)imageCount / frameRate;
+            p2_lbl_ImagesFrameRateVideoLength.Text = Config.HintTextImagesFrameRateVideoLength
+                .Replace("{imageCount}", imageCount.ToString("N0"))
+                .Replace("{frameRate}", frameRate.ToString(""))
+                .Replace("{divisionResult}", divisionResult.ToString("0.00"));
+        }
+
         private void p2_btn_Start_Click(object sender, EventArgs e)
         {
             if (!IsSnapshotRunning)
@@ -665,6 +730,14 @@ namespace Blink
             else
             {
                 SnapshotInstance.StopTakingSnapshots();
+
+                if (p2_checkBox_CreateVideo.Checked)
+                {
+                    new ImageToVideo().Convert(this, 
+                        SnapshotInstance.BaseStoragePathSnapshot,
+                        (int)p2_numericUpDown_FrameRate.Value
+                    );
+                }
 
                 SetTabPage02Values(BaseData, false);
 

@@ -40,6 +40,7 @@
             this.p0_txtBox_SaveDirectory = new System.Windows.Forms.TextBox();
             this.tabControl0 = new System.Windows.Forms.TabControl();
             this.tabControl0_tabPage0_InitAndDownload = new System.Windows.Forms.TabPage();
+            this.label24 = new System.Windows.Forms.Label();
             this.p0_btn_SelectSavePath = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.tabControl0_tabPage1_InitSummary = new System.Windows.Forms.TabPage();
@@ -63,6 +64,11 @@
             this.label3 = new System.Windows.Forms.Label();
             this.p1_txtBox_Email = new System.Windows.Forms.TextBox();
             this.tabControl0_tabPage2_Snapshots = new System.Windows.Forms.TabPage();
+            this.label26 = new System.Windows.Forms.Label();
+            this.p2_lbl_ImagesFrameRateVideoLength = new System.Windows.Forms.Label();
+            this.label25 = new System.Windows.Forms.Label();
+            this.p2_numericUpDown_FrameRate = new System.Windows.Forms.NumericUpDown();
+            this.p2_checkBox_CreateVideo = new System.Windows.Forms.CheckBox();
             this.p2_txtBox_Info = new System.Windows.Forms.TextBox();
             this.p2_btn_Start = new System.Windows.Forms.Button();
             this.label23 = new System.Windows.Forms.Label();
@@ -90,6 +96,7 @@
             this.label18 = new System.Windows.Forms.Label();
             this.p2_txtBox_Email = new System.Windows.Forms.TextBox();
             this.tabControl0_tabPage99_Quicktest = new System.Windows.Forms.TabPage();
+            this.label27 = new System.Windows.Forms.Label();
             this.p99_btn_Start = new System.Windows.Forms.Button();
             this.p99_txtBox_Info = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
@@ -98,6 +105,7 @@
             this.tabControl0_tabPage1_InitSummary.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.p1_pictureBox1)).BeginInit();
             this.tabControl0_tabPage2_Snapshots.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.p2_numericUpDown_FrameRate)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.p2_numUpDown_Days)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.p2_numUpDown_Seconds)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.p2_numUpDown_Minutes)).BeginInit();
@@ -178,7 +186,7 @@
             this.p0_txtBox_Info.Name = "p0_txtBox_Info";
             this.p0_txtBox_Info.ReadOnly = true;
             this.p0_txtBox_Info.ScrollBars = System.Windows.Forms.ScrollBars.Both;
-            this.p0_txtBox_Info.Size = new System.Drawing.Size(1100, 670);
+            this.p0_txtBox_Info.Size = new System.Drawing.Size(1100, 872);
             this.p0_txtBox_Info.TabIndex = 7;
             this.p0_txtBox_Info.WordWrap = false;
             // 
@@ -212,11 +220,12 @@
             this.tabControl0.Margin = new System.Windows.Forms.Padding(4);
             this.tabControl0.Name = "tabControl0";
             this.tabControl0.SelectedIndex = 0;
-            this.tabControl0.Size = new System.Drawing.Size(2237, 1313);
+            this.tabControl0.Size = new System.Drawing.Size(2237, 1160);
             this.tabControl0.TabIndex = 8;
             // 
             // tabControl0_tabPage0_InitAndDownload
             // 
+            this.tabControl0_tabPage0_InitAndDownload.Controls.Add(this.label24);
             this.tabControl0_tabPage0_InitAndDownload.Controls.Add(this.p0_btn_SelectSavePath);
             this.tabControl0_tabPage0_InitAndDownload.Controls.Add(this.label1);
             this.tabControl0_tabPage0_InitAndDownload.Controls.Add(this.lbl_Email);
@@ -232,10 +241,23 @@
             this.tabControl0_tabPage0_InitAndDownload.Margin = new System.Windows.Forms.Padding(4);
             this.tabControl0_tabPage0_InitAndDownload.Name = "tabControl0_tabPage0_InitAndDownload";
             this.tabControl0_tabPage0_InitAndDownload.Padding = new System.Windows.Forms.Padding(4);
-            this.tabControl0_tabPage0_InitAndDownload.Size = new System.Drawing.Size(2229, 1276);
+            this.tabControl0_tabPage0_InitAndDownload.Size = new System.Drawing.Size(2229, 1123);
             this.tabControl0_tabPage0_InitAndDownload.TabIndex = 0;
             this.tabControl0_tabPage0_InitAndDownload.Text = "Init and Download";
             this.tabControl0_tabPage0_InitAndDownload.UseVisualStyleBackColor = true;
+            // 
+            // label24
+            // 
+            this.label24.AutoSize = true;
+            this.label24.BackColor = System.Drawing.Color.Maroon;
+            this.label24.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.14286F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label24.ForeColor = System.Drawing.Color.White;
+            this.label24.Location = new System.Drawing.Point(1156, 599);
+            this.label24.Name = "label24";
+            this.label24.Size = new System.Drawing.Size(616, 390);
+            this.label24.TabIndex = 9;
+            this.label24.Text = "ATTENTION\r\n\r\nUse this application on your own risk!\r\n\r\nBlink blocked me\r\nmultiple" +
+    " times \r\nduring development!\r\n\r\nIn case YOU are blocked\r\nI can NOT help you!";
             // 
             // p0_btn_SelectSavePath
             // 
@@ -282,7 +304,7 @@
             this.tabControl0_tabPage1_InitSummary.Margin = new System.Windows.Forms.Padding(4);
             this.tabControl0_tabPage1_InitSummary.Name = "tabControl0_tabPage1_InitSummary";
             this.tabControl0_tabPage1_InitSummary.Padding = new System.Windows.Forms.Padding(4);
-            this.tabControl0_tabPage1_InitSummary.Size = new System.Drawing.Size(2229, 1276);
+            this.tabControl0_tabPage1_InitSummary.Size = new System.Drawing.Size(2229, 1123);
             this.tabControl0_tabPage1_InitSummary.TabIndex = 1;
             this.tabControl0_tabPage1_InitSummary.Text = "Init Summary";
             this.tabControl0_tabPage1_InitSummary.UseVisualStyleBackColor = true;
@@ -477,6 +499,11 @@
             // 
             // tabControl0_tabPage2_Snapshots
             // 
+            this.tabControl0_tabPage2_Snapshots.Controls.Add(this.label26);
+            this.tabControl0_tabPage2_Snapshots.Controls.Add(this.p2_lbl_ImagesFrameRateVideoLength);
+            this.tabControl0_tabPage2_Snapshots.Controls.Add(this.label25);
+            this.tabControl0_tabPage2_Snapshots.Controls.Add(this.p2_numericUpDown_FrameRate);
+            this.tabControl0_tabPage2_Snapshots.Controls.Add(this.p2_checkBox_CreateVideo);
             this.tabControl0_tabPage2_Snapshots.Controls.Add(this.p2_txtBox_Info);
             this.tabControl0_tabPage2_Snapshots.Controls.Add(this.p2_btn_Start);
             this.tabControl0_tabPage2_Snapshots.Controls.Add(this.label23);
@@ -505,29 +532,103 @@
             this.tabControl0_tabPage2_Snapshots.Controls.Add(this.p2_txtBox_Email);
             this.tabControl0_tabPage2_Snapshots.Location = new System.Drawing.Point(4, 33);
             this.tabControl0_tabPage2_Snapshots.Name = "tabControl0_tabPage2_Snapshots";
-            this.tabControl0_tabPage2_Snapshots.Size = new System.Drawing.Size(2229, 1276);
+            this.tabControl0_tabPage2_Snapshots.Size = new System.Drawing.Size(2229, 1123);
             this.tabControl0_tabPage2_Snapshots.TabIndex = 3;
             this.tabControl0_tabPage2_Snapshots.Text = "Snapshots";
             this.tabControl0_tabPage2_Snapshots.UseVisualStyleBackColor = true;
             // 
+            // label26
+            // 
+            this.label26.AutoSize = true;
+            this.label26.BackColor = System.Drawing.Color.Maroon;
+            this.label26.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.14286F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label26.ForeColor = System.Drawing.Color.White;
+            this.label26.Location = new System.Drawing.Point(416, 499);
+            this.label26.Name = "label26";
+            this.label26.Size = new System.Drawing.Size(616, 390);
+            this.label26.TabIndex = 53;
+            this.label26.Text = "ATTENTION\r\n\r\nUse this application on your own risk!\r\n\r\nBlink blocked me\r\nmultiple" +
+    " times \r\nduring development!\r\n\r\nIn case YOU are blocked\r\nI can NOT help you!";
+            // 
+            // p2_lbl_ImagesFrameRateVideoLength
+            // 
+            this.p2_lbl_ImagesFrameRateVideoLength.AutoSize = true;
+            this.p2_lbl_ImagesFrameRateVideoLength.Location = new System.Drawing.Point(50, 607);
+            this.p2_lbl_ImagesFrameRateVideoLength.Name = "p2_lbl_ImagesFrameRateVideoLength";
+            this.p2_lbl_ImagesFrameRateVideoLength.Size = new System.Drawing.Size(337, 150);
+            this.p2_lbl_ImagesFrameRateVideoLength.TabIndex = 6;
+            this.p2_lbl_ImagesFrameRateVideoLength.Text = "Example:\r\nIn case 1,200 snapshots were taken \r\nand the frame rate was set to 30 f" +
+    "ps\r\nthe generated video will have a lnegth\r\nof 1,200 / 30 = 40 seconds.\r\n\r\n";
+            // 
+            // label25
+            // 
+            this.label25.AutoSize = true;
+            this.label25.Location = new System.Drawing.Point(50, 531);
+            this.label25.Name = "label25";
+            this.label25.Size = new System.Drawing.Size(157, 25);
+            this.label25.TabIndex = 52;
+            this.label25.Text = "Frame rate (fps):";
+            // 
+            // p2_numericUpDown_FrameRate
+            // 
+            this.p2_numericUpDown_FrameRate.Increment = new decimal(new int[] {
+            5,
+            0,
+            0,
+            0});
+            this.p2_numericUpDown_FrameRate.Location = new System.Drawing.Point(55, 559);
+            this.p2_numericUpDown_FrameRate.Maximum = new decimal(new int[] {
+            120,
+            0,
+            0,
+            0});
+            this.p2_numericUpDown_FrameRate.Minimum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            this.p2_numericUpDown_FrameRate.Name = "p2_numericUpDown_FrameRate";
+            this.p2_numericUpDown_FrameRate.Size = new System.Drawing.Size(120, 29);
+            this.p2_numericUpDown_FrameRate.TabIndex = 13;
+            this.p2_numericUpDown_FrameRate.Value = new decimal(new int[] {
+            30,
+            0,
+            0,
+            0});
+            this.p2_numericUpDown_FrameRate.ValueChanged += new System.EventHandler(this.p2_numericUpDown_FrameRate_ValueChanged);
+            this.p2_numericUpDown_FrameRate.KeyUp += new System.Windows.Forms.KeyEventHandler(this.p2_numericUpDown_FrameRate_KeyUp);
+            // 
+            // p2_checkBox_CreateVideo
+            // 
+            this.p2_checkBox_CreateVideo.AutoSize = true;
+            this.p2_checkBox_CreateVideo.Checked = true;
+            this.p2_checkBox_CreateVideo.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.p2_checkBox_CreateVideo.Location = new System.Drawing.Point(16, 499);
+            this.p2_checkBox_CreateVideo.Name = "p2_checkBox_CreateVideo";
+            this.p2_checkBox_CreateVideo.Size = new System.Drawing.Size(351, 29);
+            this.p2_checkBox_CreateVideo.TabIndex = 12;
+            this.p2_checkBox_CreateVideo.Text = "Create video from taken snapshots?";
+            this.p2_checkBox_CreateVideo.UseVisualStyleBackColor = true;
+            this.p2_checkBox_CreateVideo.CheckedChanged += new System.EventHandler(this.p2_checkBox_CreateVideo_CheckedChanged);
+            // 
             // p2_txtBox_Info
             // 
-            this.p2_txtBox_Info.Location = new System.Drawing.Point(16, 493);
+            this.p2_txtBox_Info.Location = new System.Drawing.Point(1061, 12);
             this.p2_txtBox_Info.Margin = new System.Windows.Forms.Padding(4);
             this.p2_txtBox_Info.Multiline = true;
             this.p2_txtBox_Info.Name = "p2_txtBox_Info";
             this.p2_txtBox_Info.ReadOnly = true;
             this.p2_txtBox_Info.ScrollBars = System.Windows.Forms.ScrollBars.Both;
-            this.p2_txtBox_Info.Size = new System.Drawing.Size(1038, 642);
-            this.p2_txtBox_Info.TabIndex = 49;
+            this.p2_txtBox_Info.Size = new System.Drawing.Size(1038, 1083);
+            this.p2_txtBox_Info.TabIndex = 15;
             this.p2_txtBox_Info.WordWrap = false;
             // 
             // p2_btn_Start
             // 
-            this.p2_btn_Start.Location = new System.Drawing.Point(858, 444);
+            this.p2_btn_Start.Location = new System.Drawing.Point(858, 1053);
             this.p2_btn_Start.Name = "p2_btn_Start";
             this.p2_btn_Start.Size = new System.Drawing.Size(196, 42);
-            this.p2_btn_Start.TabIndex = 48;
+            this.p2_btn_Start.TabIndex = 14;
             this.p2_btn_Start.Text = "Start";
             this.p2_btn_Start.UseVisualStyleBackColor = true;
             this.p2_btn_Start.Click += new System.EventHandler(this.p2_btn_Start_Click);
@@ -776,16 +877,30 @@
             // 
             // tabControl0_tabPage99_Quicktest
             // 
+            this.tabControl0_tabPage99_Quicktest.Controls.Add(this.label27);
             this.tabControl0_tabPage99_Quicktest.Controls.Add(this.p99_btn_Start);
             this.tabControl0_tabPage99_Quicktest.Controls.Add(this.p99_txtBox_Info);
             this.tabControl0_tabPage99_Quicktest.Controls.Add(this.label2);
             this.tabControl0_tabPage99_Quicktest.Location = new System.Drawing.Point(4, 33);
             this.tabControl0_tabPage99_Quicktest.Margin = new System.Windows.Forms.Padding(4);
             this.tabControl0_tabPage99_Quicktest.Name = "tabControl0_tabPage99_Quicktest";
-            this.tabControl0_tabPage99_Quicktest.Size = new System.Drawing.Size(2229, 1276);
+            this.tabControl0_tabPage99_Quicktest.Size = new System.Drawing.Size(2229, 1123);
             this.tabControl0_tabPage99_Quicktest.TabIndex = 2;
             this.tabControl0_tabPage99_Quicktest.Text = "Quicktest";
             this.tabControl0_tabPage99_Quicktest.UseVisualStyleBackColor = true;
+            // 
+            // label27
+            // 
+            this.label27.AutoSize = true;
+            this.label27.BackColor = System.Drawing.Color.Maroon;
+            this.label27.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.14286F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label27.ForeColor = System.Drawing.Color.White;
+            this.label27.Location = new System.Drawing.Point(1158, 147);
+            this.label27.Name = "label27";
+            this.label27.Size = new System.Drawing.Size(616, 390);
+            this.label27.TabIndex = 54;
+            this.label27.Text = "ATTENTION\r\n\r\nUse this application on your own risk!\r\n\r\nBlink blocked me\r\nmultiple" +
+    " times \r\nduring development!\r\n\r\nIn case YOU are blocked\r\nI can NOT help you!";
             // 
             // p99_btn_Start
             // 
@@ -823,7 +938,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(11F, 24F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(2259, 1388);
+            this.ClientSize = new System.Drawing.Size(2259, 1494);
             this.Controls.Add(this.tabControl0);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.HelpButton = true;
@@ -842,6 +957,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.p1_pictureBox1)).EndInit();
             this.tabControl0_tabPage2_Snapshots.ResumeLayout(false);
             this.tabControl0_tabPage2_Snapshots.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.p2_numericUpDown_FrameRate)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.p2_numUpDown_Days)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.p2_numUpDown_Seconds)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.p2_numUpDown_Minutes)).EndInit();
@@ -918,6 +1034,13 @@
         private System.Windows.Forms.NumericUpDown p2_numUpDown_Days;
         private System.Windows.Forms.Button p2_btn_Start;
         private System.Windows.Forms.TextBox p2_txtBox_Info;
+        private System.Windows.Forms.Label label24;
+        private System.Windows.Forms.CheckBox p2_checkBox_CreateVideo;
+        private System.Windows.Forms.Label p2_lbl_ImagesFrameRateVideoLength;
+        private System.Windows.Forms.Label label25;
+        private System.Windows.Forms.NumericUpDown p2_numericUpDown_FrameRate;
+        private System.Windows.Forms.Label label26;
+        private System.Windows.Forms.Label label27;
     }
 }
 
