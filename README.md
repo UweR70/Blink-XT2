@@ -93,7 +93,16 @@ Good news first:<br>
 you will find a ziped but runable setup.exe (version 0.03).<br>
 <br>
 The bad news:<br>
-Sorry, figured currently not out how to add the 'Newtonsoft.Json' packages to the repository :-(<br>
+Sorry, figured currently not out how to add these packages to the repository :-( :<br>
+<ul>
+  <li>
+    'Newtonsoft.Json'
+  </li>
+    'Accord', 'Accord.Video', 'Accord.Video.FFMPEG'
+  <li>
+  </li>
+</ul>
+ 
 Shame on me ...<br>
 Follow these steps to fix this (in Visual Studio):
 <ul>
