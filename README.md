@@ -98,8 +98,8 @@ Sorry, figured currently not out how to add these packages to the repository :-(
   <li>
     'Newtonsoft.Json'
   </li>
-    'Accord', 'Accord.Video', 'Accord.Video.FFMPEG'
   <li>
+    'Accord', 'Accord.Video', 'Accord.Video.FFMPEG'
   </li>
 </ul>
  
