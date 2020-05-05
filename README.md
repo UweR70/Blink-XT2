@@ -10,7 +10,7 @@ Blink (XT2) Win 10 / C# application to
 </ul>
 See my <a href="https://github.com/UweR70/Blink-XT2/wiki">wiki site</a> to get a visual impression.<br>
 <br>
-<b>Be also informed that Blink sent me an email on Tu., 05th May 2020 and stated that I am using a deprecated login method which will no longer work as of 5/11 (2020)!</b> :-(<br>
+<b>Also, be aware that Blink emailed me on May 5, 2020, stating that I am using an deprecated login method that will no longer work after May 11, 2020</b>:-(<br>
 <br>
 Plus:<br>
 All currently known Blink (XT2) API calls are fully developed and ready to use. Out-of-the box.<br>
