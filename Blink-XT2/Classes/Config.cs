@@ -3,7 +3,7 @@
     public class Config
     {
         private const string AppName = "Blink Video Download";
-        private const string AppVersion = "V. 0.04";
+        private const string AppVersion = "V. 0.06";
 
         public readonly static string TitleAppNameAndVersion = $"{AppName} {AppVersion}";
         public readonly static string TitleErrorAppNameAndVersion = $"{TitleAppNameAndVersion} - Error";
@@ -23,10 +23,11 @@
         public const int DefaultFrameRate = 30;
         public static string HintTextImagesFrameRateVideoLength = 
             "Example:\r\n" +
-            "In case {imageCount} snapshots will be taken\r\n" +
-            "and the frame rate was set to {frameRate}\r\n" +
-            "the generated video are going to have a lnegth\r\n" +
-            "of {imageCount} / {frameRate} = {divisionResult} seconds.\r\n";
+            "In case {imageCount} snapshots will be\r\n" +
+            "taken and the frame rate was set\r\n" +
+            "to {frameRate} fps the generated video are\r\n" +
+            "going to have a length of\r\n" +
+            "{imageCount} / {frameRate} = {divisionResult} seconds.\r\n";
 
 
     }
