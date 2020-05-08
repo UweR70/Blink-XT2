@@ -115,7 +115,7 @@ Follow these steps to fix this (in Visual Studio):
   </li>
   <li>
     Start Visual Studio (2017) and open the project (file 'Blink-XT2.sln').<br>
-    A rebuild at this point will not work due the missing 'Newtonsoft.Json' package.
+    A rebuild at this point will not work due the missing NuGet packages.
   </li>
   <li>
     Select 'Solution Explorer'.
