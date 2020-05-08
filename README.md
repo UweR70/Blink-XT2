@@ -114,7 +114,7 @@ Follow these steps to fix this (in Visual Studio):
     Download the repository as zip file and unzip it.
   </li>
   <li>
-    Start Visual Studio (2017) and open the project (file 'Blink.sln').<br>
+    Start Visual Studio (2017) and open the project (file 'Blink-XT2.sln').<br>
     A rebuild at this point will not work due the missing 'Newtonsoft.Json' package.
   </li>
   <li>
