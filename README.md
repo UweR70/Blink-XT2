@@ -138,7 +138,7 @@ Follow these steps to fix this (in Visual Studio):
     Click this button.
   </li>
   <li>
-    Make sure te required '.NET Framework 4.8' is installed.
+    Make sure the required '.NET Framework 4.8' is installed.
   </li>
   <li>
     Rebuild the solution.
