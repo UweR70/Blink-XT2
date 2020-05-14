@@ -70,7 +70,7 @@ namespace Blink.Classes
         }
         public async Task<BlinkLogin> LoginAsync(BaseData baseData, LoginBody loginBody)
         {
-            var uri = $"https://{baseData.ApiServer}/login";
+            var uri = $"https://rest-{baseData.ApiServer}/api/v4/account/login";
             var retString = await FirePostCallAsync(uri, loginBody);
             var ret = JsonConvert.DeserializeObject<BlinkLogin>(retString);
             return ret;
@@ -122,7 +122,7 @@ namespace Blink.Classes
         }
         
         public async Task<string> FirePostCallAsync(string uri, LoginBody body)
-           {
+        {
             using (var client = new HttpClient())
             {
                 var json = JsonConvert.SerializeObject(body);

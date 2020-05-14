@@ -51,12 +51,6 @@ namespace Blink
             SnapshotInstance = new Snapshot();
 
             DisableOrEnableallTabPagesExceptTheGiven(false, 0);
-
-            using (var formInfo = new FormInfo())
-            {
-                formInfo.Text = Config.TitleAppNameAndVersion;
-                formInfo.ShowDialog(this);
-            }
         }
 
         private void Form1_FormClosing(object sender, FormClosingEventArgs e)
