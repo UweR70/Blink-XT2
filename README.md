@@ -10,7 +10,7 @@ Blink (XT2) Win 10 / C# application to
 </ul>
 See my <a href="https://github.com/UweR70/Blink-XT2/wiki">wiki site</a> to get a visual impression.<br>
 <br>
-<b>Also, be aware that Blink emailed me on May 5, 2020, stating that I am using an deprecated login method that will no longer work after May 11, 2020</b>:-(<br>
+<b>Also, be aware that Blink emailed me on May 5, 2020, stating that I am using an deprecated login method that will no longer work after May 11, 2020.</b> :-(<br>
 <br>
 Plus:<br>
 All currently known Blink (XT2) API calls are fully developed and ready to use. Out-of-the box.<br>
@@ -114,8 +114,8 @@ Follow these steps to fix this (in Visual Studio):
     Download the repository as zip file and unzip it.
   </li>
   <li>
-    Start Visual Studio (2017) and open the project (file 'Blink.sln').<br>
-    A rebuild at this point will not work due the missing 'Newtonsoft.Json' package.
+    Start Visual Studio (2017) and open the project (file 'Blink-XT2.sln').<br>
+    A rebuild at this point will not work due the missing NuGet packages.
   </li>
   <li>
     Select 'Solution Explorer'.
@@ -138,7 +138,7 @@ Follow these steps to fix this (in Visual Studio):
     Click this button.
   </li>
   <li>
-    Make sure te required '.NET Framework 4.8' is installed.
+    Make sure the required '.NET Framework 4.8' is installed.
   </li>
   <li>
     Rebuild the solution.
