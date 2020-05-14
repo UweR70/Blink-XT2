@@ -115,17 +115,28 @@ namespace Blink.Classes
                 //baseData.RegionValue = regionObject[0].Dns;
                 #endregion
 
+                Blink.BlinkNetwork blinkNetwork = null;
 
                 var alreadyStoredAuthTokens = storeIt.ReadAuthToken();
                 var alreadyStoredMainData = storeIt.ReadMainData();
-                var storeMainDataAndAuthToken = true;
-                /* ATTENTION:
-                 * Notice the "... || true)" part in the following if statement.
-                 * This is done to force always the login API call.
-                 * Deep dive in the "else tree" and the two before made "storeIt. ..." method calls to get an idea what MAY BE developed next ...
-                 */
-                if (alreadyStoredAuthTokens == null || alreadyStoredAuthTokens.Count == 0 || alreadyStoredMainData == null /*|| true*/)
+                var oldAuthTokenWorked = false;
+                if (alreadyStoredAuthTokens != null && alreadyStoredAuthTokens.Count != 0 && alreadyStoredMainData != null)
                 {
+                    try
+                    {
+                        baseData.RegionPropertyName = alreadyStoredMainData.RegionPropertyName;
+                        baseData.RegionValue = alreadyStoredMainData.RegionValue;
+                        baseData.AuthToken = alreadyStoredAuthTokens[alreadyStoredAuthTokens.Count - 1].Token;
+                        baseData.AccountId = alreadyStoredMainData.AccountId;
+
+                        blinkNetwork = uweR70_Get.NetworkAsync(baseData).Result;
+
+                        oldAuthTokenWorked = true;
+                    }
+                    catch {}
+                }
+                if (!oldAuthTokenWorked)
+                { 
                     // Authentification api call
                     var login = uweR70_Get.LoginAsync(baseData, new UweR70_Get.LoginBody
                     {
@@ -137,23 +148,11 @@ namespace Blink.Classes
                     baseData.RegionValue = login.region.e001;
                     baseData.AuthToken = login.authtoken.authtoken;
                     baseData.AccountId = login.account.id;
-                }
-                else
-                {
-                    baseData.RegionPropertyName = alreadyStoredMainData.RegionPropertyName;
-                    baseData.RegionValue = alreadyStoredMainData.RegionValue;
-                    baseData.AuthToken = alreadyStoredAuthTokens[alreadyStoredAuthTokens.Count - 1].Token;
-                    baseData.AccountId = alreadyStoredMainData.AccountId;
-                    storeMainDataAndAuthToken = false;  // Because we are using "old" data which are already stored.
-                }
-               
-                var blinkNetwork = uweR70_Get.NetworkAsync(baseData).Result;
 
-                if (storeMainDataAndAuthToken)
-                {
+                    blinkNetwork = uweR70_Get.NetworkAsync(baseData).Result;
                     storeIt.StoreData(baseData, blinkNetwork);
                 }
-
+               
                 for (var i = 0; i < blinkNetwork.networks.Length; i++)
                 {
                     baseData.Networks.Add(new BaseData.Network
