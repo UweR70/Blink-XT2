@@ -146,7 +146,6 @@
             this.p0_txtBox_Email.Name = "p0_txtBox_Email";
             this.p0_txtBox_Email.Size = new System.Drawing.Size(175, 20);
             this.p0_txtBox_Email.TabIndex = 1;
-            this.p0_txtBox_Email.Text = "UweRaatz@gmx.de";
             this.p0_txtBox_Email.MouseEnter += new System.EventHandler(this.p0_txtBox_Email_MouseEnter);
             // 
             // lbl_Email
@@ -177,7 +176,6 @@
             this.p0_txtBox_Password.PasswordChar = '*';
             this.p0_txtBox_Password.Size = new System.Drawing.Size(175, 20);
             this.p0_txtBox_Password.TabIndex = 2;
-            this.p0_txtBox_Password.Text = "SchnEe_+kuchen3-Q";
             this.p0_txtBox_Password.MouseEnter += new System.EventHandler(this.p0_txtBox_Password_MouseEnter);
             // 
             // p0_txtBox_Info
