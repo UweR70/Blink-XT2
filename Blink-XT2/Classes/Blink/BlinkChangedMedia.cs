@@ -2,7 +2,7 @@
 
 namespace Blink.Classes.Blink
 {
-    public class BlinkMedia
+    public class BlinkChangedMedia
     {
         public int limit { get; set; }
         public int purge_id { get; set; }

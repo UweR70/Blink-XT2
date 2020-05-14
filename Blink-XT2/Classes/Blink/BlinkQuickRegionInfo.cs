@@ -1,6 +1,6 @@
 ﻿namespace Blink.Classes.Blink
 {
-    public class BlinkRegions
+    public class BlinkQuickRegionInfo
     {
         public string preferred { get; set; }
         public Regions regions { get; set; }

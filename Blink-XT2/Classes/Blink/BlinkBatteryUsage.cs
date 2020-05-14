@@ -1,6 +1,6 @@
 ﻿namespace Blink.Classes.Blink
 {
-    public class BlinkNetwork
+    public class BlinkBatteryUsage
     {
         public int range_days { get; set; }
         public Reference reference { get; set; }
