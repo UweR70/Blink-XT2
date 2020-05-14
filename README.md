@@ -1,3 +1,13 @@
+PLEASE NOTICE:<br>
+This repository is currently subject to many changes!<br>
+So please check on day bases for newer versions!<br>
+UweR - Th., 14th May 2020!<br>
+<br>
+But do not worry - All versions are fully functional!<br>
+<br>
+<br>
+<br>
+<br>
 # Blink-XT2
 Blink (XT2) Win 10 / C# application to 
 <ul>
