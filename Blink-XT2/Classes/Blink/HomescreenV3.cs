@@ -2,7 +2,7 @@
 
 namespace Blink.Classes.Blink
 {
-    public class BlinkHomescreenV3
+    public class HomescreenV3
     {
         public Account account { get; set; }
         public Network[] networks { get; set; }

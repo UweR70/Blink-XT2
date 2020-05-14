@@ -31,7 +31,7 @@ namespace Blink.Classes
                      Networks = new List<BaseData.Network>()
                 };
 
-                Blink.BlinkBatteryUsage blinkNetwork = null;
+                Blink.BatteryUsage blinkNetwork = null;
 
                 var alreadyStoredAuthTokens = storeIt.ReadAuthToken();
                 var alreadyStoredMainData = storeIt.ReadMainData();

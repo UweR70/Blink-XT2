@@ -2,7 +2,7 @@
 
 namespace Blink.Classes.Blink
 {
-    public class BlinkCameraStatus
+    public class CameraStatus
     {
         public Camera_Status camera_status { get; set; }
 
