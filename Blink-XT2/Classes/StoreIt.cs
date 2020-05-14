@@ -46,7 +46,7 @@ namespace Blink.Classes
             public string Token;
         }
 
-        public void StoreData(BaseData baseData, BlinkBatteryUsage blinkNetwork)
+        public void StoreData(BaseData baseData, BatteryUsage blinkNetwork)
         {
             WriteMainData(baseData, blinkNetwork);
             var currentData = ReadMainData();
@@ -55,7 +55,7 @@ namespace Blink.Classes
             var authTokenList = ReadAuthToken();
         }
 
-        public void WriteMainData(BaseData baseData, BlinkBatteryUsage blinkNetwork)
+        public void WriteMainData(BaseData baseData, BatteryUsage blinkNetwork)
         {
             if (!Directory.Exists(PathDataStorage))
             {

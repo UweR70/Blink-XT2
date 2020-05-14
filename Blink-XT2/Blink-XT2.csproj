@@ -89,20 +89,19 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Classes\BaseData.cs" />
-    <Compile Include="Classes\Blink\BlinkCameraStatus.cs" />
-    <Compile Include="Classes\Blink\BlinkSignalStrength.cs" />
+    <Compile Include="Classes\Blink\CameraStatus.cs" />
+    <Compile Include="Classes\Blink\SignalStrength.cs" />
     <Compile Include="Classes\Blink\BlinkCommandArm.cs" />
     <Compile Include="Classes\Blink\BlinkCommandClip.cs" />
     <Compile Include="Classes\Blink\BlinkCommandDisarm.cs" />
     <Compile Include="Classes\Blink\BlinkCommandMotionDetection.cs" />
     <Compile Include="Classes\Blink\BlinkCommandThumbnail.cs" />
     <Compile Include="Classes\Blink\BlinkEvents.cs" />
-    <Compile Include="Classes\Blink\BlinkHomescreenV3.cs" />
-    <Compile Include="Classes\Blink\BlinkLoginResponse.cs" />
-    <Compile Include="Classes\Blink\BlinkChangedMedia.cs" />
-    <Compile Include="Classes\Blink\BlinkMessage.cs" />
-    <Compile Include="Classes\Blink\BlinkBatteryUsage.cs" />
-    <Compile Include="Classes\Blink\BlinkQuickRegionInfo.cs" />
+    <Compile Include="Classes\Blink\HomescreenV3.cs" />
+    <Compile Include="Classes\Blink\LoginResponse.cs" />
+    <Compile Include="Classes\Blink\ChangedMedia.cs" />
+    <Compile Include="Classes\Blink\BatteryUsage.cs" />
+    <Compile Include="Classes\Blink\QuickRegionInfo.cs" />
     <Compile Include="Classes\Blink\BlinkSyncModules.cs" />
     <Compile Include="Classes\Common.cs" />
     <Compile Include="Classes\Config.cs" />

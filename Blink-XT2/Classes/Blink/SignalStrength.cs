@@ -2,7 +2,7 @@
 
 namespace Blink.Classes.Blink
 {
-    public class BlinkSignalStrength
+    public class SignalStrength
     {
         public int lfr { get; set; }
         public int wifi { get; set; }

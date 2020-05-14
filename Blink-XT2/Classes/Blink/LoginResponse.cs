@@ -1,6 +1,6 @@
 ﻿namespace Blink.Classes.Blink
 {
-    public class BlinkLoginResponse
+    public class LoginResponse
     {
         public Account account { get; set; }
         public Client client { get; set; }
