@@ -70,7 +70,7 @@ namespace Blink.Classes
             {
                 ApiServer = baseData.ApiServer,
                 AuthToken = baseData.AuthToken,
-                RegionPropertyName = baseData.RegionPropertyName,
+                RegionPropertyName = baseData.RegionTier,
                 NetworkId = networkId,
                 CameraId = cameraId
             };

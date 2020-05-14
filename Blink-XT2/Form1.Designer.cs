@@ -116,7 +116,7 @@
             // p0_btn_Start
             // 
             this.p0_btn_Start.Location = new System.Drawing.Point(250, 86);
-            this.p0_btn_Start.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.p0_btn_Start.Margin = new System.Windows.Forms.Padding(2);
             this.p0_btn_Start.Name = "p0_btn_Start";
             this.p0_btn_Start.Size = new System.Drawing.Size(115, 23);
             this.p0_btn_Start.TabIndex = 6;
@@ -131,7 +131,7 @@
             this.p0_checkBox_AreYouInGermany.Checked = true;
             this.p0_checkBox_AreYouInGermany.CheckState = System.Windows.Forms.CheckState.Checked;
             this.p0_checkBox_AreYouInGermany.Location = new System.Drawing.Point(14, 90);
-            this.p0_checkBox_AreYouInGermany.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.p0_checkBox_AreYouInGermany.Margin = new System.Windows.Forms.Padding(2);
             this.p0_checkBox_AreYouInGermany.Name = "p0_checkBox_AreYouInGermany";
             this.p0_checkBox_AreYouInGermany.Size = new System.Drawing.Size(124, 17);
             this.p0_checkBox_AreYouInGermany.TabIndex = 5;
@@ -142,10 +142,11 @@
             // p0_txtBox_Email
             // 
             this.p0_txtBox_Email.Location = new System.Drawing.Point(14, 24);
-            this.p0_txtBox_Email.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.p0_txtBox_Email.Margin = new System.Windows.Forms.Padding(2);
             this.p0_txtBox_Email.Name = "p0_txtBox_Email";
             this.p0_txtBox_Email.Size = new System.Drawing.Size(175, 20);
             this.p0_txtBox_Email.TabIndex = 1;
+            this.p0_txtBox_Email.Text = "UweRaatz@gmx.de";
             this.p0_txtBox_Email.MouseEnter += new System.EventHandler(this.p0_txtBox_Email_MouseEnter);
             // 
             // lbl_Email
@@ -171,17 +172,18 @@
             // p0_txtBox_Password
             // 
             this.p0_txtBox_Password.Location = new System.Drawing.Point(192, 24);
-            this.p0_txtBox_Password.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.p0_txtBox_Password.Margin = new System.Windows.Forms.Padding(2);
             this.p0_txtBox_Password.Name = "p0_txtBox_Password";
             this.p0_txtBox_Password.PasswordChar = '*';
             this.p0_txtBox_Password.Size = new System.Drawing.Size(175, 20);
             this.p0_txtBox_Password.TabIndex = 2;
+            this.p0_txtBox_Password.Text = "SchnEe_+kuchen3-Q";
             this.p0_txtBox_Password.MouseEnter += new System.EventHandler(this.p0_txtBox_Password_MouseEnter);
             // 
             // p0_txtBox_Info
             // 
             this.p0_txtBox_Info.Location = new System.Drawing.Point(14, 113);
-            this.p0_txtBox_Info.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.p0_txtBox_Info.Margin = new System.Windows.Forms.Padding(2);
             this.p0_txtBox_Info.Multiline = true;
             this.p0_txtBox_Info.Name = "p0_txtBox_Info";
             this.p0_txtBox_Info.ReadOnly = true;
@@ -215,7 +217,7 @@
             this.tabControl0.Controls.Add(this.tabControl0_tabPage2_Snapshots);
             this.tabControl0.Controls.Add(this.tabControl0_tabPage99_Quicktest);
             this.tabControl0.Location = new System.Drawing.Point(7, 7);
-            this.tabControl0.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.tabControl0.Margin = new System.Windows.Forms.Padding(2);
             this.tabControl0.Name = "tabControl0";
             this.tabControl0.SelectedIndex = 0;
             this.tabControl0.Size = new System.Drawing.Size(1220, 628);
@@ -236,9 +238,9 @@
             this.tabControl0_tabPage0_InitAndDownload.Controls.Add(this.p0_txtBox_Password);
             this.tabControl0_tabPage0_InitAndDownload.Controls.Add(this.lbl_Password);
             this.tabControl0_tabPage0_InitAndDownload.Location = new System.Drawing.Point(4, 22);
-            this.tabControl0_tabPage0_InitAndDownload.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.tabControl0_tabPage0_InitAndDownload.Margin = new System.Windows.Forms.Padding(2);
             this.tabControl0_tabPage0_InitAndDownload.Name = "tabControl0_tabPage0_InitAndDownload";
-            this.tabControl0_tabPage0_InitAndDownload.Padding = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.tabControl0_tabPage0_InitAndDownload.Padding = new System.Windows.Forms.Padding(2);
             this.tabControl0_tabPage0_InitAndDownload.Size = new System.Drawing.Size(1212, 602);
             this.tabControl0_tabPage0_InitAndDownload.TabIndex = 0;
             this.tabControl0_tabPage0_InitAndDownload.Text = "Init and Download";
@@ -261,7 +263,7 @@
             // p0_btn_SelectSavePath
             // 
             this.p0_btn_SelectSavePath.Location = new System.Drawing.Point(250, 60);
-            this.p0_btn_SelectSavePath.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.p0_btn_SelectSavePath.Margin = new System.Windows.Forms.Padding(2);
             this.p0_btn_SelectSavePath.Name = "p0_btn_SelectSavePath";
             this.p0_btn_SelectSavePath.Size = new System.Drawing.Size(115, 23);
             this.p0_btn_SelectSavePath.TabIndex = 4;
@@ -301,9 +303,9 @@
             this.tabControl0_tabPage1_InitSummary.Controls.Add(this.label3);
             this.tabControl0_tabPage1_InitSummary.Controls.Add(this.p1_txtBox_Email);
             this.tabControl0_tabPage1_InitSummary.Location = new System.Drawing.Point(4, 22);
-            this.tabControl0_tabPage1_InitSummary.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.tabControl0_tabPage1_InitSummary.Margin = new System.Windows.Forms.Padding(2);
             this.tabControl0_tabPage1_InitSummary.Name = "tabControl0_tabPage1_InitSummary";
-            this.tabControl0_tabPage1_InitSummary.Padding = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.tabControl0_tabPage1_InitSummary.Padding = new System.Windows.Forms.Padding(2);
             this.tabControl0_tabPage1_InitSummary.Size = new System.Drawing.Size(1212, 602);
             this.tabControl0_tabPage1_InitSummary.TabIndex = 1;
             this.tabControl0_tabPage1_InitSummary.Text = "Init Summary";
@@ -457,9 +459,9 @@
             this.label4.AutoSize = true;
             this.label4.Location = new System.Drawing.Point(292, 8);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(183, 13);
+            this.label4.Size = new System.Drawing.Size(155, 13);
             this.label4.TabIndex = 11;
-            this.label4.Text = "Region property name / region value:";
+            this.label4.Text = "Region tier / region description:";
             // 
             // label3
             // 
@@ -512,7 +514,7 @@
             this.tabControl0_tabPage2_Snapshots.Controls.Add(this.label18);
             this.tabControl0_tabPage2_Snapshots.Controls.Add(this.p2_txtBox_Email);
             this.tabControl0_tabPage2_Snapshots.Location = new System.Drawing.Point(4, 22);
-            this.tabControl0_tabPage2_Snapshots.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.tabControl0_tabPage2_Snapshots.Margin = new System.Windows.Forms.Padding(2);
             this.tabControl0_tabPage2_Snapshots.Name = "tabControl0_tabPage2_Snapshots";
             this.tabControl0_tabPage2_Snapshots.Size = new System.Drawing.Size(1212, 602);
             this.tabControl0_tabPage2_Snapshots.TabIndex = 3;
@@ -563,7 +565,7 @@
             0,
             0});
             this.p2_numericUpDown_FrameRate.Location = new System.Drawing.Point(30, 291);
-            this.p2_numericUpDown_FrameRate.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.p2_numericUpDown_FrameRate.Margin = new System.Windows.Forms.Padding(2);
             this.p2_numericUpDown_FrameRate.Maximum = new decimal(new int[] {
             120,
             0,
@@ -591,7 +593,7 @@
             this.p2_checkBox_CreateVideo.Checked = true;
             this.p2_checkBox_CreateVideo.CheckState = System.Windows.Forms.CheckState.Checked;
             this.p2_checkBox_CreateVideo.Location = new System.Drawing.Point(8, 257);
-            this.p2_checkBox_CreateVideo.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.p2_checkBox_CreateVideo.Margin = new System.Windows.Forms.Padding(2);
             this.p2_checkBox_CreateVideo.Name = "p2_checkBox_CreateVideo";
             this.p2_checkBox_CreateVideo.Size = new System.Drawing.Size(196, 17);
             this.p2_checkBox_CreateVideo.TabIndex = 12;
@@ -602,7 +604,7 @@
             // p2_txtBox_Info
             // 
             this.p2_txtBox_Info.Location = new System.Drawing.Point(582, 5);
-            this.p2_txtBox_Info.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.p2_txtBox_Info.Margin = new System.Windows.Forms.Padding(2);
             this.p2_txtBox_Info.Multiline = true;
             this.p2_txtBox_Info.Name = "p2_txtBox_Info";
             this.p2_txtBox_Info.ReadOnly = true;
@@ -614,7 +616,7 @@
             // p2_btn_Start
             // 
             this.p2_btn_Start.Location = new System.Drawing.Point(470, 570);
-            this.p2_btn_Start.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.p2_btn_Start.Margin = new System.Windows.Forms.Padding(2);
             this.p2_btn_Start.Name = "p2_btn_Start";
             this.p2_btn_Start.Size = new System.Drawing.Size(107, 23);
             this.p2_btn_Start.TabIndex = 14;
@@ -635,7 +637,7 @@
             // p2_numUpDown_Days
             // 
             this.p2_numUpDown_Days.Location = new System.Drawing.Point(6, 233);
-            this.p2_numUpDown_Days.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.p2_numUpDown_Days.Margin = new System.Windows.Forms.Padding(2);
             this.p2_numUpDown_Days.Maximum = new decimal(new int[] {
             31,
             0,
@@ -669,7 +671,7 @@
             // p2_numUpDown_Seconds
             // 
             this.p2_numUpDown_Seconds.Location = new System.Drawing.Point(171, 233);
-            this.p2_numUpDown_Seconds.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.p2_numUpDown_Seconds.Margin = new System.Windows.Forms.Padding(2);
             this.p2_numUpDown_Seconds.Maximum = new decimal(new int[] {
             59,
             0,
@@ -683,7 +685,7 @@
             // p2_numUpDown_Minutes
             // 
             this.p2_numUpDown_Minutes.Location = new System.Drawing.Point(116, 233);
-            this.p2_numUpDown_Minutes.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.p2_numUpDown_Minutes.Margin = new System.Windows.Forms.Padding(2);
             this.p2_numUpDown_Minutes.Maximum = new decimal(new int[] {
             59,
             0,
@@ -707,7 +709,7 @@
             // p2_numUpDown_Hours
             // 
             this.p2_numUpDown_Hours.Location = new System.Drawing.Point(61, 233);
-            this.p2_numUpDown_Hours.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.p2_numUpDown_Hours.Margin = new System.Windows.Forms.Padding(2);
             this.p2_numUpDown_Hours.Maximum = new decimal(new int[] {
             23,
             0,
@@ -839,9 +841,9 @@
             this.label17.AutoSize = true;
             this.label17.Location = new System.Drawing.Point(292, 8);
             this.label17.Name = "label17";
-            this.label17.Size = new System.Drawing.Size(183, 13);
+            this.label17.Size = new System.Drawing.Size(155, 13);
             this.label17.TabIndex = 32;
-            this.label17.Text = "Region property name / region value:";
+            this.label17.Text = "Region tier / region description:";
             // 
             // label18
             // 
@@ -867,7 +869,7 @@
             this.tabControl0_tabPage99_Quicktest.Controls.Add(this.p99_txtBox_Info);
             this.tabControl0_tabPage99_Quicktest.Controls.Add(this.label2);
             this.tabControl0_tabPage99_Quicktest.Location = new System.Drawing.Point(4, 22);
-            this.tabControl0_tabPage99_Quicktest.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.tabControl0_tabPage99_Quicktest.Margin = new System.Windows.Forms.Padding(2);
             this.tabControl0_tabPage99_Quicktest.Name = "tabControl0_tabPage99_Quicktest";
             this.tabControl0_tabPage99_Quicktest.Size = new System.Drawing.Size(1212, 602);
             this.tabControl0_tabPage99_Quicktest.TabIndex = 2;
@@ -891,7 +893,7 @@
             // p99_btn_Start
             // 
             this.p99_btn_Start.Location = new System.Drawing.Point(2, 2);
-            this.p99_btn_Start.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.p99_btn_Start.Margin = new System.Windows.Forms.Padding(2);
             this.p99_btn_Start.Name = "p99_btn_Start";
             this.p99_btn_Start.Size = new System.Drawing.Size(57, 30);
             this.p99_btn_Start.TabIndex = 2;
@@ -928,7 +930,7 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.HelpButton = true;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.MaximizeBox = false;
             this.Name = "Form1";
             this.Text = "Form1";

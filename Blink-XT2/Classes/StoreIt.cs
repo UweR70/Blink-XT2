@@ -21,8 +21,8 @@ namespace Blink.Classes
         public class MainData
         {
             public DateTime TimestampLastWritten;
-            public string RegionPropertyName;
-            public string RegionValue;
+            public string RegionTier;
+            public string RegionDescription;
             public int AccountId;
             public List<Network> Networks;
         }
@@ -46,7 +46,7 @@ namespace Blink.Classes
             public string Token;
         }
 
-        public void StoreData(BaseData baseData, BlinkNetwork blinkNetwork)
+        public void StoreData(BaseData baseData, BlinkBatteryUsage blinkNetwork)
         {
             WriteMainData(baseData, blinkNetwork);
             var currentData = ReadMainData();
@@ -55,7 +55,7 @@ namespace Blink.Classes
             var authTokenList = ReadAuthToken();
         }
 
-        public void WriteMainData(BaseData baseData, BlinkNetwork blinkNetwork)
+        public void WriteMainData(BaseData baseData, BlinkBatteryUsage blinkNetwork)
         {
             if (!Directory.Exists(PathDataStorage))
             {
@@ -64,8 +64,8 @@ namespace Blink.Classes
 
             var currentData = new MainData
             {
-                RegionPropertyName = baseData.RegionPropertyName,
-                RegionValue = baseData.RegionValue,
+                RegionTier = baseData.RegionTier,
+                RegionDescription = baseData.RegionDescription,
                 AccountId = baseData.AccountId,
                 Networks = new List<Network>()
             };

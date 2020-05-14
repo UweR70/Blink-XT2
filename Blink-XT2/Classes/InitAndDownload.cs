@@ -31,91 +31,7 @@ namespace Blink.Classes
                      Networks = new List<BaseData.Network>()
                 };
 
-                #region Comment
-                /* This will be a little bit longer ... but it is worth to read it! Otherwise you will not fully undersatnd what is going on here.
-                 *
-                 *  There is a ".../regions" API call.
-                 *  This API call returned in Germany mid April 2020:
-                 *  regions :=   preferred = "e002"
-                 *
-                 *              regions.e002.display_order = 1                      // "e002":{"dns":"e002","friendly_name":"Europe","registration":true,"display_order":1},
-                 *              regions.e002.dns           = "e002"
-                 *              regions.e002.friendly_name = "Europe"
-                 *              regions.e002.registration  = true
-                 *
-                 *              regions.sg.display_order = 4                        // "sg":{"dns":"prsg","friendly_name":"Southeast Asia","registration":true,"display_order":4},
-                 *              regions.sg.dns           = "prsg"
-                 *              regions.sg.friendly_name = "Southeast Asia"
-                 *              regions.sg.registration  = true
-                 *
-                 *              regions.usu012.display_order = 5                    // "usu012":{"dns":"u012","friendly_name":"United States - WEST","registration":true,"display_order":5}}}
-                 *              regions.usu012.dns           = "u012"
-                 *              regions.usu012.friendly_name = "United States - WEST"
-                 *              regions.usu012.registration  = true
-                 *
-                 *              regions.usu013.display_order = 3                    // "usu013":{"dns":"u013","friendly_name":"United States - CENTRAL","registration":true,"display_order":3},
-                 *              regions.usu013.dns           = "u013"
-                 *              regions.usu013.friendly_name = "United States - CENTRAL"
-                 *              regions.usu013.registration  = true
-                 *
-                 *              regions.usu017.display_order = 2                    // "usu017":{"dns":"u017","friendly_name":"United States - EAST","registration":true,"display_order":2},
-                 *              regions.usu017.dns           = "u017"
-                 *              regions.usu017.friendly_name = "United States - EAST"
-                 *              regions.usu017.registration  = true
-                 *
-                 *  In my opinion are there these issues:
-                 *      - Issue 1:
-                 *        The region instances "e002", "sg", "usu012", "usu013" and "usu017" are hardcoded instead added as a list of "region".
-                 *        See my class "BlinkRegionsAdjustedByUweR70" to see how it should be implemented!
-                 *
-                 *      - Issue 2:
-                 *        The regions are named as                             "sg"  , "usu012", "usu013" and "usu017" 
-                 *        while the value of the "dns" property are containing "prsg", "u012"  , "u013"   and "u017".
-                 *        
-                 *      - Issue 3:
-                 *        The region "e001" does not appear here while it does in the ".../login" API call.
-                 * 
-                 *  To come these issues over I
-                 *      1.) made the ".../regions" API call, 
-                 *      2.) assigned the returned "preferred" value to "baseData.RegionPropertyName" for later API call use,
-                 *      3.) converted the returned "regions" to the class "BlinkRegionsAdjustedByUweR70",
-                 *      4.) searched in the "converted" object "regionsAdjusted" (which is type of "BlinkRegionsAdjustedByUweR70") 
-                 *          the correct region. In my case was "dns" equal to "e002". Notice the "2" at the end!
-                 *      and
-                 *      5.) used the value of the property "Dns" of the found region object.
-                 *    Means finally that "baseData.RegionValue" contained in my case "e002".
-                 *    
-                 *  Surprise, surprise:
-                 *  
-                 *      Surprise A)
-                 *      The next made API call is the ".../login" call.
-                 *      To my surprise returned this a property(!) called "e001". 
-                 *      Note that it was/is "e001" and not "e002" as returned from the ".../regions" API call (which is there named as "preferred"!)
-                 *
-                 *      Surprise B)
-                 *      To my understanding it is a good advise to take always the "preferred".
-                 *      So I took it (= "e002") and ran in an "not authentificated" error for the next (".../camera/...") API call!
-                 *      
-                 *  Finally:
-                 *      Make the ".../login" API call and use the NAME of the returned property. 
-                 *      Which was/is in my case "e001".
-                 * 
-                 * CODE to verify:
-                 */
-                //// Getting the region code (aka "dns") like 'e002' from a regions call and NOT from the property name(!) of the later made authentification api call!
-                //var regions = uweR70_Get.RegionsAsync(baseData).Result;
-                //baseData.RegionPropertyName = regions.preferred;
-
-                //var regionsAdjusted = common.ConvertBlinkRegions(regions);
-                //var regionObject = regionsAdjusted.Regions.Where(x => x.Dns.Equals(regions.preferred, StringComparison.InvariantCultureIgnoreCase)).ToList();
-                //if (regionObject == null || regionObject.Count != 1)
-                //{
-                //    throw new Exception("Could not determine region code (like'e002', 'prsg', 'u017', etc.)!");
-                //}
-                //baseData.RegionValue = regionObject[0].Dns;
-                #endregion
-
-                Blink.BlinkNetwork blinkNetwork = null;
+                Blink.BlinkBatteryUsage blinkNetwork = null;
 
                 var alreadyStoredAuthTokens = storeIt.ReadAuthToken();
                 var alreadyStoredMainData = storeIt.ReadMainData();
@@ -124,8 +40,8 @@ namespace Blink.Classes
                 {
                     try
                     {
-                        baseData.RegionPropertyName = alreadyStoredMainData.RegionPropertyName;
-                        baseData.RegionValue = alreadyStoredMainData.RegionValue;
+                        baseData.RegionTier = alreadyStoredMainData.RegionTier;
+                        baseData.RegionDescription = alreadyStoredMainData.RegionDescription;
                         baseData.AuthToken = alreadyStoredAuthTokens[alreadyStoredAuthTokens.Count - 1].Token;
                         baseData.AccountId = alreadyStoredMainData.AccountId;
 
@@ -144,8 +60,8 @@ namespace Blink.Classes
                         password = password
                     }).Result;
 
-                    baseData.RegionPropertyName = nameof(login.region.e001);         // Change to that "login.region.xxx" value that is in your case not equal to null!
-                    baseData.RegionValue = login.region.e001;
+                    baseData.RegionTier = login.region.tier;
+                    baseData.RegionDescription = login.region.description;
                     baseData.AuthToken = login.authtoken.authtoken;
                     baseData.AccountId = login.account.id;
 
@@ -166,7 +82,7 @@ namespace Blink.Classes
                     {
                         ApiServer = baseData.ApiServer,
                         AuthToken = baseData.AuthToken,
-                        RegionPropertyName = baseData.RegionPropertyName,
+                        RegionPropertyName = baseData.RegionTier,
                         NetworkId = baseData.Networks[i].Id
                     };
 

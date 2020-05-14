@@ -1,22 +1,4 @@
-﻿//  #####################################################################
-//  #####################################################################
-//  #####                                                           #####
-//  #####   URIs are taken form here                                #####
-//  #####       Matt Weinecke                                       #####
-//  #####       MattTW                                              #####
-//  #####       https://github.com/MattTW                           #####
-//  #####                                                           #####
-//  #####       Blink Monitor Protocol                              #####
-//  #####       https://github.com/MattTW/BlinkMonitorProtocol      #####
-//  #####                                                           #####
-//  #####   but adjusted by                                         #####
-//  #####       UweR70                                              #####
-//  #####       https://github.com/UweR70                           #####
-//  #####                                                           #####
-//  #####################################################################
-//  #####################################################################
-
-using Blink.Classes.Blink;
+﻿using Blink.Classes.Blink;
 using Newtonsoft.Json;
 using System.Net.Http;
 using System.Text;
@@ -32,25 +14,31 @@ namespace Blink.Classes
             public string password;
         }
 
-        public async Task<BlinkCamera> CameraInfoAsync(MinimumData minData)
+        public async Task<BlinkCameraStatus> CameraInfoAsync(MinimumData minData)
         {
-            var uri = $"https://rest.{minData.RegionPropertyName}.immedia-semi.com/network/{minData.NetworkId}/camera/{minData.CameraId}";
+            //  @GET("https://rest-{tier}.immedia-semi.com/network/{network}/camera/{camera}") 
+            //  Observable<CameraStatus> cameraCommandStatus(@Path("tier") String paramString, @Path("network") long paramLong1, @Path("camera") long paramLong2);
+            var uri = $"https://rest-{minData.RegionPropertyName}.immedia-semi.com/network/{minData.NetworkId}/camera/{minData.CameraId}";
             var retString = await FireGetCallAsync(uri, minData.AuthToken, minData.ApiServer);
-            var ret = JsonConvert.DeserializeObject<BlinkCamera>(retString);
+            var ret = JsonConvert.DeserializeObject<BlinkCameraStatus>(retString);
             return ret;
         }
 
-        public async Task<BlinkCameraSignals> CameraSignalsAsync(MinimumData minData)
+        public async Task<BlinkSignalStrength> CameraSignalsAsync(MinimumData minData)
         {
-            var uri = $"https://rest.{minData.RegionPropertyName}.immedia-semi.com/network/{minData.NetworkId}/camera/{minData.CameraId}/signals";
+            //  @GET("https://rest-{tier}.immedia-semi.com/network/{network}/camera/{camera}/signals")
+            //  Observable<SignalStrength> loadCameraStatus(@Path("tier") String paramString, @Path("network") long paramLong1, @Path("camera") long paramLong2);
+            var uri = $"https://rest-{minData.RegionPropertyName}.immedia-semi.com/network/{minData.NetworkId}/camera/{minData.CameraId}/signals";
             var retString = await FireGetCallAsync(uri, minData.AuthToken, minData.ApiServer);
-            var ret = JsonConvert.DeserializeObject<BlinkCameraSignals>(retString);
+            var ret = JsonConvert.DeserializeObject<BlinkSignalStrength>(retString);
             return ret;
         }
 
         public async Task<BlinkEvents> EventsAsync(MinimumData minData)
         {
-            var uri = $"https://rest.{minData.RegionPropertyName}.immedia-semi.com/events/network/{minData.NetworkId}";
+
+            // ToDo: API NOT FOUND! ######################################################################################################################
+            var uri = $"https://rest-{minData.RegionPropertyName}.immedia-semi.com/events/network/{minData.NetworkId}";
             var retString = await FireGetCallAsync(uri, minData.AuthToken, minData.ApiServer);
             // Special case!
             // The from the api call returned property name "event" is in C# protected.
@@ -61,65 +49,84 @@ namespace Blink.Classes
             return ret;
         }
 
-        public async Task<BlinkHomescreen> HomeScreenAsync(MinimumData minData)
+        public async Task<BlinkHomescreenV3> HomeScreenAsync(BaseData baseData)
         {
-            var uri = $"https://rest.{minData.RegionPropertyName}.immedia-semi.com/homescreen";
-            var retString = await FireGetCallAsync(uri, minData.AuthToken, minData.ApiServer);
-            var ret = JsonConvert.DeserializeObject<BlinkHomescreen>(retString);
+            //  @GET("https://rest-{tier}.immedia-semi.com/api/v3/accounts/{account}/homescreen")
+            //  Observable<HomescreenV3> homescreenV3(@Path("tier") String paramString, @Path("account") long paramLong);
+            var uri = $"https://rest-{baseData.RegionTier}.immedia-semi.com/api/v3/accounts/{baseData.AccountId}/homescreen";
+            var retString = await FireGetCallAsync(uri, baseData.AuthToken, baseData.ApiServer);
+            var ret = JsonConvert.DeserializeObject<BlinkHomescreenV3>(retString);
             return ret;
         }
-        public async Task<BlinkLogin> LoginAsync(BaseData baseData, LoginBody loginBody)
+        public async Task<BlinkLoginResponse> LoginAsync(BaseData baseData, LoginBody loginBody)
         {
+            //  @POST("https://rest-{tier}.immedia-semi.com/api/v4/account/login")
+            //   Observable<LoginResponse> login(@Body LoginBody paramLoginBody, @Path("tier") String paramString);
+            //
+            //  @POST("https://rest-{tier}.immedia-semi.com/api/v4/account/login")
+            //  Call<LoginResponse> loginCall(@Body LoginBody paramLoginBody, @Path("tier") String paramString);
             var uri = $"https://rest-{baseData.ApiServer}/api/v4/account/login";
             var retString = await FirePostCallAsync(uri, loginBody);
-            var ret = JsonConvert.DeserializeObject<BlinkLogin>(retString);
+            var ret = JsonConvert.DeserializeObject<BlinkLoginResponse>(retString);
             return ret;
         }
-        public async Task<BlinkRegions> RegionsAsync(BaseData baseData)
+
+        public async Task<BlinkQuickRegionInfo> RegionsAsync(BaseData baseData)
         {
-            var uri = $"https://rest.{baseData.RegionPropertyName}.immedia-semi.com/regions";
+            // @GET("https://rest-{tier}.immedia-semi.com/regions")
+            // Observable<QuickRegionInfo> getRegions(@Path("tier") String paramString1, @Query("locale") String paramString2);
+            var uri = $"https://rest-{baseData.RegionTier}.immedia-semi.com/regions";
             var retString = await FireGetCallAsync(uri, baseData.AuthToken, baseData.ApiServer);
-            var ret = JsonConvert.DeserializeObject<BlinkRegions>(retString);
+            var ret = JsonConvert.DeserializeObject<BlinkQuickRegionInfo>(retString);
             return ret;
         }
 
         public async Task<BlinkSyncModules> SyncModulesAsync(MinimumData minData)
         {
-            var uri = $"https://rest.{minData.RegionPropertyName}.immedia-semi.com/network/{minData.NetworkId}/syncmodules";
+            // ToDo: API NOT FOUND! ######################################################################################################################
+            var uri = $"https://rest-{minData.RegionPropertyName}.immedia-semi.com/network/{minData.NetworkId}/syncmodules";
             var retString = await FireGetCallAsync(uri, minData.AuthToken, minData.ApiServer);
             var ret = JsonConvert.DeserializeObject<BlinkSyncModules>(retString);
             return ret;
         }
         
-        public async Task<BlinkNetwork> NetworkAsync(BaseData baseData)
+        public async Task<BlinkBatteryUsage> NetworkAsync(BaseData baseData)
         {
-            var uri = $"https://rest.{baseData.RegionPropertyName}.immedia-semi.com/api/v1/camera/usage";
+            //  @GET("https://rest-{tier}.immedia-semi.com/api/v1/camera/usage")
+            //  Observable<BatteryUsage> batteryUsage(@Path("tier") String paramString);
+            var uri = $"https://rest-{baseData.RegionTier}.immedia-semi.com/api/v1/camera/usage";
             var retString = await FireGetCallAsync(uri, baseData.AuthToken, baseData.ApiServer);
-            var ret = JsonConvert.DeserializeObject<BlinkNetwork>(retString);
+            var ret = JsonConvert.DeserializeObject<BlinkBatteryUsage>(retString);
             return ret;
         }
 
+         public async Task<BlinkChangedMedia> MediaAsync(BaseData baseData, int pageNumber)
+        {
+            //  @GET("https://rest-{tier}.immedia-semi.com/api/v1/accounts/{accountId}/media/changed")
+            //  Call<ChangedMedia> getChangedMedia(@Path("tier") String paramString, @Path("accountId") long paramLong, @Query("since") OffsetDateTime paramOffsetDateTime, @Query("page") int paramInt);
+            var uri = $"https://rest-{baseData.RegionTier}.immedia-semi.com/api/v1/accounts/{baseData.AccountId}/media/changed?since=2015-04-19T23:11:20+0000&page={pageNumber}";
+            var retString = await FireGetCallAsync(uri, baseData.AuthToken, baseData.ApiServer);
+            var ret = JsonConvert.DeserializeObject<BlinkChangedMedia>(retString);
+            return ret;
+        }
+
+
+
         public async Task<byte[]> ThumbnailImageAsync(MinimumData minData, string thumbnailPart)
         {
-            var uri = $"https://rest.{minData.RegionPropertyName}.immedia-semi.com/{thumbnailPart}.jpg";
+            var uri = $"https://rest-{minData.RegionPropertyName}.immedia-semi.com/{thumbnailPart}.jpg";
             var ret = await FireGetBytesCallAsync(uri, minData.AuthToken, minData.ApiServer);
             return ret;
         }
 
         public async Task<byte[]> VideoAsync(BaseData baseData, string mediaPart)
         {
-            var uri = $"https://rest.{baseData.RegionPropertyName}.immedia-semi.com/{mediaPart}";
+            var uri = $"https://rest-{baseData.RegionTier}.immedia-semi.com/{mediaPart}";
             var ret = await FireGetBytesCallAsync(uri, baseData.AuthToken, baseData.ApiServer);
             return ret;
         }
 
-        public async Task<BlinkMedia> MediaAsync(BaseData baseData, int pageNumber)
-        {
-            var uri = $"https://rest.{baseData.RegionPropertyName}.immedia-semi.com/api/v1/accounts/{baseData.AccountId}/media/changed?since=2015-04-19T23:11:20+0000&page={pageNumber}";
-            var retString = await FireGetCallAsync(uri, baseData.AuthToken, baseData.ApiServer);
-            var ret = JsonConvert.DeserializeObject<BlinkMedia>(retString);
-            return ret;
-        }
+       
         
         public async Task<string> FirePostCallAsync(string uri, LoginBody body)
         {

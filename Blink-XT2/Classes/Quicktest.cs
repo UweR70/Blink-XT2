@@ -31,12 +31,12 @@ namespace Blink.Classes
             {
                 ApiServer = baseData.ApiServer,
                 AuthToken = baseData.AuthToken,
-                RegionPropertyName = baseData.RegionPropertyName,
+                RegionPropertyName = baseData.RegionTier,
                 NetworkId = networkObject.Id,
                 CameraId = cameraObject.Id
             };
 
-            /*
+            
             var commandArm = uweR70_FireCommand.ArmAsync(minData).Result;
             var commandDisarm = uweR70_FireCommand.DisarmAsync(minData).Result;
             
@@ -45,9 +45,6 @@ namespace Blink.Classes
 
             var commandClip = uweR70_FireCommand.ClipAsync(minData).Result;
             var commandThumbnail = uweR70_FireCommand.ThumbnailAsync(minData).Result;
-
-            // var commandLv_relay = uweR70_FireCommand.Lv_relayAsync(minData).Result;
-
 
             var login = uweR70_Get.LoginAsync(baseData, new UweR70_Get.LoginBody
             {
@@ -73,10 +70,10 @@ namespace Blink.Classes
                 count = blinkEvents.Length;
             }
 
-            var homescreen = uweR70_Get.HomeScreenAsync(minData).Result;
+            var homescreen = uweR70_Get.HomeScreenAsync(baseData).Result;
             var regions = uweR70_Get.RegionsAsync(baseData).Result;
             var syncModules = uweR70_Get.SyncModulesAsync(minData).Result;
-            */
+            
         }
     }
 }

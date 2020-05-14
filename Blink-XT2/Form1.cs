@@ -350,7 +350,7 @@ namespace Blink
                 return;
             }
             p1_txtBox_Email.Text = baseData.Email;
-            p1_txtBox_Region.Text = $"{baseData.RegionPropertyName} / {baseData.RegionValue}";
+            p1_txtBox_Region.Text = $"{baseData.RegionTier} / {baseData.RegionDescription}";
             p1_txtBox_AuthToken.Text = baseData.AuthToken;
             p1_txtBox_AccountId.Text = baseData.AccountId.ToString();
             p1_txtBox_RootStoragePath.Text = baseData.StoragePathNetwork;
@@ -507,7 +507,7 @@ namespace Blink
                 return;
             }
             p2_txtBox_Email.Text = baseData.Email;
-            p2_txtBox_Region.Text = $"{baseData.RegionPropertyName} / {baseData.RegionValue}";
+            p2_txtBox_Region.Text = $"{baseData.RegionTier} / {baseData.RegionDescription}";
             p2_txtBox_AuthToken.Text = baseData.AuthToken;
             p2_txtBox_AccountId.Text = baseData.AccountId.ToString();
             p2_txtBox_RootStoragePath.Text = baseData.StoragePathNetwork;
