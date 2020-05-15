@@ -2,7 +2,7 @@
 
 namespace Blink.Classes.Blink
 {
-    public class BlinkCommandArm
+    public class CommandClip
     {
         public int id { get; set; }
         public DateTime created_at { get; set; }
@@ -33,7 +33,7 @@ namespace Blink.Classes.Blink
         public object target { get; set; }
         public object target_id { get; set; }
         public object parent_command_id { get; set; }
-        public object camera_id { get; set; }
+        public int camera_id { get; set; }
         public object siren_id { get; set; }
         public object firmware_id { get; set; }
         public int network_id { get; set; }

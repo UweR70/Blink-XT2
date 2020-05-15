@@ -46,16 +46,16 @@ namespace Blink.Classes
             public string Token;
         }
 
-        public void StoreData(BaseData baseData, BatteryUsage blinkNetwork)
+        public void StoreData(BaseData baseData, BatteryUsage batteryUsage)
         {
-            WriteMainData(baseData, blinkNetwork);
+            WriteMainData(baseData, batteryUsage);
             var currentData = ReadMainData();
 
             WriteAuthToken(baseData);
             var authTokenList = ReadAuthToken();
         }
 
-        public void WriteMainData(BaseData baseData, BatteryUsage blinkNetwork)
+        public void WriteMainData(BaseData baseData, BatteryUsage batteryUsage)
         {
             if (!Directory.Exists(PathDataStorage))
             {
@@ -70,22 +70,22 @@ namespace Blink.Classes
                 Networks = new List<Network>()
             };
 
-            for (int i = 0; i < blinkNetwork.networks.Length; i++)
+            for (int i = 0; i < batteryUsage.networks.Length; i++)
             {
                 var cameras = new List<Camera>();
-                for (int n = 0; n < blinkNetwork.networks[i].cameras.Length; n++)
+                for (int n = 0; n < batteryUsage.networks[i].cameras.Length; n++)
                 {
                     cameras.Add(new Camera
                     {
-                        Name = blinkNetwork.networks[i].cameras[n].name,
-                        Id = blinkNetwork.networks[i].cameras[n].id
+                        Name = batteryUsage.networks[i].cameras[n].name,
+                        Id = batteryUsage.networks[i].cameras[n].id
                     });
                 }
 
                 currentData.Networks.Add(new Network
                 {
-                    Name = blinkNetwork.networks[i].name,
-                    Id = blinkNetwork.networks[i].network_id,
+                    Name = batteryUsage.networks[i].name,
+                    Id = batteryUsage.networks[i].network_id,
                     Cameras = cameras
                 });
             }

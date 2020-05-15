@@ -2,7 +2,7 @@
 
 namespace Blink.Classes.Blink
 {
-    public class BlinkCommandThumbnail
+    public class CommandThumbnail
     {
         public int id { get; set; }
         public DateTime created_at { get; set; }
