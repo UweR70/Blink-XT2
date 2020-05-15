@@ -18,7 +18,7 @@ namespace Blink.Classes
                 form.SetP0TxtBoxInfoText(string.Empty);
 
                 var common = new Common();
-                var uweR70_FireCommand = new UweR70_FireCommand();
+                var uweR70_Command = new UweR70_Command();
                 var uweR70_Get = new UweR70_Get();
                 var storeIt = new StoreIt();
 
@@ -31,7 +31,7 @@ namespace Blink.Classes
                      Networks = new List<BaseData.Network>()
                 };
 
-                Blink.BatteryUsage blinkNetwork = null;
+                Blink.BatteryUsage batteryUssage = null;
 
                 var alreadyStoredAuthTokens = storeIt.ReadAuthToken();
                 var alreadyStoredMainData = storeIt.ReadMainData();
@@ -45,7 +45,7 @@ namespace Blink.Classes
                         baseData.AuthToken = alreadyStoredAuthTokens[alreadyStoredAuthTokens.Count - 1].Token;
                         baseData.AccountId = alreadyStoredMainData.AccountId;
 
-                        blinkNetwork = uweR70_Get.NetworkAsync(baseData).Result;
+                        batteryUssage = uweR70_Get.BatteryUssageAsync(baseData).Result;
 
                         oldAuthTokenWorked = true;
                     }
@@ -65,40 +65,39 @@ namespace Blink.Classes
                     baseData.AuthToken = login.authtoken.authtoken;
                     baseData.AccountId = login.account.id;
 
-                    blinkNetwork = uweR70_Get.NetworkAsync(baseData).Result;
-                    storeIt.StoreData(baseData, blinkNetwork);
+                    batteryUssage = uweR70_Get.BatteryUssageAsync(baseData).Result;
+                    storeIt.StoreData(baseData, batteryUssage);
                 }
                
-                for (var i = 0; i < blinkNetwork.networks.Length; i++)
+                for (var i = 0; i < batteryUssage.networks.Length; i++)
                 {
                     baseData.Networks.Add(new BaseData.Network
                     {
-                        Id = blinkNetwork.networks[i].network_id,
-                        Name = blinkNetwork.networks[i].name,
+                        Id = batteryUssage.networks[i].network_id,
+                        Name = batteryUssage.networks[i].name,
                         Cameras = new List<BaseData.Camera>()
                     });
 
                     var minData = new MinimumData
                     {
-                        ApiServer = baseData.ApiServer,
                         AuthToken = baseData.AuthToken,
-                        RegionPropertyName = baseData.RegionTier,
+                        RegionTier = baseData.RegionTier,
                         NetworkId = baseData.Networks[i].Id
                     };
 
                     form.SetP0TxtBoxInfoText($"Network id >{baseData.Networks[i].Id}<");
                     form.SetP0TxtBoxInfoText($"Network name >{baseData.Networks[i].Name}<");
-                    form.SetP0TxtBoxInfoText($"camera count >{blinkNetwork.networks[i].cameras.Length}<");
+                    form.SetP0TxtBoxInfoText($"camera count >{batteryUssage.networks[i].cameras.Length}<");
 
-                    for (var n = 0; n < blinkNetwork.networks[i].cameras.Length; n++)
+                    for (var n = 0; n < batteryUssage.networks[i].cameras.Length; n++)
                     {
                         form.SetP0TxtBoxInfoText(string.Empty);
                         form.SetP0TxtBoxInfoText($"camera #{n + 1:D2}");
 
                         baseData.Networks[i].Cameras.Add(new BaseData.Camera
                         {
-                            Id = blinkNetwork.networks[i].cameras[n].id,
-                            Name = blinkNetwork.networks[i].cameras[n].name,
+                            Id = batteryUssage.networks[i].cameras[n].id,
+                            Name = batteryUssage.networks[i].cameras[n].name,
                             Media = new BaseData.Media()
                         });
 
@@ -107,12 +106,12 @@ namespace Blink.Classes
                         form.SetP0TxtBoxInfoText($"camera id >{baseData.Networks[i].Cameras[n].Id}<");
                         form.SetP0TxtBoxInfoText($"camera name >{baseData.Networks[i].Cameras[n].Name}<");
 
-                        var blinkCamera = uweR70_Get.CameraInfoAsync(minData).Result;
+                        var cameraStatus = uweR70_Get.CameraStatusAsync(minData).Result;
 
-                        var cameraThumbnail = blinkCamera.camera_status.thumbnail;
+                        var cameraThumbnail = cameraStatus.camera_status.thumbnail;
 
                         var networkNameAndId = common.CombineNameAndId(baseData.Networks[i].Name, baseData.Networks[i].Id);
-                        var cameraNameAndId = common.CombineNameAndId(blinkNetwork.networks[i].cameras[n].name, blinkNetwork.networks[i].cameras[n].id);
+                        var cameraNameAndId = common.CombineNameAndId(batteryUssage.networks[i].cameras[n].name, batteryUssage.networks[i].cameras[n].id);
                         var storagePath = GetStoragePath(saveDirectory, networkNameAndId, cameraNameAndId);
                         if (string.IsNullOrEmpty(baseData.StoragePathNetwork))
                         {   /* Both folligng directories where created while  "GetStoragePath(...)" worked out!
@@ -143,14 +142,14 @@ namespace Blink.Classes
                 {
                     pageCounter++;
 
-                    var media = uweR70_Get.MediaAsync(baseData, pageCounter).Result;
-                    if (media.media == null || media.media.Length == 0)
+                    var changedMedia = uweR70_Get.ChangedMediaAsync(baseData, pageCounter).Result;
+                    if (changedMedia.media == null || changedMedia.media.Length == 0)
                     {
                         break;
                     }
 
                     form.SetP0TxtBoxInfoText(string.Empty);
-                    form.SetP0TxtBoxInfoText($"Page #{pageCounter} contains {media.media.Length} videos.");
+                    form.SetP0TxtBoxInfoText($"Page #{pageCounter} contains {changedMedia.media.Length} videos.");
 
                     var counterMarkedAsDeleted = 0;
                     var counterAlreadyBeforeDownloaded = 0;
@@ -160,9 +159,9 @@ namespace Blink.Classes
                     form.SetP0TxtBoxInfoText($"\tAlready before downloaded #{counterAlreadyBeforeDownloaded}.");
                     form.SetP0TxtBoxInfoText($"\tDownloaded #{counterDownloaded}.");
 
-                    for (var i = 0; i < media.media.Length; i++)
+                    for (var i = 0; i < changedMedia.media.Length; i++)
                     {
-                        if (media.media[i].deleted)
+                        if (changedMedia.media[i].deleted)
                         {
                             counterMarkedAsDeleted++;
                             AdjustInfo(form, common, $"\tMarked as deleted #{counterMarkedAsDeleted - 1}.", $"\tMarked as deleted #{counterMarkedAsDeleted}.");
@@ -176,13 +175,13 @@ namespace Blink.Classes
                             continue;
                         }
                         
-                        var networkObject = baseData.Networks.Where(x => x.Id == media.media[i].network_id).ToList();
+                        var networkObject = baseData.Networks.Where(x => x.Id == changedMedia.media[i].network_id).ToList();
                         if (networkObject == null || networkObject.Count() != 1)
                         {
                             // Should never be true!
                             continue;
                         }
-                        var cameraObject = networkObject[0].Cameras.Where(x => x.Id == media.media[i].device_id).ToList();
+                        var cameraObject = networkObject[0].Cameras.Where(x => x.Id == changedMedia.media[i].device_id).ToList();
                         if (cameraObject == null || cameraObject.Count() != 1)
                         {
                             // Should never be true!
@@ -190,15 +189,15 @@ namespace Blink.Classes
                         }
 
                         // Method called and not just path combined because called method creates directory if it does not exist.
-                        var networkNameAndId = common.CombineNameAndId(media.media[i].network_name, media.media[i].network_id);
-                        var cameraNameAndId = common.CombineNameAndId(media.media[i].device_name, media.media[i].device_id);
+                        var networkNameAndId = common.CombineNameAndId(changedMedia.media[i].network_name, changedMedia.media[i].network_id);
+                        var cameraNameAndId = common.CombineNameAndId(changedMedia.media[i].device_name, changedMedia.media[i].device_id);
                         var storagePath = GetStoragePath(saveDirectory, networkNameAndId, cameraNameAndId);
-                        var videoFileName = media.media[i].created_at.ToString(timestampFormatter) + ".mp4";
+                        var videoFileName = changedMedia.media[i].created_at.ToString(timestampFormatter) + ".mp4";
                         var videoPathAndFileName = $"{storagePath}\\{videoFileName}";
                         cameraObject[0].Media.PathAndFileNameVideos.Add(videoPathAndFileName);
                         if (!File.Exists(videoPathAndFileName))
                         {
-                            var videoByteArray = uweR70_Get.VideoAsync(baseData, media.media[i].media).Result;
+                            var videoByteArray = uweR70_Get.VideoAsync(baseData, changedMedia.media[i].media).Result;
                             File.WriteAllBytes(videoPathAndFileName, videoByteArray);
                             counterDownloaded++;
                             AdjustInfo(form, common, $"\tDownloaded #{counterDownloaded - 1}.", $"\tDownloaded #{counterDownloaded}.");

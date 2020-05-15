@@ -44,8 +44,7 @@ namespace Blink.Classes
 
     public class MinimumData
     {
-        public string ApiServer;
-        public string RegionPropertyName;
+        public string RegionTier;
         public string AuthToken;
         public int NetworkId;
         public int CameraId;

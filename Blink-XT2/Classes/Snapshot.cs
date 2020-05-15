@@ -63,14 +63,13 @@ namespace Blink.Classes
 
         public void TakeSnapshots(BaseData baseData, int networkId, int cameraId)
         {
-            var uweR70_FireCommand = new UweR70_FireCommand();
+            var uweR70_Command = new UweR70_Command();
             var uweR70_Get = new UweR70_Get();
            
             var minData = new MinimumData
             {
-                ApiServer = baseData.ApiServer,
                 AuthToken = baseData.AuthToken,
-                RegionPropertyName = baseData.RegionTier,
+                RegionTier = baseData.RegionTier,
                 NetworkId = networkId,
                 CameraId = cameraId
             };
@@ -91,11 +90,11 @@ namespace Blink.Classes
             #endregion
 
             // Take the snapshot
-            var commandThumbnail_Test = uweR70_FireCommand.ThumbnailAsync(minData).Result;
+            var commandThumbnail_Test = uweR70_Command.CommandThumbnailAsync(minData).Result;
             
-            var blinkCamera = uweR70_Get.CameraInfoAsync(minData).Result;
+            var cameraStatus = uweR70_Get.CameraStatusAsync(minData).Result;
 
-            var cameraThumbnail = blinkCamera.camera_status.thumbnail;
+            var cameraThumbnail = cameraStatus.camera_status.thumbnail;
             if (string.IsNullOrEmpty(BaseStoragePathSnapshot))
             {
                 BaseStoragePathSnapshot = GetStoragePath(baseData, networkId, cameraId);
