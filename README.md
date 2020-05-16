@@ -18,7 +18,7 @@ Kesfeatures:
 
 This app is capable of 
 <ul>
-<li>
+  <li>
     download all videos and the thumbnails from each camera of all networks.
   </li>
   <li>
@@ -146,7 +146,6 @@ Call<LoginResponse> loginCall(@Body LoginBody paramLoginBody, @Path("tier") Stri
 
 
 
-<br>
 My wiki contains a 
 <a href="https://github.com/UweR70/Blink-XT2/wiki/Tutorial:-How-to-decompile-an-apk%3Fi" target="_blank">Tutorial: How to decompile an apk?</a><br>
 This tutorial demonstrates step-by-step how to get the original Blink mobile phone app <b>code</b> - which also contains the API calls mentioned above.<br>
@@ -155,12 +154,12 @@ This tutorial demonstrates step-by-step how to get the original Blink mobile pho
 
 
 </li>
-<ul>
+</ul>
 
 
 <br>
 <br>
-Enjoy.<br>
+Enjoy.
 
 # Dependencies
 <ul>
