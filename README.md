@@ -1,12 +1,3 @@
-PLEASE NOTICE:<br>
-This repository is currently subject to many changes!<br>
-Please check on a daily basis for new versions!<br>
-UweR70 - Th., 14th May 2020<br>
-<br>
-But do not worry: All versions are fully functional - hopefully ;-)<br>
-<br>
-<br>
-<br>
 # Blink-XT2
 Blink (XT2) Win 10 / C # application that still works after the last Blink changes of May 11, 2020.<br>
 <br>
