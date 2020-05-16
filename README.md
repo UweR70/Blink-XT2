@@ -59,8 +59,8 @@ var login = uweR70_Get.LoginAsync(baseData, new UweR70_Get.LoginBody
 }).Result;
 <br>
 var network = uweR70_Get.BatteryUssageAsync(baseData).Result;
-var thumbnailImage = uweR70_Get.ThumbnailImageAsync(minData, "<enter valid data here>").Result;
-var video = uweR70_Get.VideoAsync(baseData, "<enter valid data here>").Result;
+var thumbnailImage = uweR70_Get.ThumbnailImageAsync(minData, "&lt;enter valid data here&gt;").Result;
+var video = uweR70_Get.VideoAsync(baseData, "&lt;enter valid data here&gt;").Result;
 var changedMedia = uweR70_Get.ChangedMediaAsync(baseData, 0).Result;
 <br>        
 var cameraStatus = uweR70_Get.CameraStatusAsync(minData).Result;
