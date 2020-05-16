@@ -12,8 +12,7 @@ Blink (XT2) Win 10 / C # application that still works after the last Blink chang
 <br>
 Keyfeatures:
 <ul>
-<li>
-<!-- HELLO -->
+<li> <!-- ##### Open  ##### -->
 This app is capable of 
 <ul>
   <li>
@@ -23,16 +22,8 @@ This app is capable of
     take a snapshot/thumbnail every x seconds and <b>to create a video from these.</b> 
   </li>
 </ul>
-
-
-
-</li>
-<li>
-
-
-
-
-<br>
+</li><!-- ##### Close ##### -->
+<li> <!-- ##### Open  ##### -->
 The most important API calls are fully developed and ready to use. Out-of-the box!<br>
 Like:
 <ul>
@@ -52,17 +43,8 @@ Like:
     etc.    
   </li>
 </ul>
-
-
-
-
-</li>
-<li>
-
-
-
-
-
+</li><!-- ##### Close ##### -->
+<li> <!-- ##### Open  ##### -->
 Demo implementations like the following are available; see <a href="https://github.com/UweR70/Blink-XT2/blob/master/Blink-XT2/Classes/Quicktest.cs" target="_blank">Quicktest.cs</a>.
 <pre><code>
 ...
@@ -104,20 +86,8 @@ var quickRegionInfo = uweR70_Get.QuickRegionInfoAsync(baseData).Result;
 var syncModules = uweR70_Get.SyncModulesAsync(minData).Result;
 ...
 </code></pre>
-<br>
-
-
-
-
-</li>
-<li>
-
-
-
-
-
-
-
+</li><!-- ##### Close ##### -->
+<li> <!-- ##### Open  ##### -->
 Furthermore it contains a "documentation" class providing <b>all</b> API calls of the original Blink mobile phone app.<br>
 Script kiddies will find there the URLs.<br>
 <br>
@@ -132,29 +102,13 @@ Observable<LoginResponse> login(@Body LoginBody paramLoginBody, @Path("tier") St
 Call<LoginResponse> loginCall(@Body LoginBody paramLoginBody, @Path("tier") String paramString);
 ...
 </code></pre>
-
-
-
-</li>
-<li>
-
-
-
-
-
-
-
+</li><!-- ##### Close ##### -->
+<li> <!-- ##### Open  ##### -->
 My wiki contains a 
 <a href="https://github.com/UweR70/Blink-XT2/wiki/Tutorial:-How-to-decompile-an-apk%3Fi" target="_blank">Tutorial: How to decompile an apk?</a><br>
-This tutorial demonstrates step-by-step how to get the original Blink mobile phone app <b>code</b> - which also contains the API calls mentioned above.<br>
-
-
-
-
-</li>
+This tutorial demonstrates step-by-step how to get the original Blink mobile phone app <b>code</b> - which also contains the API calls mentioned above.
+</li><!-- ##### Close ##### -->
 </ul>
-
-
 <br>
 <br>
 Enjoy.
