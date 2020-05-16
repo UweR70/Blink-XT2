@@ -120,8 +120,8 @@ This tutorial demonstrates step-by-step how to get the original Blink mobile pho
 
 # How to install, compile and run
 Good news first:<br>
-<a href="https://github.com/UweR70/Blink-XT2/blob/master/Blink-XT2/Compiled_Versions/UweR70_Blink-XT2_V_0.11.7z" target="_blank">Here</a><br>
-you will find a ziped but runable setup.exe (version 0.11).<br>
+<a href="https://github.com/UweR70/Blink-XT2/blob/master/Blink-XT2/Compiled_Versions/UweR70_Blink-XT2_V_0.12.7z" target="_blank">Here</a><br>
+you will find a ziped but runable setup.exe (version 0.12).<br>
 <br>
 The bad news:<br>
 Sorry, figured currently not out how to add these packages to the repository:<br>
