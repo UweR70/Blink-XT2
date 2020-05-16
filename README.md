@@ -1,16 +1,10 @@
-PLEASE NOTICE:<br>
-This repository is currently subject to many changes!<br>
-Please check on a daily basis for new versions!<br>
-UweR70 - Th., 14th May 2020<br>
-<br>
-But do not worry - All versions are fully functional - hopefully ;-)<br>
-<br>
-(Please notice also my "region" comment below ...)<br>
-<br>
-<br>
-<br>
 # Blink-XT2
-Blink (XT2) Win 10 / C# application to 
+Blink (XT2) Win 10 / C # application that still works after the last Blink changes of May 11, 2020.<br>
+<br>
+Keyfeatures:
+<ul>
+<li> <!-- ##### Open  ##### -->
+This app is capable of 
 <ul>
   <li>
     download all videos and the thumbnails from each camera of all networks.
@@ -19,12 +13,10 @@ Blink (XT2) Win 10 / C# application to
     take a snapshot/thumbnail every x seconds and <b>to create a video from these.</b> 
   </li>
 </ul>
-See my <a href="https://github.com/UweR70/Blink-XT2/wiki">wiki site</a> to get a visual impression.<br>
 <br>
-<b>Also, be aware that Blink emailed me on May 5, 2020, stating that I am using an deprecated login method that will no longer work after May 11, 2020.</b> :-(<br>
-<br>
-Plus:<br>
-All currently known Blink (XT2) API calls are fully developed and ready to use. Out-of-the box.<br>
+</li><!-- ##### Close ##### -->
+<li> <!-- ##### Open  ##### -->
+The most important API calls are fully developed and ready to use. Out-of-the box!<br>
 Like:
 <ul>
   <li>
@@ -43,53 +35,79 @@ Like:
     etc.    
   </li>
 </ul>
-A demo implementation like ...
+<br>
+</li><!-- ##### Close ##### -->
+<li> <!-- ##### Open  ##### -->
+Demo implementations like the following are available; see <a href="https://github.com/UweR70/Blink-XT2/blob/master/Blink-XT2/Classes/Quicktest.cs" target="_blank">Quicktest.cs</a>.
 <pre><code>
 ...
-var commandArm = uweR70_FireCommand.ArmAsync(minData).Result;
-var commandDisarm = uweR70_FireCommand.DisarmAsync(minData).Result;
-<br>            
-var commandMotionDetectionDisable = uweR70_FireCommand.MotionDetectionAsync(minData, UweR70_FireCommand.BlinkMotionDetection.disable).Result;
-var commandMotionDetectionEnable = uweR70_FireCommand.MotionDetectionAsync(minData, UweR70_FireCommand.BlinkMotionDetection.enable).Result;
+var commandArm = uweR70_Command.CommandArmDisarmAsync(minData, UweR70_Command.ArmDisarm.arm).Result;
+var commandDisarm = uweR70_Command.CommandArmDisarmAsync(minData, UweR70_Command.ArmDisarm.disarm).Result;
 <br>
-var commandClip = uweR70_FireCommand.ClipAsync(minData).Result;
-var commandThumbnail = uweR70_FireCommand.ThumbnailAsync(minData).Result;
+var commandMotionDetectionEnable = uweR70_Command.CommandMotionDetectionAsync(minData, UweR70_Command.MotionDetection.enable).Result;
+var commandMotionDetectionDisable = uweR70_Command.CommandMotionDetectionAsync(minData, UweR70_Command.MotionDetection.disable).Result;
 <br>
-<br>
+var commandClip = uweR70_Command.CommandClipAsync(minData).Result;
+var commandThumbnail = uweR70_Command.CommandThumbnailAsync(minData).Result;
 <br>
 var login = uweR70_Get.LoginAsync(baseData, new UweR70_Get.LoginBody
 {
-  email = "your blink email address",
-  password = "your blink password"
+    email = "&lt;your blink email address&gt;",
+    password = "&lt;your blink password&gt;"
 }).Result;
 <br>
-var network = uweR70_Get.NetworkAsync(baseData).Result;
-var thumbnailImage = uweR70_Get.ThumbnailImageAsync(minData, "enter valid data here").Result;
-var video = uweR70_Get.VideoAsync(baseData, "enter valid data here").Result;
-var media = uweR70_Get.MediaAsync(baseData, 0).Result;
+var network = uweR70_Get.BatteryUssageAsync(baseData).Result;
+var thumbnailImage = uweR70_Get.ThumbnailImageAsync(minData, "&lt;enter valid data here&gt;").Result;
+var video = uweR70_Get.VideoAsync(baseData, "&lt;enter valid data here&gt;").Result;
+var changedMedia = uweR70_Get.ChangedMediaAsync(baseData, 0).Result;
 <br>        
-var cameraInfo = uweR70_Get.CameraInfoAsync(minData).Result;
-var cameraSignals = uweR70_Get.CameraSignalsAsync(minData).Result;
+var cameraStatus = uweR70_Get.CameraStatusAsync(minData).Result;
+var signalStrength = uweR70_Get.SignalStrengthAsync(minData).Result;
+<br>
 var events = uweR70_Get.EventsAsync(minData).Result;
-var homescreen = uweR70_Get.HomeScreenAsync(minData).Result;
-var regions = uweR70_Get.RegionsAsync(baseData).Result;
+var typeList = new[] { "first_boot", "battery", "armed", "disarmed", "scheduled_arm", "scheduled_disarm", "heartbeat", "sm_offline" };
+var blinkEvents = events._event;
+var count = blinkEvents.Length;
+for (int i = 0; i < typeList.Length; i++)
+{
+    blinkEvents = blinkEvents.Where(x => !x.type.Equals(typeList[i], StringComparison.InvariantCultureIgnoreCase)).ToArray();
+    count = blinkEvents.Length;
+}
+<br>
+var homescreenV3 = uweR70_Get.HomescreenV3Async(baseData).Result;
+var quickRegionInfo = uweR70_Get.QuickRegionInfoAsync(baseData).Result;
 var syncModules = uweR70_Get.SyncModulesAsync(minData).Result;
 ...
 </code></pre>
-... is for each API call available; see "Quicktest.cs".<br>
 <br>
-Enjoy.<br>
-
-# Foreword
-The <i>hard work</i> does Matt Weinecke<br>
-https://github.com/MattTW<br>
-because he figured out the API call URIs.<br>
-Thanks to him and the fact that he published it!<br>
+</li><!-- ##### Close ##### -->
+<li> <!-- ##### Open  ##### -->
+Furthermore it contains a "documentation" class providing <b>all</b> API calls (incl. the therefore needed URLs) of the original Blink mobile phone app.
 <br>
-Please see his github repository for details:<br>
-https://github.com/MattTW/BlinkMonitorProtocol<br>
+Script kiddies will love it.<br>
 <br>
-My part was just to convert it into a full functional and well designed C# application you can participate from. ;-)
+Details:<br>
+<a href="https://github.com/UweR70/Blink-XT2/wiki/All-original-Blink-URIs" target="_blank">All original Blink URIs</a><br>
+  <br>
+Example (login in most requested):<br>
+<pre><code>
+...
+@POST("https://rest-{tier}.immedia-semi.com/api/v4/account/login")
+Observable<LoginResponse> login(@Body LoginBody paramLoginBody, @Path("tier") String paramString);
+<br>
+@POST("https://rest-{tier}.immedia-semi.com/api/v4/account/login")
+Call<LoginResponse> loginCall(@Body LoginBody paramLoginBody, @Path("tier") String paramString);
+...
+</code></pre>
+<br>
+</li><!-- ##### Close ##### -->
+<li> <!-- ##### Open  ##### -->
+My wiki contains a 
+<a href="https://github.com/UweR70/Blink-XT2/wiki/Tutorial:-How-to-decompile-an-apk%3Fi" target="_blank">Tutorial: How to decompile an apk?</a><br>
+This tutorial demonstrates step-by-step how to get the original Blink mobile phone app <b>code</b> - which also contains the API calls mentioned above.<br>
+<br>
+</li><!-- ##### Close ##### -->
+</ul>
 
 # Dependencies
 <ul>
@@ -104,8 +122,8 @@ My part was just to convert it into a full functional and well designed C# appli
 
 # How to install, compile and run
 Good news first:<br>
-<a href="https://github.com/UweR70/Blink-XT2/blob/master/Blink-XT2/Compiled_Versions/UweR70_Blink-XT2_V_0.09.7z">Here</a><br>
-you will find a ziped but runable setup.exe (version 0.09).<br>
+<a href="https://github.com/UweR70/Blink-XT2/blob/master/Blink-XT2/Compiled_Versions/UweR70_Blink-XT2_V_0.10.7z" target="_blank">Here</a><br>
+you will find a ziped but runable setup.exe (version 0.10).<br>
 <br>
 The bad news:<br>
 Sorry, figured currently not out how to add these packages to the repository:<br>
@@ -117,7 +135,6 @@ Sorry, figured currently not out how to add these packages to the repository:<br
     'Accord', 'Accord.Video', 'Accord.Video.FFMPEG'
   </li>
 </ul>
- 
 Shame on me ...<br>
 Follow these steps to fix this (in Visual Studio):
 <ul>
@@ -175,51 +192,15 @@ Follow these steps to fix this (in Visual Studio):
     I own only one Blink XT2 system with three cameras and I am located in Germany.<br>
     -> So, I have no clue whether my app will work outside Germany/Europe.<br>
     <br>
-    Keywords:<br> 
-    See 'InitAndDownload.cs', comments within '#region Comment'.<br>
-    <br>
-    If you get involved, the comments will pull you into the tien of Blink's region handling ... Have fun!<br>
-    See also "UweR70_Get.RegionsAsync(...)' and 'Common.ConvertBlinkRegions(...)'.<br>
-    <br>
   </li>
   <li>
-    As expected, in the meantime the URIs for the API calls have changed or are no longer available.<br>
-    <br>
-    Examples:<br>
-    <ul>
-      <li>
-        '.../video/count' returns the message 'An app update is required'.
-      </li>
-      <li>
-        '.../videos/unwachted' returns a "Not found".
-      </li>
-      <li>
-        '.../network/*network_id*/command/*command_id*' must be changed to<br>
-        '.../network/*network_id*/camera/*camera_id*' and appended with '/clip', '/thumbnail' etc.
-      </li>
-      <li>
-        Matt describes that the official Blink application gathers data after certain calls.<br>
-        This is not necessary in my app because only asynchronous calls are used. 
-      </li>
-      <li>
-        etc. etc.
-      </li>
-    </ul>
-    <br>
-    Hoping that I have not missed an API call listed by Matt, I can say that I have tested and adapted all of them.<br>
-    The result are the 'Blink&lt;xyz&gt;.cs', 'InitAndDownload.cs' and 'Quicktest.cs' classes.<br>
-    These classes are containing the main functionality and demonstrate how they work together.<br>
-    <br>
-  </li>
-  <li>
-    While 'InitAndDownload.cs' contains the fully developed functionality to login and download all videos and thumbnails<br>
-    for all networks, is 'Quicktest.cs' meant as demonstration how to use/feed the API calls.<br> 
+    While 'InitAndDownload.cs' (<a href="https://github.com/UweR70/Blink-XT2/blob/master/Blink-XT2/Classes/InitAndDownload.cs" target="_blank">link</a>) contains the fully developed functionality to login and download all videos and thumbnails<br>
+    for all networks, is 'Quicktest.cs' (<a href="https://github.com/UweR70/Blink-XT2/blob/master/Blink-XT2/Classes/Quicktest.cs" target="_blank">link</a>) meant as demonstration how to use/feed the API calls.<br> 
     <br>
     The tabPage 'InitSummary' <i>plays</i> a little bit with the gathered login, network, camera, video and thumbnail data.<br>
     <br>
     The old-school Windows Form application is just a wrapper that gives you a user-friendly way to supply<br>
     the main logic with all required values.<br>
-    <br>
     It contains also some 'Task.Factory...' handling to make everything smooth and non-blocking/non-leaking.<br>
     <br>
   </li>
@@ -239,23 +220,28 @@ Follow these steps to fix this (in Visual Studio):
     <br>
   </li>
   <li>
-    How do I get the 'Classes.Blink.Blink<i>xxy</i>.cs' classes<br>
-    like 'Classes.Blink.BlinkCamera.cs', 'Classes.Blink.BlinkCameraSignals', etc.?<br>
+    How do I get the 'Classes.Blink.<i>xxy</i>.cs' classes (<a href="https://github.com/UweR70/Blink-XT2/tree/master/Blink-XT2/Classes/Blink" target="_blank">link</a>)<br>
+    like 'Classes.Blink.CameraStatus.cs', 'Classes.Blink.HomescreenV3', etc.?<br>
     <br>
     Example:<br>
-    Open 'Classes.Blink.UweR70_Get.cs' and serach for the method 'LoginAsync(...)' ... <br>
+    Open 'Classes.Blink.UweR70_Get.cs' (<a href="https://github.com/UweR70/Blink-XT2/blob/master/Blink-XT2/Classes/UweR70_Get.cs"  target="_blank">link</a>) and serach for the method 'LoginAsync(...)' ... <br>
     <pre><code>
-    public async Task&lt;BlinkLogin&gt; LoginAsync(BaseData baseData, LoginBody loginBody)
+    public async Task&lt;LoginResponse&gt; LoginAsync(BaseData baseData, LoginBody loginBody)
     {
-      var uri = $"https://{baseData.ApiServer}/login";
-      var retString = await FirePostCallAsync(uri, loginBody);
-      var ret = JsonConvert.DeserializeObject&lt;BlinkLogin&gt;(retString);
-      return ret;
-    }
+        //  @POST("https://rest-{tier}.immedia-semi.com/api/v4/account/login")
+        //   Observable<LoginResponse> login(@Body LoginBody paramLoginBody, @Path("tier") String paramString);
+        //
+        //  @POST("https://rest-{tier}.immedia-semi.com/api/v4/account/login")
+        //  Call<LoginResponse> loginCall(@Body LoginBody paramLoginBody, @Path("tier") String paramString);
+        var uri = $"https://rest-{baseData.ApiServer}.immedia-semi.com/api/v4/account/login";
+        var retString = await FirePostCallAsync(uri, loginBody);
+        var ret = JsonConvert.DeserializeObject&lt;LoginResponse&gt;(retString);
+        return ret;
+     }
     </code></pre>
     ... and set a breakpoint in this line:<br>
     <pre><code>
-    var ret = JsonConvert.DeserializeObject<BlinkLogin>(retString);
+    var ret = JsonConvert.DeserializeObject&lt;LoginResponse&gt;(retString);
     </code></pre>
     Start debugging / run the code.<br>
     Copy the 'retString' value in to the clipboard when the breakpoint is hit.<br>
