@@ -93,10 +93,8 @@ var syncModules = uweR70_Get.SyncModulesAsync(minData).Result;
 <li style="color:rgb(107,79,187); font-size:.85em"> <!-- ##### Open  ##### -->
   
 
-  
-### <i class="fab fa-gitlab fa-fw" style="color:rgb(107,79,187); font-size:.85em" aria-hidden="true"></i> Purple GitLab Tanuki
-{: #tanuki-purple}
-  
+
+
 Furthermore it contains a "documentation" class providing <b>all</b> API calls (incl. the therefore needed ULRs) of the original Blink mobile phone app.
   
   <br>
