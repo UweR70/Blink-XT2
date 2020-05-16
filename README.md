@@ -10,12 +10,10 @@ But do not worry: All versions are fully functional - hopefully ;-)<br>
 # Blink-XT2
 Blink (XT2) Win 10 / C # application that still works after the last Blink changes of May 11, 2020.<br>
 <br>
-Kesfeatures:
+Keyfeatures:
 <ul>
 <li>
-
-
-
+<!-- HELLO -->
 This app is capable of 
 <ul>
   <li>
