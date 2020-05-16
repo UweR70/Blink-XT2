@@ -65,7 +65,7 @@ namespace Blink.Classes
             //
             //  @POST("https://rest-{tier}.immedia-semi.com/api/v4/account/login")
             //  Call<LoginResponse> loginCall(@Body LoginBody paramLoginBody, @Path("tier") String paramString);
-            var uri = $"https://rest-{baseData.ApiServer}/api/v4/account/login";
+            var uri = $"https://rest-{baseData.LoginTier}.immedia-semi.com/api/v4/account/login";
             var retString = await FirePostCallAsync(uri, loginBody);
             var ret = JsonConvert.DeserializeObject<LoginResponse>(retString);
             return ret;
