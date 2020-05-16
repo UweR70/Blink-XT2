@@ -40,8 +40,6 @@ Like:
     etc.    
   </li>
 </ul>
-
-
 Demo implementations like the following are available; see "Quicktest.cs".
 <pre><code>
 ...
@@ -75,18 +73,13 @@ var regions = uweR70_Get.RegionsAsync(baseData).Result;
 var syncModules = uweR70_Get.SyncModulesAsync(minData).Result;
 ...
 </code></pre>
-
 <br>
-
-
-
 Furthermore it contains a "documentation" class providing <b>all</b> API calls of the original Blink mobile phone app.<br>
-Please see
-
+Details:
+<a href="https://github.com/UweR70/Blink-XT2/wiki/All-original-Blink-URIs>All original Blink URIs</a><br>
+<br>
 See my <a href="https://github.com/UweR70/Blink-XT2/wiki">wiki site</a> to get a visual impression.<br>
 <br>
-
-
 Enjoy.<br>
 
 # Foreword
