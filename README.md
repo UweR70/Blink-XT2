@@ -76,7 +76,7 @@ var syncModules = uweR70_Get.SyncModulesAsync(minData).Result;
 <br>
 Furthermore it contains a "documentation" class providing <b>all</b> API calls of the original Blink mobile phone app.<br>
 Details:
-<a href="https://github.com/UweR70/Blink-XT2/wiki/All-original-Blink-URIs>All original Blink URIs</a><br>
+<a href="https://github.com/UweR70/Blink-XT2/wiki/All-original-Blink-URIs">All original Blink URIs</a><br>
 <br>
 See my <a href="https://github.com/UweR70/Blink-XT2/wiki">wiki site</a> to get a visual impression.<br>
 <br>
