@@ -236,17 +236,22 @@ Follow these steps to fix this (in Visual Studio):
     Example:<br>
     Open 'Classes.Blink.UweR70_Get.cs' and serach for the method 'LoginAsync(...)' ... <br>
     <pre><code>
-    public async Task&lt;BlinkLogin&gt; LoginAsync(BaseData baseData, LoginBody loginBody)
+    public async Task&lt;LoginResponse&gt; LoginAsync(BaseData baseData, LoginBody loginBody)
     {
-      var uri = $"https://{baseData.ApiServer}/login";
-      var retString = await FirePostCallAsync(uri, loginBody);
-      var ret = JsonConvert.DeserializeObject&lt;BlinkLogin&gt;(retString);
-      return ret;
-    }
+        //  @POST("https://rest-{tier}.immedia-semi.com/api/v4/account/login")
+        //   Observable<LoginResponse> login(@Body LoginBody paramLoginBody, @Path("tier") String paramString);
+        //
+        //  @POST("https://rest-{tier}.immedia-semi.com/api/v4/account/login")
+        //  Call<LoginResponse> loginCall(@Body LoginBody paramLoginBody, @Path("tier") String paramString);
+        var uri = $"https://rest-{baseData.ApiServer}.immedia-semi.com/api/v4/account/login";
+        var retString = await FirePostCallAsync(uri, loginBody);
+        var ret = JsonConvert.DeserializeObject&lt;LoginResponse&gt;(retString);
+        return ret;
+     }
     </code></pre>
     ... and set a breakpoint in this line:<br>
     <pre><code>
-    var ret = JsonConvert.DeserializeObject<BlinkLogin>(retString);
+    var ret = JsonConvert.DeserializeObject&lt;LoginResponse&gt;(retString);
     </code></pre>
     Start debugging / run the code.<br>
     Copy the 'retString' value in to the clipboard when the breakpoint is hit.<br>
