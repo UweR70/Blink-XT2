@@ -96,7 +96,10 @@ Call<LoginResponse> loginCall(@Body LoginBody paramLoginBody, @Path("tier") Stri
 </code></pre>
 
 <br>
-See my <a href="https://github.com/UweR70/Blink-XT2/wiki" target="_blank">wiki site</a> to get a visual impression.<br>
+My wiki contains a 
+<a href="https://github.com/UweR70/Blink-XT2/wiki/Tutorial:-How-to-decompile-an-apk%3Fi" target="_blank">Tutorial: How to decompile an apk?</a><br>
+The tutorial demonstrates step-by-step how to get the oriignal Blink mobile phone app code (which also contains the API calls mentioned above).<br>
+<br>
 <br>
 Enjoy.<br>
 
