@@ -91,7 +91,15 @@ var syncModules = uweR70_Get.SyncModulesAsync(minData).Result;
 <br>
 </li><!-- ##### Close ##### -->
 <li> <!-- ##### Open  ##### -->
-Furthermore it contains a "documentation" class providing <b>all</b> API calls (incl. the therefore needed ULRS) of the original Blink mobile phone app.<br>
+  
+  
+  
+<p style="font-size:72px !Important;">  
+Furthermore it contains a "documentation" class providing <b>all</b> API calls (incl. the therefore needed ULRs) of the original Blink mobile phone app.<br>
+</p>
+
+
+
 Script kiddies will love it.<br>
 <br>
 Details:
