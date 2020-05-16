@@ -98,21 +98,10 @@ Call<LoginResponse> loginCall(@Body LoginBody paramLoginBody, @Path("tier") Stri
 <br>
 My wiki contains a 
 <a href="https://github.com/UweR70/Blink-XT2/wiki/Tutorial:-How-to-decompile-an-apk%3Fi" target="_blank">Tutorial: How to decompile an apk?</a><br>
-The tutorial demonstrates step-by-step how to get the oriignal Blink mobile phone app code (which also contains the API calls mentioned above).<br>
+This tutorial demonstrates step-by-step how to get the original Blink mobile phone app code (which also contains the API calls mentioned above).<br>
 <br>
 <br>
 Enjoy.<br>
-
-# Foreword
-The <i>hard work</i> does Matt Weinecke<br>
-https://github.com/MattTW<br>
-because he figured out the API call URIs.<br>
-Thanks to him and the fact that he published it!<br>
-<br>
-Please see his github repository for details:<br>
-https://github.com/MattTW/BlinkMonitorProtocol<br>
-<br>
-My part was just to convert it into a full functional and well designed C# application you can participate from. ;-)
 
 # Dependencies
 <ul>
