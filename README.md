@@ -10,6 +10,9 @@ This app is capable of
     download all videos and the thumbnails from each camera of all networks.
   </li>
   <li>
+    downladed videos can be deleted on Blinks server on user request.
+  </li>
+  <li>
     take a snapshot/thumbnail every x seconds and <b>to create a video from these.</b> 
   </li>
 </ul>
