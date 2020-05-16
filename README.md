@@ -117,7 +117,6 @@ This tutorial demonstrates step-by-step how to get the original Blink mobile pho
 <br>
 </li><!-- ##### Close ##### -->
 </ul>
-Enjoy.
 
 # Dependencies
 <ul>
