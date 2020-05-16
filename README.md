@@ -54,8 +54,8 @@ var commandThumbnail = uweR70_Command.CommandThumbnailAsync(minData).Result;
 <br>
 var login = uweR70_Get.LoginAsync(baseData, new UweR70_Get.LoginBody
 {
-    email = "<your blink email address>",
-    password = "<your blink password>"
+    email = "&lt;your blink email address&gt;",
+    password = "&lt;your blink password&gt;"
 }).Result;
 <br>
 var network = uweR70_Get.BatteryUssageAsync(baseData).Result;
