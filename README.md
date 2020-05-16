@@ -95,8 +95,10 @@ Furthermore it contains a "documentation" class providing <b>all</b> API calls (
 <br>
 Script kiddies will love it.<br>
 <br>
-Details:
+Details:<br>
 <a href="https://github.com/UweR70/Blink-XT2/wiki/All-original-Blink-URIs" target="_blank">All original Blink URIs</a><br>
+  <br>
+Example (login in most requested):<br>
 <pre><code>
 ...
 @POST("https://rest-{tier}.immedia-semi.com/api/v4/account/login")
