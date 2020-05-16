@@ -85,6 +85,16 @@ var syncModules = uweR70_Get.SyncModulesAsync(minData).Result;
 Furthermore it contains a "documentation" class providing <b>all</b> API calls of the original Blink mobile phone app.<br>
 Details:
 <a href="https://github.com/UweR70/Blink-XT2/wiki/All-original-Blink-URIs" target="_blank">All original Blink URIs</a><br>
+<code><pre>
+...
+@POST("https://rest-{tier}.immedia-semi.com/api/v4/account/login")
+Observable<LoginResponse> login(@Body LoginBody paramLoginBody, @Path("tier") String paramString);
+<br>
+@POST("https://rest-{tier}.immedia-semi.com/api/v4/account/login")
+Call<LoginResponse> loginCall(@Body LoginBody paramLoginBody, @Path("tier") String paramString);
+...
+</pre></code>
+
 <br>
 See my <a href="https://github.com/UweR70/Blink-XT2/wiki" target="_blank">wiki site</a> to get a visual impression.<br>
 <br>
