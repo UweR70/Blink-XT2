@@ -40,7 +40,7 @@ Like:
     etc.    
   </li>
 </ul>
-Demo implementations like the following are available; see <a href="https://github.com/UweR70/Blink-XT2/blob/master/Blink-XT2/Classes/Quicktest.cs">Quicktest.cs</a>.
+Demo implementations like the following are available; see <a href="https://github.com/UweR70/Blink-XT2/blob/master/Blink-XT2/Classes/Quicktest.cs" target="_blank">Quicktest.cs</a>.
 <pre><code>
 ...
 var commandArm = uweR70_Command.CommandArmDisarmAsync(minData, UweR70_Command.ArmDisarm.arm).Result;
@@ -84,9 +84,9 @@ var syncModules = uweR70_Get.SyncModulesAsync(minData).Result;
 <br>
 Furthermore it contains a "documentation" class providing <b>all</b> API calls of the original Blink mobile phone app.<br>
 Details:
-<a href="https://github.com/UweR70/Blink-XT2/wiki/All-original-Blink-URIs">All original Blink URIs</a><br>
+<a href="https://github.com/UweR70/Blink-XT2/wiki/All-original-Blink-URIs" target="_blank">All original Blink URIs</a><br>
 <br>
-See my <a href="https://github.com/UweR70/Blink-XT2/wiki">wiki site</a> to get a visual impression.<br>
+See my <a href="https://github.com/UweR70/Blink-XT2/wiki" target="_blank">wiki site</a> to get a visual impression.<br>
 <br>
 Enjoy.<br>
 
@@ -114,7 +114,7 @@ My part was just to convert it into a full functional and well designed C# appli
 
 # How to install, compile and run
 Good news first:<br>
-<a href="https://github.com/UweR70/Blink-XT2/blob/master/Blink-XT2/Compiled_Versions/UweR70_Blink-XT2_V_0.10.7z">Here</a><br>
+<a href="https://github.com/UweR70/Blink-XT2/blob/master/Blink-XT2/Compiled_Versions/UweR70_Blink-XT2_V_0.10.7z" target="_blank">Here</a><br>
 you will find a ziped but runable setup.exe (version 0.10).<br>
 <br>
 The bad news:<br>
