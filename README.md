@@ -211,7 +211,6 @@ Follow these steps to fix this (in Visual Studio):
     <br>
     The old-school Windows Form application is just a wrapper that gives you a user-friendly way to supply<br>
     the main logic with all required values.<br>
-    <br>
     It contains also some 'Task.Factory...' handling to make everything smooth and non-blocking/non-leaking.<br>
     <br>
   </li>
