@@ -303,15 +303,21 @@ namespace Blink
                 "The root directory part where the downloaded videos and thumbnails will be stored.\r\n" +
                 "\r\n" +
                 "But pay attention:\r\n" +
-                "Imagine you added your Blink system to your Wifi 'HomeSweetHome'\r\n" +
-                "and you have three cameras named 'Front', 'Backyard' and 'Garage'.\r\n" +
+                "Imagine you\r\n" +
+                "a) added your Blink system to your Wifi 'HomeSweetHome',\r\n" +
+                "b) have three cameras named 'Backyard', 'Front' and 'Garage',\r\n" +
+               $"c) select here '{savePath}'\r\n" +
+                "and\r\n" +
+                "Blink assigns internally these IDs:\r\n" + 
+                "a1) Wifi ID:\t\t12345\r\n" +
+                "b1.1) Backyard camera ID:\t223344\r\n" +
+                "b1.2) Front camera ID:\t445566\r\n" +
+                "b1.3) Garage camera ID:\t778899.\r\n" +
                 "\r\n" +
-                $"Imagine furthermore you selected here '{savePath}'.\r\n" +
-                "\r\n" +
-                "In this case are these directories created and used to store:\r\n" +
-                $"\t1) {savePath}\\Blink_XT2\\HomeSweetHome\\Main\\Backyard\r\n" +
-                $"\t2) {savePath}\\Blink_XT2\\HomeSweetHome\\Main\\Front\r\n" +
-                $"\t3) {savePath}\\Blink_XT2\\HomeSweetHome\\Main\\Garage\r\n";
+                "In this case are these directories created and used for storage:\r\n" +
+                $"\t1) {savePath}\\Blink_XT2\\HomeSweetHome_12345\\Main\\Backyard_223344\r\n" +
+                $"\t2) {savePath}\\Blink_XT2\\HomeSweetHome_12345\\Main\\Front_445566\r\n" +
+                $"\t3) {savePath}\\Blink_XT2\\HomeSweetHome_12345\\Main\\Garage_778899\r\n";
         }
 
         private string HelpAreYouInGermany()

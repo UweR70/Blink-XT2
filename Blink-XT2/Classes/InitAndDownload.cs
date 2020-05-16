@@ -25,10 +25,8 @@ namespace Blink.Classes
                 var baseData = new BaseData
                 {
                     Email = email,
-                    ApiServer = isGerman
-                                    ? "prde.immedia-semi.com"
-                                    : "prod.immedia-semi.com",
-                     Networks = new List<BaseData.Network>()
+                    LoginTier = isGerman ? "prde" : "prod",
+                    Networks = new List<BaseData.Network>()
                 };
 
                 Blink.BatteryUsage batteryUssage = null;

@@ -6,7 +6,7 @@ namespace Blink.Classes
     {
         public string Email;
 
-        public string ApiServer;
+        public string LoginTier;
         public string RegionTier;
         public string RegionDescription;
         public string AuthToken;
