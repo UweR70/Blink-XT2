@@ -202,41 +202,6 @@ Follow these steps to fix this (in Visual Studio):
     I own only one Blink XT2 system with three cameras and I am located in Germany.<br>
     -> So, I have no clue whether my app will work outside Germany/Europe.<br>
     <br>
-    Keywords:<br> 
-    See 'InitAndDownload.cs', comments within '#region Comment'.<br>
-    <br>
-    If you get involved, the comments will pull you into the tien of Blink's region handling ... Have fun!<br>
-    See also "UweR70_Get.RegionsAsync(...)' and 'Common.ConvertBlinkRegions(...)'.<br>
-    <br>
-  </li>
-  <li>
-    As expected, in the meantime the URIs for the API calls have changed or are no longer available.<br>
-    <br>
-    Examples:<br>
-    <ul>
-      <li>
-        '.../video/count' returns the message 'An app update is required'.
-      </li>
-      <li>
-        '.../videos/unwachted' returns a "Not found".
-      </li>
-      <li>
-        '.../network/*network_id*/command/*command_id*' must be changed to<br>
-        '.../network/*network_id*/camera/*camera_id*' and appended with '/clip', '/thumbnail' etc.
-      </li>
-      <li>
-        Matt describes that the official Blink application gathers data after certain calls.<br>
-        This is not necessary in my app because only asynchronous calls are used. 
-      </li>
-      <li>
-        etc. etc.
-      </li>
-    </ul>
-    <br>
-    Hoping that I have not missed an API call listed by Matt, I can say that I have tested and adapted all of them.<br>
-    The result are the 'Blink&lt;xyz&gt;.cs', 'InitAndDownload.cs' and 'Quicktest.cs' classes.<br>
-    These classes are containing the main functionality and demonstrate how they work together.<br>
-    <br>
   </li>
   <li>
     While 'InitAndDownload.cs' contains the fully developed functionality to login and download all videos and thumbnails<br>
