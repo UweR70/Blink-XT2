@@ -87,7 +87,7 @@ Furthermore it contains a "documentation" class providing <a href="https://githu
 <br>
 Script kiddies will love it.<br>
 <br>
-Example (login in most requested):<br>
+Login example as follows because it is most requested:<br>
 <pre><code>
 ...
 @POST("https://rest-{tier}.immedia-semi.com/api/v4/account/login")
