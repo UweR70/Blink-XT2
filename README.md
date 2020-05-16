@@ -109,8 +109,6 @@ My wiki contains a
 This tutorial demonstrates step-by-step how to get the original Blink mobile phone app <b>code</b> - which also contains the API calls mentioned above.
 </li><!-- ##### Close ##### -->
 </ul>
-<br>
-<br>
 Enjoy.
 
 # Dependencies
