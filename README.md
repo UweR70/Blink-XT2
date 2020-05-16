@@ -88,10 +88,11 @@ var quickRegionInfo = uweR70_Get.QuickRegionInfoAsync(baseData).Result;
 var syncModules = uweR70_Get.SyncModulesAsync(minData).Result;
 ...
 </code></pre>
+<br>
 </li><!-- ##### Close ##### -->
 <li> <!-- ##### Open  ##### -->
-Furthermore it contains a "documentation" class providing <b>all</b> API calls of the original Blink mobile phone app.<br>
-Script kiddies will find there the URLs.<br>
+Furthermore it contains a "documentation" class providing <b>all</b> API calls (incl. the therefore needed ULRS) of the original Blink mobile phone app.<br>
+Script kiddies will love it.<br>
 <br>
 Details:
 <a href="https://github.com/UweR70/Blink-XT2/wiki/All-original-Blink-URIs" target="_blank">All original Blink URIs</a><br>
