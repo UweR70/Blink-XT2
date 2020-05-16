@@ -1,4 +1,6 @@
-﻿using System;
+﻿using Blink.Classes.Blink.Bodies;
+using System;
+using System.Collections.Generic;
 using System.Linq;
 
 namespace Blink.Classes
@@ -34,8 +36,8 @@ namespace Blink.Classes
                 NetworkId = networkObject.Id,
                 CameraId = cameraObject.Id
             };
-
-            
+                        
+            /*
             var commandArm = uweR70_Command.CommandArmDisarmAsync(minData, UweR70_Command.ArmDisarm.arm).Result;
             var commandDisarm = uweR70_Command.CommandArmDisarmAsync(minData, UweR70_Command.ArmDisarm.disarm).Result;
 
@@ -46,7 +48,7 @@ namespace Blink.Classes
             var commandThumbnail = uweR70_Command.CommandThumbnailAsync(minData).Result;
 
 
-            var login = uweR70_Get.LoginAsync(baseData, new UweR70_Get.LoginBody
+            var login = uweR70_Get.LoginAsync(baseData, new LoginBody
             {
                 email = "<your blink email address>",
                 password = "<your blink password>"
@@ -73,7 +75,14 @@ namespace Blink.Classes
             var homescreenV3 = uweR70_Get.HomescreenV3Async(baseData).Result;
             var quickRegionInfo = uweR70_Get.QuickRegionInfoAsync(baseData).Result;
             var syncModules = uweR70_Get.SyncModulesAsync(minData).Result;
-            
+
+            var mediaIdLIstBody = new MediaIdListBody
+            {
+                media_list = new List<long>()
+            };
+            mediaIdLIstBody.media_list.AddRange(new long[] { 123456875, 23542454 });
+            var test = uweR70_Get.DeleteMediaCall(baseData, mediaIdLIstBody);
+            */
         }
     }
 }

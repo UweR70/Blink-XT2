@@ -1,5 +1,7 @@
 ﻿using Blink.Classes;
+using Blink.Classes.Blink.Bodies;
 using System;
+using System.Collections.Generic;
 using System.Diagnostics;
 using System.Drawing;
 using System.Linq;
@@ -101,18 +103,42 @@ namespace Blink
 
                 var taskA = Task.Factory.StartNew(() =>
                 {
-                    BaseData = new InitAndDownload().Start(this, p0_txtBox_Email.Text, p0_txtBox_Password.Text, p0_txtBox_SaveDirectory.Text, p0_checkBox_AreYouInGermany.Checked);
+                    var mediaIdListBody = new MediaIdListBody
+                    {
+                        media_list = new List<long>()
+                    };
+                    BaseData = new InitAndDownload().Start(this, p0_txtBox_Email.Text, p0_txtBox_Password.Text, p0_txtBox_SaveDirectory.Text, p0_checkBox_AreYouInGermany.Checked, mediaIdListBody);
                     if (BaseData == null)
                     {
                         return;
                     }
-                    
+                    if (mediaIdListBody != null && mediaIdListBody.media_list.Any())
+                    {
+                        var question = string.Empty;
+                        if (mediaIdListBody.media_list.Count == 1)
+                        {
+                            question =
+                                "One video was successfull downloaded.\r\n" +
+                                "Should it be tried to delete the video on the server?";
+                        }
+                        else {
+                            question = 
+                                $"{mediaIdListBody.media_list.Count} videos were successfull downloaded.\r\n" +
+                                "Should it be tried to delete all of them on the server?";
+                        }
+                        if (MessageBox.Show(question, Config.TitleAppNameAndVersion, MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                        {
+                            var message = new UweR70_Get().DeleteMediaCall(BaseData, mediaIdListBody).Result;
+                            MessageBox.Show($"Deleted! Server response:\r\n{message.message}", Config.TitleAppNameAndVersion, MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        }
+                    }
                     if (!string.IsNullOrWhiteSpace(BaseData.StoragePathNetwork))
                     {
                         if (MessageBox.Show(
                                 "Should the storage path be opened?",
                                 Config.TitleAppNameAndVersion,
-                                MessageBoxButtons.YesNo, MessageBoxIcon.Question)
+                                MessageBoxButtons.YesNo, 
+                                MessageBoxIcon.Question)
                             == DialogResult.Yes)
                         {
                             Process.Start(BaseData.StoragePathMain);

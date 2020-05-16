@@ -26,7 +26,7 @@
     <UpdateRequired>false</UpdateRequired>
     <MapFileExtensions>true</MapFileExtensions>
     <ApplicationRevision>0</ApplicationRevision>
-    <ApplicationVersion>0.0.11.%2a</ApplicationVersion>
+    <ApplicationVersion>0.0.12.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <PublishWizardCompleted>true</PublishWizardCompleted>
     <BootstrapperEnabled>true</BootstrapperEnabled>
@@ -89,7 +89,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Classes\BaseData.cs" />
+    <Compile Include="Classes\Blink\Bodies\LoginBody.cs" />
     <Compile Include="Classes\Blink\CameraStatus.cs" />
+    <Compile Include="Classes\Blink\Message.cs" />
     <Compile Include="Classes\Blink\SignalStrength.cs" />
     <Compile Include="Classes\Blink\CommandArmDisarm.cs" />
     <Compile Include="Classes\Blink\CommandClip.cs" />
@@ -106,6 +108,7 @@
     <Compile Include="Classes\Config.cs" />
     <Compile Include="Classes\ImageToVideo.cs" />
     <Compile Include="Classes\InitAndDownload.cs" />
+    <Compile Include="Classes\Blink\Bodies\MediaIdListBody.cs" />
     <Compile Include="Classes\Quicktest.cs" />
     <Compile Include="Classes\Snapshot.cs" />
     <Compile Include="Classes\StoreIt.cs" />
@@ -133,7 +136,7 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
-    <None Include="Blink-XT2_TemporaryKey.pfx" />
+    <None Include="Compiled_Versions\UweR70_Blink-XT2_V_0.11.7z" />
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -164,7 +167,6 @@
     </BootstrapperPackage>
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Compiled_Versions\" />
     <Folder Include="Resources\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

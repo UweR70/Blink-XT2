@@ -1,8 +1,8 @@
-﻿using System;
+﻿using Blink.Classes.Blink.Bodies;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
-using static Blink.Classes.StoreIt;
 
 namespace Blink.Classes
 {
@@ -10,7 +10,7 @@ namespace Blink.Classes
     {
         private const int MagicNumberVideosPerPage = 25;
 
-        public BaseData Start(Form1 form, string email, string password, string saveDirectory, bool isGerman)
+        public BaseData Start(Form1 form, string email, string password, string saveDirectory, bool isGerman, MediaIdListBody mediaIdListBody)
         {
             try
             {
@@ -52,7 +52,7 @@ namespace Blink.Classes
                 if (!oldAuthTokenWorked)
                 { 
                     // Authentification api call
-                    var login = uweR70_Get.LoginAsync(baseData, new UweR70_Get.LoginBody
+                    var login = uweR70_Get.LoginAsync(baseData, new LoginBody
                     {
                         email = email,
                         password = password
@@ -196,6 +196,7 @@ namespace Blink.Classes
                         if (!File.Exists(videoPathAndFileName))
                         {
                             var videoByteArray = uweR70_Get.VideoAsync(baseData, changedMedia.media[i].media).Result;
+                            mediaIdListBody.media_list.Add(changedMedia.media[i].id);
                             File.WriteAllBytes(videoPathAndFileName, videoByteArray);
                             counterDownloaded++;
                             AdjustInfo(form, common, $"\tDownloaded #{counterDownloaded - 1}.", $"\tDownloaded #{counterDownloaded}.");
