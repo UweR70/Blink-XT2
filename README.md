@@ -135,7 +135,6 @@ Sorry, figured currently not out how to add these packages to the repository:<br
     'Accord', 'Accord.Video', 'Accord.Video.FFMPEG'
   </li>
 </ul>
- 
 Shame on me ...<br>
 Follow these steps to fix this (in Visual Studio):
 <ul>
@@ -195,8 +194,8 @@ Follow these steps to fix this (in Visual Studio):
     <br>
   </li>
   <li>
-    While 'InitAndDownload.cs' contains the fully developed functionality to login and download all videos and thumbnails<br>
-    for all networks, is 'Quicktest.cs' meant as demonstration how to use/feed the API calls.<br> 
+    While 'InitAndDownload.cs' (<a href="https://github.com/UweR70/Blink-XT2/blob/master/Blink-XT2/Classes/InitAndDownload.cs" target="_blank">link</a>) contains the fully developed functionality to login and download all videos and thumbnails<br>
+    for all networks, is 'Quicktest.cs' (<a href="https://github.com/UweR70/Blink-XT2/blob/master/Blink-XT2/Classes/Quicktest.cs" target="_blank">link</a>)meant as demonstration how to use/feed the API calls.<br> 
     <br>
     The tabPage 'InitSummary' <i>plays</i> a little bit with the gathered login, network, camera, video and thumbnail data.<br>
     <br>
