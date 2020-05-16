@@ -82,14 +82,12 @@ var syncModules = uweR70_Get.SyncModulesAsync(minData).Result;
 <br>
 </li><!-- ##### Close ##### -->
 <li> <!-- ##### Open  ##### -->
-Furthermore it contains a "documentation" class providing <b>all</b> API calls (incl. the therefore needed URLs) of the original Blink mobile phone app.
+Furthermore it contains a "documentation" class providing <a href="https://github.com/UweR70/Blink-XT2/wiki/All-original-Blink-URIs">all original API calls</a><br>
+(incl. the therefore needed URLs) of the <a href="https://play.google.com/store/apps/details?id=com.immediasemi.android.blink&gl=US"> original Blink mobile phone app</a>.<br>
 <br>
 Script kiddies will love it.<br>
 <br>
-Details:<br>
-<a href="https://github.com/UweR70/Blink-XT2/wiki/All-original-Blink-URIs" target="_blank">All original Blink URIs</a><br>
-  <br>
-Example (login in most requested):<br>
+Login example as follows because it is most requested:<br>
 <pre><code>
 ...
 @POST("https://rest-{tier}.immedia-semi.com/api/v4/account/login")
@@ -122,8 +120,8 @@ This tutorial demonstrates step-by-step how to get the original Blink mobile pho
 
 # How to install, compile and run
 Good news first:<br>
-<a href="https://github.com/UweR70/Blink-XT2/blob/master/Blink-XT2/Compiled_Versions/UweR70_Blink-XT2_V_0.10.7z" target="_blank">Here</a><br>
-you will find a ziped but runable setup.exe (version 0.10).<br>
+<a href="https://github.com/UweR70/Blink-XT2/blob/master/Blink-XT2/Compiled_Versions/UweR70_Blink-XT2_V_0.11.7z" target="_blank">Here</a><br>
+you will find a ziped but runable setup.exe (version 0.11).<br>
 <br>
 The bad news:<br>
 Sorry, figured currently not out how to add these packages to the repository:<br>
