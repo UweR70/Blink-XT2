@@ -22,6 +22,7 @@ This app is capable of
     take a snapshot/thumbnail every x seconds and <b>to create a video from these.</b> 
   </li>
 </ul>
+<br>
 </li><!-- ##### Close ##### -->
 <li> <!-- ##### Open  ##### -->
 The most important API calls are fully developed and ready to use. Out-of-the box!<br>
@@ -43,6 +44,7 @@ Like:
     etc.    
   </li>
 </ul>
+<br>
 </li><!-- ##### Close ##### -->
 <li> <!-- ##### Open  ##### -->
 Demo implementations like the following are available; see <a href="https://github.com/UweR70/Blink-XT2/blob/master/Blink-XT2/Classes/Quicktest.cs" target="_blank">Quicktest.cs</a>.
@@ -102,11 +104,13 @@ Observable<LoginResponse> login(@Body LoginBody paramLoginBody, @Path("tier") St
 Call<LoginResponse> loginCall(@Body LoginBody paramLoginBody, @Path("tier") String paramString);
 ...
 </code></pre>
+<br>
 </li><!-- ##### Close ##### -->
 <li> <!-- ##### Open  ##### -->
 My wiki contains a 
 <a href="https://github.com/UweR70/Blink-XT2/wiki/Tutorial:-How-to-decompile-an-apk%3Fi" target="_blank">Tutorial: How to decompile an apk?</a><br>
-This tutorial demonstrates step-by-step how to get the original Blink mobile phone app <b>code</b> - which also contains the API calls mentioned above.
+This tutorial demonstrates step-by-step how to get the original Blink mobile phone app <b>code</b> - which also contains the API calls mentioned above.<br>
+<br>
 </li><!-- ##### Close ##### -->
 </ul>
 Enjoy.
