@@ -8,7 +8,9 @@ But do not worry: All versions are fully functional - hopefully ;-)<br>
 <br>
 <br>
 # Blink-XT2
-Blink (XT2) Win 10 / C# application to 
+Blink (XT2) Win 10 / C # application that still works after the last Blink changes of May 11, 2020.<br>
+<br>
+This app is capable of 
 <ul>
   <li>
     download all videos and the thumbnails from each camera of all networks.
@@ -17,12 +19,9 @@ Blink (XT2) Win 10 / C# application to
     take a snapshot/thumbnail every x seconds and <b>to create a video from these.</b> 
   </li>
 </ul>
-See my <a href="https://github.com/UweR70/Blink-XT2/wiki">wiki site</a> to get a visual impression.<br>
+
 <br>
-<b>Also, be aware that Blink emailed me on May 5, 2020, stating that I am using an deprecated login method that will no longer work after May 11, 2020.</b> :-(<br>
-<br>
-Plus:<br>
-All currently known Blink (XT2) API calls are fully developed and ready to use. Out-of-the box.<br>
+The most important API calls are fully developed and ready to use. Out-of-the box!<br>
 Like:
 <ul>
   <li>
@@ -41,7 +40,9 @@ Like:
     etc.    
   </li>
 </ul>
-A demo implementation like ...
+
+
+Demo implementations like the following are available; see "Quicktest.cs".
 <pre><code>
 ...
 var commandArm = uweR70_FireCommand.ArmAsync(minData).Result;
@@ -74,8 +75,18 @@ var regions = uweR70_Get.RegionsAsync(baseData).Result;
 var syncModules = uweR70_Get.SyncModulesAsync(minData).Result;
 ...
 </code></pre>
-... is for each API call available; see "Quicktest.cs".<br>
+
 <br>
+
+
+
+Furthermore it contains a "documentation" class providing <b>all</b> API calls of the original Blink mobile phone app.<br>
+Please see
+
+See my <a href="https://github.com/UweR70/Blink-XT2/wiki">wiki site</a> to get a visual impression.<br>
+<br>
+
+
 Enjoy.<br>
 
 # Foreword
