@@ -18,7 +18,23 @@ This repository contains three parts:
    Like:
     <ul>
       <li>
-        <a href="https://github.com/UweR70/Blink-XT2/wiki/All-original-Blink-URIs">All original Blink URIs.</a>
+        <a href="https://github.com/UweR70/Blink-XT2/wiki/All-original-Blink-URIs">All original Blink URIs.</a><br>
+        Furthermore it contains a "documentation" class providing <a href="https://github.com/UweR70/Blink-XT2/wiki/All-original-Blink-URIs">all original API calls</a><br>
+(incl. the therefore needed URLs) of the <a href="https://play.google.com/store/apps/details?id=com.immediasemi.android.blink&gl=US"> original Blink mobile phone app</a>.<br>
+        <br>
+        Script kiddies will love it.<br>
+        <br>
+        Login example as follows because it is most requested:<br>
+        <pre><code>
+        ...
+        @POST("https://rest-{tier}.immedia-semi.com/api/v4/account/login")
+        Observable<LoginResponse> login(@Body LoginBody paramLoginBody, @Path("tier") String paramString);
+        <br>
+        @POST("https://rest-{tier}.immedia-semi.com/api/v4/account/login")
+        Call<LoginResponse> loginCall(@Body LoginBody paramLoginBody, @Path("tier") String paramString);
+        ...
+        </code></pre>
+        <br>
       </li>
       <li>
         <a href="https://github.com/UweR70/Blink-XT2/wiki/Tutorial:-How-to-decompile-an-apk%3F">Tutorial: How to decompile an apk?</a><br>
@@ -124,22 +140,7 @@ var test = uweR70_PostCallWithNonEmptyBody.DeleteMediaCall(baseData, mediaIdLIst
 <br>
 </li><!-- ##### Close ##### -->
 <li> <!-- ##### Open  ##### -->
-Furthermore it contains a "documentation" class providing <a href="https://github.com/UweR70/Blink-XT2/wiki/All-original-Blink-URIs">all original API calls</a><br>
-(incl. the therefore needed URLs) of the <a href="https://play.google.com/store/apps/details?id=com.immediasemi.android.blink&gl=US"> original Blink mobile phone app</a>.<br>
-<br>
-Script kiddies will love it.<br>
-<br>
-Login example as follows because it is most requested:<br>
-<pre><code>
-...
-@POST("https://rest-{tier}.immedia-semi.com/api/v4/account/login")
-Observable<LoginResponse> login(@Body LoginBody paramLoginBody, @Path("tier") String paramString);
-<br>
-@POST("https://rest-{tier}.immedia-semi.com/api/v4/account/login")
-Call<LoginResponse> loginCall(@Body LoginBody paramLoginBody, @Path("tier") String paramString);
-...
-</code></pre>
-<br>
+
 </li><!-- ##### Close ##### -->
 <li> <!-- ##### Open  ##### -->
 My wiki contains a 
