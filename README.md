@@ -135,7 +135,6 @@ var mediaIdLIstBody = new MediaIdListBody
 var test = uweR70_PostCallWithNonEmptyBody.DeleteMediaCall(baseData, mediaIdLIstBody);
 ...
 </code></pre>
-<br>
 </li><!-- ##### Close ##### -->
 </ul>
 
