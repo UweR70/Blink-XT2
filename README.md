@@ -5,7 +5,7 @@ Blink (XT2) Win 10 / C # application that still works after the last Blink chang
 This repository contains three parts:
 <ul>
   <li>
-    The complete C# code of my application (see <a href="https://github.com/UweR70/Blink-XT2/blob/master/README.md#details">Detials</a>).<br>
+    The complete C# code of my application (see <a href="https://github.com/UweR70/Blink-XT2/blob/master/README.md#details">Details</a>).<br>
     <br>
   </li>
   <li>
