@@ -106,7 +106,7 @@
     <Compile Include="Classes\Blink\BlinkSyncModules.cs" />
     <Compile Include="Classes\Common.cs" />
     <Compile Include="Classes\Config.cs" />
-    <Compile Include="Classes\ImageToVideo.cs" />
+    <Compile Include="Classes\ImagesToVideo.cs" />
     <Compile Include="Classes\InitAndDownload.cs" />
     <Compile Include="Classes\Blink\Bodies\MediaIdListBody.cs" />
     <Compile Include="Classes\Quicktest.cs" />
