@@ -5,12 +5,12 @@ Blink (XT2) Win 10 / C # application that still works after the last Blink chang
 This repository contains three parts:
 <ul>
   <li>
-    The complete C# code of my application (see <a href="https://github.com/UweR70/Blink-XT2/blob/master/README.md#details">Details</a>).<br>
+    The complete C# code of my application (see <a href="https://github.com/UweR70/Blink-XT2/blob/master/README.md#details"  target="_blank">Details</a>).<br>
     <br>
   </li>
   <li>
     The latest runable version of my application.<br>
-    <a href="https://github.com/UweR70/Blink-XT2/blob/master/Blink-XT2/Compiled_Versions/UweR70_Blink-XT2_V_0.12.7z">Click here to go directly to the latest and zipped setup.exe, verison 0.12.</a><br>
+    <a href="https://github.com/UweR70/Blink-XT2/blob/master/Blink-XT2/Compiled_Versions/UweR70_Blink-XT2_V_0.12.7z"  target="_blank">Click here to go directly to the latest and zipped setup.exe, verison 0.12.</a><br>
     <br>
   </li>
   <li>
@@ -18,8 +18,8 @@ This repository contains three parts:
    Like:
     <ul>
       <li>
-        A "documentation" class providing <a href="https://github.com/UweR70/Blink-XT2/wiki/All-original-Blink-URIs">all original API calls</a> (incl. the therefore needed URLs)<br>
-        of the <a href="https://play.google.com/store/apps/details?id=com.immediasemi.android.blink&gl=US">original Blink mobile phone app</a>.<br>
+        A "documentation" class providing <a href="https://github.com/UweR70/Blink-XT2/wiki/All-original-Blink-URIs" target="_blank">all original API calls</a> (incl. the therefore needed URLs)<br>
+        of the <a href="https://play.google.com/store/apps/details?id=com.immediasemi.android.blink&gl=US" target="_blank">original Blink mobile phone app</a>.<br>
         <br>
         Script kiddies will love it.<br>
         <br>
@@ -36,7 +36,7 @@ This repository contains three parts:
         <br>
       </li>
       <li>
-        A <a href="https://github.com/UweR70/Blink-XT2/wiki/Tutorial:-How-to-decompile-an-apk%3F">Tutorial: How to decompile an apk?</a> that demonstrates step-by-step how to get the <b>code</b><br>
+        A <a href="https://github.com/UweR70/Blink-XT2/wiki/Tutorial:-How-to-decompile-an-apk%3F" target="_blank">Tutorial: How to decompile an apk?</a> that demonstrates step-by-step how to get the <b>code</b><br>
         from the <b>original Blink mobile phone app</b> - which also contains the API calls mentioned above.<br>
       </li>
     </ul>
@@ -235,7 +235,7 @@ Follow these steps to fix this (in Visual Studio):<br>
     Everything you need is provided in a well set instance of the class 'BaseData'.<br>
     <br>
     Advise:<br>
-    Search in 'Form1.cs' for ...
+    Search in 'Form1.cs' (<a href="https://github.com/UweR70/Blink-XT2/blob/master/Blink-XT2/Form1.cs" target="_blank">link</a>) for ...
     <pre><code>
     // ToDo: Do NOT remove this "ToDo" line and add here a "SetTabPage_xx_Values(BaseData);" method call in case a new tabPage is added to "tabControl0"!
     </code></pre>
@@ -245,10 +245,10 @@ Follow these steps to fix this (in Visual Studio):<br>
   </li>
   <li>
     How do I get the 'Classes.Blink.<i>xxy</i>.cs' classes (<a href="https://github.com/UweR70/Blink-XT2/tree/master/Blink-XT2/Classes/Blink" target="_blank">link</a>)<br>
-    like 'Classes.Blink.CameraStatus.cs' <a href="https://github.com/UweR70/Blink-XT2/blob/master/Blink-XT2/Classes/Blink/CameraStatus.cs">(link)</a>, 'Classes.Blink.HomescreenV3' <a href="https://github.com/UweR70/Blink-XT2/blob/master/Blink-XT2/Classes/Blink/HomescreenV3.cs">(link)</a>, etc.?<br>
+    like 'Classes.Blink.CameraStatus.cs' <a href="https://github.com/UweR70/Blink-XT2/blob/master/Blink-XT2/Classes/Blink/CameraStatus.cs" target="_blank">(link)</a>, 'Classes.Blink.HomescreenV3' <a href="https://github.com/UweR70/Blink-XT2/blob/master/Blink-XT2/Classes/Blink/HomescreenV3.cs">(link)</a>, etc.?<br>
     <br>
     Example:<br>
-    Open 'Classes.Blink.UweR70_PostCallWithNonEmptyBody.cs' (<a href="https://github.com/UweR70/Blink-XT2/blob/master/Blink-XT2/Classes/UweR70_PostCallWithNonEmptyBody.cs"  target="_blank">link</a>) and serach for the method 'LoginAsync(...)' ... <br>
+    Open 'Classes.Blink.UweR70_PostCallWithNonEmptyBody.cs' (<a href="https://github.com/UweR70/Blink-XT2/blob/master/Blink-XT2/Classes/UweR70_PostCallWithNonEmptyBody.cs" target="_blank">link</a>) and serach for the method 'LoginAsync(...)' ... <br>
     <pre><code>
     public async Task&lt;LoginResponse&gt; LoginAsync(BaseData baseData, LoginBody loginBody)
     {
