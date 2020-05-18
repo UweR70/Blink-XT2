@@ -235,7 +235,7 @@ Follow these steps to fix this (in Visual Studio):
     like 'Classes.Blink.CameraStatus.cs', 'Classes.Blink.HomescreenV3', etc.?<br>
     <br>
     Example:<br>
-    Open 'Classes.Blink.UweR70_Get.cs' (<a href="https://github.com/UweR70/Blink-XT2/blob/master/Blink-XT2/Classes/UweR70_Get.cs"  target="_blank">link</a>) and serach for the method 'LoginAsync(...)' ... <br>
+    Open 'Classes.Blink.UweR70_PostCallWithNonEmptyBody.cs' (<a href="https://github.com/UweR70/Blink-XT2/blob/master/Blink-XT2/Classes/UweR70_PostCallWithNonEmptyBody.cs"  target="_blank">link</a>) and serach for the method 'LoginAsync(...)' ... <br>
     <pre><code>
     public async Task&lt;LoginResponse&gt; LoginAsync(BaseData baseData, LoginBody loginBody)
     {
