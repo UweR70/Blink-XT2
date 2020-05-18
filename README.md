@@ -35,7 +35,7 @@ Like:
     Enable / disable motion detection per camera.
   </li>
   <li>
-    plus 20+ more
+    plus 15+ more
   </li>
 </ul>
 <br>
