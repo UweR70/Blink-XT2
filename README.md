@@ -46,9 +46,11 @@ Demo implementations like the following are available; see <a href="https://gith
 ...
 var network = uweR70_Get.BatteryUssageAsync(baseData).Result;
 var changedMedia = uweR70_Get.ChangedMediaAsync(baseData, 0).Result;
-<br>            
 var cameraStatus = uweR70_Get.CameraStatusAsync(minData).Result;
 var signalStrength = uweR70_Get.SignalStrengthAsync(minData).Result;
+var homescreenV3 = uweR70_Get.HomescreenV3Async(baseData).Result;
+var quickRegionInfo = uweR70_Get.QuickRegionInfoAsync(baseData).Result;
+var syncModules = uweR70_Get.SyncModulesAsync(minData).Result;
 <br>
 var events = uweR70_Get.EventsAsync(minData).Result;
 var typeList = new[] { "first_boot", "battery", "armed", "disarmed", "scheduled_arm", "scheduled_disarm", "heartbeat", "sm_offline" };
@@ -60,10 +62,6 @@ for (int i = 0; i < typeList.Length; i++)
     count = blinkEvents.Length;
 }
 <br>
-var homescreenV3 = uweR70_Get.HomescreenV3Async(baseData).Result;
-var quickRegionInfo = uweR70_Get.QuickRegionInfoAsync(baseData).Result;
-var syncModules = uweR70_Get.SyncModulesAsync(minData).Result;
-<br>
 <br>
 var thumbnailImage = uweR70_GetData.ThumbnailImageAsync(minData, "<enter valid data here>").Result;
 var video = uweR70_GetData.VideoAsync(baseData, "<enter valid data here>").Result;
@@ -71,13 +69,10 @@ var video = uweR70_GetData.VideoAsync(baseData, "<enter valid data here>").Resul
 <br>
 var commandArm = uweR70_PostCallWithEmptyBody.CommandArmDisarmAsync(minData, UweR70_PostCallWithEmptyBody.ArmDisarm.arm).Result;
 var commandDisarm = uweR70_PostCallWithEmptyBody.CommandArmDisarmAsync(minData, UweR70_PostCallWithEmptyBody.ArmDisarm.disarm).Result;
-<br>
 var commandMotionDetectionEnable = uweR70_PostCallWithEmptyBody.CommandMotionDetectionAsync(minData, UweR70_PostCallWithEmptyBody.MotionDetection.enable).Result;
 var commandMotionDetectionDisable = uweR70_PostCallWithEmptyBody.CommandMotionDetectionAsync(minData, UweR70_PostCallWithEmptyBody.MotionDetection.disable).Result;
-<br>            
 var commandClip = uweR70_PostCallWithEmptyBody.CommandClipAsync(minData).Result;
 var commandThumbnail = uweR70_PostCallWithEmptyBody.CommandThumbnailAsync(minData).Result;
-<br>
 <br>
 var login = uweR70_PostCallWithNonEmptyBody.LoginAsync(baseData, new LoginBody
 {
@@ -89,7 +84,7 @@ var mediaIdLIstBody = new MediaIdListBody
 {
     media_list = new List<long>(new long[] { 12345678, 23456789 })  // Example values
 };
-var test = uweR70_PostCallWithNonEmptyBody.DeleteMediaCall(baseData, mediaIdLIstBody);           
+var test = uweR70_PostCallWithNonEmptyBody.DeleteMediaCall(baseData, mediaIdLIstBody);
 ...
 </code></pre>
 <br>
