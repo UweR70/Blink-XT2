@@ -15,7 +15,15 @@ This repository contains three parts:
   </li>
   <li>
    A wiki that contains more (detailed) information than this landing page.<br>
-   See ...
+   Like:
+    <ul>
+      <li>
+        <a href="https://github.com/UweR70/Blink-XT2/wiki/All-original-Blink-URIs">All original Blink URIs.</a>
+      </li>
+      <li>
+        <a href="https://github.com/UweR70/Blink-XT2/wiki/Tutorial:-How-to-decompile-an-apk%3F">Tutorial: How to decompile an apk?</a>
+      </li>
+    </ul>
    <br>
   </li>
 </ul>
