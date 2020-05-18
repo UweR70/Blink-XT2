@@ -44,6 +44,11 @@ Like:
 Demo implementations like the following are available; see <a href="https://github.com/UweR70/Blink-XT2/blob/master/Blink-XT2/Classes/Quicktest.cs" target="_blank">Quicktest.cs</a>.
 <pre><code>
 ...
+var uweR70_Get = new UweR70_Get();
+var uweR70_GetData = new UweR70_GetData();
+var uweR70_PostCallWithEmptyBody = new UweR70_PostCallWithEmptyBody();
+var uweR70_PostCallWithNonEmptyBody = new UweR70_PostCallWithNonEmptyBody();
+....            
 var network = uweR70_Get.BatteryUssageAsync(baseData).Result;
 var changedMedia = uweR70_Get.ChangedMediaAsync(baseData, 0).Result;
 var cameraStatus = uweR70_Get.CameraStatusAsync(minData).Result;
