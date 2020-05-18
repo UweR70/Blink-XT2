@@ -42,9 +42,11 @@ namespace Blink.Classes
             
             var network = uweR70_Get.BatteryUssageAsync(baseData).Result;
             var changedMedia = uweR70_Get.ChangedMediaAsync(baseData, 0).Result;
-            
             var cameraStatus = uweR70_Get.CameraStatusAsync(minData).Result;
             var signalStrength = uweR70_Get.SignalStrengthAsync(minData).Result;
+            var homescreenV3 = uweR70_Get.HomescreenV3Async(baseData).Result;
+            var quickRegionInfo = uweR70_Get.QuickRegionInfoAsync(baseData).Result;
+            var syncModules = uweR70_Get.SyncModulesAsync(minData).Result;
 
             var events = uweR70_Get.EventsAsync(minData).Result;
             var typeList = new[] { "first_boot", "battery", "armed", "disarmed", "scheduled_arm", "scheduled_disarm", "heartbeat", "sm_offline" };
@@ -56,10 +58,6 @@ namespace Blink.Classes
                 count = blinkEvents.Length;
             }
 
-            var homescreenV3 = uweR70_Get.HomescreenV3Async(baseData).Result;
-            var quickRegionInfo = uweR70_Get.QuickRegionInfoAsync(baseData).Result;
-            var syncModules = uweR70_Get.SyncModulesAsync(minData).Result;
-
 
             var thumbnailImage = uweR70_GetData.ThumbnailImageAsync(minData, "<enter valid data here>").Result;
             var video = uweR70_GetData.VideoAsync(baseData, "<enter valid data here>").Result;
@@ -67,13 +65,10 @@ namespace Blink.Classes
 
             var commandArm = uweR70_PostCallWithEmptyBody.CommandArmDisarmAsync(minData, UweR70_PostCallWithEmptyBody.ArmDisarm.arm).Result;
             var commandDisarm = uweR70_PostCallWithEmptyBody.CommandArmDisarmAsync(minData, UweR70_PostCallWithEmptyBody.ArmDisarm.disarm).Result;
-
             var commandMotionDetectionEnable = uweR70_PostCallWithEmptyBody.CommandMotionDetectionAsync(minData, UweR70_PostCallWithEmptyBody.MotionDetection.enable).Result;
             var commandMotionDetectionDisable = uweR70_PostCallWithEmptyBody.CommandMotionDetectionAsync(minData, UweR70_PostCallWithEmptyBody.MotionDetection.disable).Result;
-            
             var commandClip = uweR70_PostCallWithEmptyBody.CommandClipAsync(minData).Result;
             var commandThumbnail = uweR70_PostCallWithEmptyBody.CommandThumbnailAsync(minData).Result;
-
 
             var login = uweR70_PostCallWithNonEmptyBody.LoginAsync(baseData, new LoginBody
             {

@@ -765,7 +765,7 @@ namespace Blink
 
                 if (p2_checkBox_CreateVideo.Checked)
                 {
-                    new ImageToVideo().Convert(this, 
+                    new ImagesToVideo().Convert(this, 
                         SnapshotInstance.BaseStoragePathSnapshot,
                         (int)p2_numericUpDown_FrameRate.Value
                     );

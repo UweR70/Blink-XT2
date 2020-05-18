@@ -26,7 +26,7 @@ using System.IO;
 
 namespace Blink.Classes
 {
-    public class ImageToVideo
+    public class ImagesToVideo
     {
         public void Convert(Form1 form, string pathToTheImages, int frameRate)
         {
@@ -49,7 +49,6 @@ namespace Blink.Classes
             form.SetP2TxtBoxInfoText($"\twill the video be have a length of around ({images.Length} / {frameRate} =) {divisionResult:N2} seconds.");
             form.SetP2TxtBoxInfoText(string.Empty);
             form.SetP2TxtBoxInfoText("Searching for the smallest image dimensions ...");
-            //will the video be have a length of 35 seconds
 
             for (int i = 0; i < images.Length; i++)
             {
