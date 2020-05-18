@@ -160,6 +160,7 @@ Sorry, I figured currently not out how to add these packages to the repository:<
   </li>
 </ul>
 Shame on me ...<br>
+<br>
 Follow these steps to fix this (in Visual Studio):
 <ul>
   <li>
