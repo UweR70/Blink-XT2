@@ -24,7 +24,7 @@ namespace Blink.Classes
             // @POST("https://rest-{tier}.immedia-semi.com/api/v1/accounts/{accountId}/networks/{networkId}/state/{type}")
             // Observable<Command> armDisarmNetwork(@Path("tier") String paramString1, @Path("accountId") long paramLong1, @Path("networkId") long paramLong2, @Path("type") String paramString2);
             var uri = $"https://rest-{minData.RegionTier}.immedia-semi.com/network/{minData.NetworkId}/{armDisarm}";
-            var retString = await FirePostCallWithEmptyBodyAsync(uri, minData);
+            var retString = await FirePostCallWithEmptyBodyAsync(uri, minData.AuthToken);
             var ret = JsonConvert.DeserializeObject<CommandArmDisarm>(retString);
             return ret;
         }
@@ -32,7 +32,7 @@ namespace Blink.Classes
         public async Task<CommandMotionDetection> CommandMotionDetectionAsync(MinimumData minData, MotionDetection blinkMotionDetection)
         {
             var uri = $"https://rest-{minData.RegionTier}.immedia-semi.com/network/{minData.NetworkId}/camera/{minData.CameraId}/{blinkMotionDetection}";
-            var retString = await FirePostCallWithEmptyBodyAsync(uri, minData);
+            var retString = await FirePostCallWithEmptyBodyAsync(uri, minData.AuthToken);
             var ret = JsonConvert.DeserializeObject<CommandMotionDetection>(retString);
             return ret;
         }
@@ -44,7 +44,7 @@ namespace Blink.Classes
         public async Task<CommandClip> CommandClipAsync(MinimumData minData)
         {
             var uri = $"https://rest-{minData.RegionTier}.immedia-semi.com/network/{minData.NetworkId}/camera/{minData.CameraId}/clip";
-            var retString = await FirePostCallWithEmptyBodyAsync(uri, minData);
+            var retString = await FirePostCallWithEmptyBodyAsync(uri, minData.AuthToken);
             var ret = JsonConvert.DeserializeObject<CommandClip>(retString);
             return ret;
         }
@@ -54,16 +54,16 @@ namespace Blink.Classes
             //  @POST("https://rest-{tier}.immedia-semi.com/network/{network}/camera/{camera}/thumbnail")
             //  Observable<Command> takeThumbnail(@Path("tier") String paramString, @Path("network") long paramLong1, @Path("camera") long paramLong2);
             var uri = $"https://rest-{minData.RegionTier}.immedia-semi.com/network/{minData.NetworkId}/camera/{minData.CameraId}/thumbnail";
-            var retString = await FirePostCallWithEmptyBodyAsync(uri, minData);
+            var retString = await FirePostCallWithEmptyBodyAsync(uri, minData.AuthToken);
             var ret = JsonConvert.DeserializeObject<CommandThumbnail>(retString);
             return ret;
         }
 
-        public async Task<string> FirePostCallWithEmptyBodyAsync(string uri, MinimumData minData)
+        public async Task<string> FirePostCallWithEmptyBodyAsync(string uri, string authToken)
         {
             using (var client = new HttpClient())
             {
-                client.DefaultRequestHeaders.Add("TOKEN_AUTH", minData.AuthToken);
+                client.DefaultRequestHeaders.Add("TOKEN_AUTH", authToken);
 
                 var response = client.PostAsync(uri, null);
                 response.Result.EnsureSuccessStatusCode();      // When, then this command raises the error.
