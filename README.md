@@ -26,7 +26,7 @@ Like:
     Take a snapshot (thumbnail) / download it.
   </li>
   <li>
-    Record a video / download videos.
+    Record / download / delete videos.
   </li>
   <li>
     Arm / disarm a complete (Blink) network.
@@ -35,7 +35,7 @@ Like:
     Enable / disable motion detection per camera.
   </li>
   <li>
-    etc.    
+    plus 20+ more
   </li>
 </ul>
 <br>
