@@ -38,10 +38,8 @@ This repository contains three parts:
       <li>
         A <a href="https://github.com/UweR70/Blink-XT2/wiki/Tutorial:-How-to-decompile-an-apk%3F">Tutorial: How to decompile an apk?</a><br>
         that demonstrates step-by-step how to get the <b>code</b> of the <b>original Blink mobile phone app</b> - which also contains the API calls mentioned above.<br>
-        <br>
       </li>
     </ul>
-   <br>
   </li>
 </ul>
 
