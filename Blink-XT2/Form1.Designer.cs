@@ -116,7 +116,7 @@
             // p0_btn_Start
             // 
             this.p0_btn_Start.Location = new System.Drawing.Point(458, 159);
-            this.p0_btn_Start.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.p0_btn_Start.Margin = new System.Windows.Forms.Padding(4);
             this.p0_btn_Start.Name = "p0_btn_Start";
             this.p0_btn_Start.Size = new System.Drawing.Size(211, 42);
             this.p0_btn_Start.TabIndex = 6;
@@ -131,7 +131,7 @@
             this.p0_checkBox_AreYouInGermany.Checked = true;
             this.p0_checkBox_AreYouInGermany.CheckState = System.Windows.Forms.CheckState.Checked;
             this.p0_checkBox_AreYouInGermany.Location = new System.Drawing.Point(26, 166);
-            this.p0_checkBox_AreYouInGermany.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.p0_checkBox_AreYouInGermany.Margin = new System.Windows.Forms.Padding(4);
             this.p0_checkBox_AreYouInGermany.Name = "p0_checkBox_AreYouInGermany";
             this.p0_checkBox_AreYouInGermany.Size = new System.Drawing.Size(222, 29);
             this.p0_checkBox_AreYouInGermany.TabIndex = 5;
@@ -142,7 +142,7 @@
             // p0_txtBox_Email
             // 
             this.p0_txtBox_Email.Location = new System.Drawing.Point(26, 44);
-            this.p0_txtBox_Email.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.p0_txtBox_Email.Margin = new System.Windows.Forms.Padding(4);
             this.p0_txtBox_Email.Name = "p0_txtBox_Email";
             this.p0_txtBox_Email.Size = new System.Drawing.Size(318, 29);
             this.p0_txtBox_Email.TabIndex = 1;
@@ -171,7 +171,7 @@
             // p0_txtBox_Password
             // 
             this.p0_txtBox_Password.Location = new System.Drawing.Point(352, 44);
-            this.p0_txtBox_Password.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.p0_txtBox_Password.Margin = new System.Windows.Forms.Padding(4);
             this.p0_txtBox_Password.Name = "p0_txtBox_Password";
             this.p0_txtBox_Password.PasswordChar = '*';
             this.p0_txtBox_Password.Size = new System.Drawing.Size(318, 29);
@@ -181,7 +181,7 @@
             // p0_txtBox_Info
             // 
             this.p0_txtBox_Info.Location = new System.Drawing.Point(26, 209);
-            this.p0_txtBox_Info.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.p0_txtBox_Info.Margin = new System.Windows.Forms.Padding(4);
             this.p0_txtBox_Info.Multiline = true;
             this.p0_txtBox_Info.Name = "p0_txtBox_Info";
             this.p0_txtBox_Info.ReadOnly = true;
@@ -203,7 +203,7 @@
             // p0_txtBox_SaveDirectory
             // 
             this.p0_txtBox_SaveDirectory.Location = new System.Drawing.Point(26, 116);
-            this.p0_txtBox_SaveDirectory.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.p0_txtBox_SaveDirectory.Margin = new System.Windows.Forms.Padding(6);
             this.p0_txtBox_SaveDirectory.Name = "p0_txtBox_SaveDirectory";
             this.p0_txtBox_SaveDirectory.ReadOnly = true;
             this.p0_txtBox_SaveDirectory.Size = new System.Drawing.Size(426, 29);
@@ -217,7 +217,7 @@
             this.tabControl0.Controls.Add(this.tabControl0_tabPage2_Snapshots);
             this.tabControl0.Controls.Add(this.tabControl0_tabPage99_Quicktest);
             this.tabControl0.Location = new System.Drawing.Point(13, 13);
-            this.tabControl0.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.tabControl0.Margin = new System.Windows.Forms.Padding(4);
             this.tabControl0.Name = "tabControl0";
             this.tabControl0.SelectedIndex = 0;
             this.tabControl0.Size = new System.Drawing.Size(2237, 1159);
@@ -238,9 +238,9 @@
             this.tabControl0_tabPage0_InitAndDownload.Controls.Add(this.p0_txtBox_Password);
             this.tabControl0_tabPage0_InitAndDownload.Controls.Add(this.lbl_Password);
             this.tabControl0_tabPage0_InitAndDownload.Location = new System.Drawing.Point(4, 33);
-            this.tabControl0_tabPage0_InitAndDownload.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.tabControl0_tabPage0_InitAndDownload.Margin = new System.Windows.Forms.Padding(4);
             this.tabControl0_tabPage0_InitAndDownload.Name = "tabControl0_tabPage0_InitAndDownload";
-            this.tabControl0_tabPage0_InitAndDownload.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.tabControl0_tabPage0_InitAndDownload.Padding = new System.Windows.Forms.Padding(4);
             this.tabControl0_tabPage0_InitAndDownload.Size = new System.Drawing.Size(2229, 1122);
             this.tabControl0_tabPage0_InitAndDownload.TabIndex = 0;
             this.tabControl0_tabPage0_InitAndDownload.Text = "Init and Download";
@@ -263,7 +263,7 @@
             // p0_btn_SelectSavePath
             // 
             this.p0_btn_SelectSavePath.Location = new System.Drawing.Point(458, 111);
-            this.p0_btn_SelectSavePath.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.p0_btn_SelectSavePath.Margin = new System.Windows.Forms.Padding(4);
             this.p0_btn_SelectSavePath.Name = "p0_btn_SelectSavePath";
             this.p0_btn_SelectSavePath.Size = new System.Drawing.Size(211, 42);
             this.p0_btn_SelectSavePath.TabIndex = 4;
@@ -303,9 +303,9 @@
             this.tabControl0_tabPage1_InitSummary.Controls.Add(this.label3);
             this.tabControl0_tabPage1_InitSummary.Controls.Add(this.p1_txtBox_Email);
             this.tabControl0_tabPage1_InitSummary.Location = new System.Drawing.Point(4, 33);
-            this.tabControl0_tabPage1_InitSummary.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.tabControl0_tabPage1_InitSummary.Margin = new System.Windows.Forms.Padding(4);
             this.tabControl0_tabPage1_InitSummary.Name = "tabControl0_tabPage1_InitSummary";
-            this.tabControl0_tabPage1_InitSummary.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.tabControl0_tabPage1_InitSummary.Padding = new System.Windows.Forms.Padding(4);
             this.tabControl0_tabPage1_InitSummary.Size = new System.Drawing.Size(2229, 1122);
             this.tabControl0_tabPage1_InitSummary.TabIndex = 1;
             this.tabControl0_tabPage1_InitSummary.Text = "Init Summary";
@@ -314,7 +314,7 @@
             // p1_pictureBox1
             // 
             this.p1_pictureBox1.Location = new System.Drawing.Point(1067, 44);
-            this.p1_pictureBox1.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.p1_pictureBox1.Margin = new System.Windows.Forms.Padding(6);
             this.p1_pictureBox1.Name = "p1_pictureBox1";
             this.p1_pictureBox1.Size = new System.Drawing.Size(1140, 982);
             this.p1_pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -324,7 +324,7 @@
             // p1_txtBox_PathAndFileNameVideos
             // 
             this.p1_txtBox_PathAndFileNameVideos.Location = new System.Drawing.Point(15, 480);
-            this.p1_txtBox_PathAndFileNameVideos.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.p1_txtBox_PathAndFileNameVideos.Margin = new System.Windows.Forms.Padding(6);
             this.p1_txtBox_PathAndFileNameVideos.Multiline = true;
             this.p1_txtBox_PathAndFileNameVideos.Name = "p1_txtBox_PathAndFileNameVideos";
             this.p1_txtBox_PathAndFileNameVideos.ReadOnly = true;
@@ -348,7 +348,7 @@
             this.p1_comboBox_Cameras.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.p1_comboBox_Cameras.FormattingEnabled = true;
             this.p1_comboBox_Cameras.Location = new System.Drawing.Point(15, 334);
-            this.p1_comboBox_Cameras.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.p1_comboBox_Cameras.Margin = new System.Windows.Forms.Padding(6);
             this.p1_comboBox_Cameras.Name = "p1_comboBox_Cameras";
             this.p1_comboBox_Cameras.Size = new System.Drawing.Size(512, 32);
             this.p1_comboBox_Cameras.TabIndex = 7;
@@ -367,7 +367,7 @@
             // p1_txtBox_PathAndFileNameThumbnail
             // 
             this.p1_txtBox_PathAndFileNameThumbnail.Location = new System.Drawing.Point(15, 408);
-            this.p1_txtBox_PathAndFileNameThumbnail.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.p1_txtBox_PathAndFileNameThumbnail.Margin = new System.Windows.Forms.Padding(6);
             this.p1_txtBox_PathAndFileNameThumbnail.Name = "p1_txtBox_PathAndFileNameThumbnail";
             this.p1_txtBox_PathAndFileNameThumbnail.ReadOnly = true;
             this.p1_txtBox_PathAndFileNameThumbnail.Size = new System.Drawing.Size(1038, 29);
@@ -388,7 +388,7 @@
             this.p1_comboBox_Networks.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.p1_comboBox_Networks.FormattingEnabled = true;
             this.p1_comboBox_Networks.Location = new System.Drawing.Point(15, 260);
-            this.p1_comboBox_Networks.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.p1_comboBox_Networks.Margin = new System.Windows.Forms.Padding(6);
             this.p1_comboBox_Networks.Name = "p1_comboBox_Networks";
             this.p1_comboBox_Networks.Size = new System.Drawing.Size(512, 32);
             this.p1_comboBox_Networks.TabIndex = 6;
@@ -407,7 +407,7 @@
             // p1_txtBox_RootStoragePath
             // 
             this.p1_txtBox_RootStoragePath.Location = new System.Drawing.Point(15, 188);
-            this.p1_txtBox_RootStoragePath.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.p1_txtBox_RootStoragePath.Margin = new System.Windows.Forms.Padding(6);
             this.p1_txtBox_RootStoragePath.Name = "p1_txtBox_RootStoragePath";
             this.p1_txtBox_RootStoragePath.ReadOnly = true;
             this.p1_txtBox_RootStoragePath.Size = new System.Drawing.Size(1038, 29);
@@ -426,7 +426,7 @@
             // p1_txtBox_AccountId
             // 
             this.p1_txtBox_AccountId.Location = new System.Drawing.Point(543, 116);
-            this.p1_txtBox_AccountId.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.p1_txtBox_AccountId.Margin = new System.Windows.Forms.Padding(6);
             this.p1_txtBox_AccountId.Name = "p1_txtBox_AccountId";
             this.p1_txtBox_AccountId.ReadOnly = true;
             this.p1_txtBox_AccountId.Size = new System.Drawing.Size(512, 29);
@@ -445,7 +445,7 @@
             // p1_txtBox_AuthToken
             // 
             this.p1_txtBox_AuthToken.Location = new System.Drawing.Point(15, 116);
-            this.p1_txtBox_AuthToken.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.p1_txtBox_AuthToken.Margin = new System.Windows.Forms.Padding(6);
             this.p1_txtBox_AuthToken.Name = "p1_txtBox_AuthToken";
             this.p1_txtBox_AuthToken.ReadOnly = true;
             this.p1_txtBox_AuthToken.Size = new System.Drawing.Size(512, 29);
@@ -464,7 +464,7 @@
             // p1_txtBox_Region
             // 
             this.p1_txtBox_Region.Location = new System.Drawing.Point(543, 44);
-            this.p1_txtBox_Region.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.p1_txtBox_Region.Margin = new System.Windows.Forms.Padding(6);
             this.p1_txtBox_Region.Name = "p1_txtBox_Region";
             this.p1_txtBox_Region.ReadOnly = true;
             this.p1_txtBox_Region.Size = new System.Drawing.Size(512, 29);
@@ -493,7 +493,7 @@
             // p1_txtBox_Email
             // 
             this.p1_txtBox_Email.Location = new System.Drawing.Point(15, 44);
-            this.p1_txtBox_Email.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.p1_txtBox_Email.Margin = new System.Windows.Forms.Padding(6);
             this.p1_txtBox_Email.Name = "p1_txtBox_Email";
             this.p1_txtBox_Email.ReadOnly = true;
             this.p1_txtBox_Email.Size = new System.Drawing.Size(512, 29);
@@ -533,7 +533,7 @@
             this.tabControl0_tabPage2_Snapshots.Controls.Add(this.label18);
             this.tabControl0_tabPage2_Snapshots.Controls.Add(this.p2_txtBox_Email);
             this.tabControl0_tabPage2_Snapshots.Location = new System.Drawing.Point(4, 33);
-            this.tabControl0_tabPage2_Snapshots.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.tabControl0_tabPage2_Snapshots.Margin = new System.Windows.Forms.Padding(4);
             this.tabControl0_tabPage2_Snapshots.Name = "tabControl0_tabPage2_Snapshots";
             this.tabControl0_tabPage2_Snapshots.Size = new System.Drawing.Size(2229, 1122);
             this.tabControl0_tabPage2_Snapshots.TabIndex = 3;
@@ -584,7 +584,7 @@
             0,
             0});
             this.p2_numericUpDown_FrameRate.Location = new System.Drawing.Point(55, 537);
-            this.p2_numericUpDown_FrameRate.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.p2_numericUpDown_FrameRate.Margin = new System.Windows.Forms.Padding(4);
             this.p2_numericUpDown_FrameRate.Maximum = new decimal(new int[] {
             120,
             0,
@@ -612,7 +612,7 @@
             this.p2_checkBox_CreateVideo.Checked = true;
             this.p2_checkBox_CreateVideo.CheckState = System.Windows.Forms.CheckState.Checked;
             this.p2_checkBox_CreateVideo.Location = new System.Drawing.Point(15, 474);
-            this.p2_checkBox_CreateVideo.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.p2_checkBox_CreateVideo.Margin = new System.Windows.Forms.Padding(4);
             this.p2_checkBox_CreateVideo.Name = "p2_checkBox_CreateVideo";
             this.p2_checkBox_CreateVideo.Size = new System.Drawing.Size(351, 29);
             this.p2_checkBox_CreateVideo.TabIndex = 12;
@@ -623,7 +623,7 @@
             // p2_txtBox_Info
             // 
             this.p2_txtBox_Info.Location = new System.Drawing.Point(1067, 9);
-            this.p2_txtBox_Info.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.p2_txtBox_Info.Margin = new System.Windows.Forms.Padding(4);
             this.p2_txtBox_Info.Multiline = true;
             this.p2_txtBox_Info.Name = "p2_txtBox_Info";
             this.p2_txtBox_Info.ReadOnly = true;
@@ -635,7 +635,7 @@
             // p2_btn_Start
             // 
             this.p2_btn_Start.Location = new System.Drawing.Point(862, 1052);
-            this.p2_btn_Start.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.p2_btn_Start.Margin = new System.Windows.Forms.Padding(4);
             this.p2_btn_Start.Name = "p2_btn_Start";
             this.p2_btn_Start.Size = new System.Drawing.Size(196, 42);
             this.p2_btn_Start.TabIndex = 14;
@@ -656,7 +656,7 @@
             // p2_numUpDown_Days
             // 
             this.p2_numUpDown_Days.Location = new System.Drawing.Point(11, 430);
-            this.p2_numUpDown_Days.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.p2_numUpDown_Days.Margin = new System.Windows.Forms.Padding(4);
             this.p2_numUpDown_Days.Maximum = new decimal(new int[] {
             31,
             0,
@@ -690,7 +690,7 @@
             // p2_numUpDown_Seconds
             // 
             this.p2_numUpDown_Seconds.Location = new System.Drawing.Point(314, 430);
-            this.p2_numUpDown_Seconds.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.p2_numUpDown_Seconds.Margin = new System.Windows.Forms.Padding(4);
             this.p2_numUpDown_Seconds.Maximum = new decimal(new int[] {
             59,
             0,
@@ -704,7 +704,7 @@
             // p2_numUpDown_Minutes
             // 
             this.p2_numUpDown_Minutes.Location = new System.Drawing.Point(213, 430);
-            this.p2_numUpDown_Minutes.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.p2_numUpDown_Minutes.Margin = new System.Windows.Forms.Padding(4);
             this.p2_numUpDown_Minutes.Maximum = new decimal(new int[] {
             59,
             0,
@@ -728,7 +728,7 @@
             // p2_numUpDown_Hours
             // 
             this.p2_numUpDown_Hours.Location = new System.Drawing.Point(112, 430);
-            this.p2_numUpDown_Hours.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.p2_numUpDown_Hours.Margin = new System.Windows.Forms.Padding(4);
             this.p2_numUpDown_Hours.Maximum = new decimal(new int[] {
             23,
             0,
@@ -764,7 +764,7 @@
             this.p2_comboBox_Cameras.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.p2_comboBox_Cameras.FormattingEnabled = true;
             this.p2_comboBox_Cameras.Location = new System.Drawing.Point(15, 334);
-            this.p2_comboBox_Cameras.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.p2_comboBox_Cameras.Margin = new System.Windows.Forms.Padding(6);
             this.p2_comboBox_Cameras.Name = "p2_comboBox_Cameras";
             this.p2_comboBox_Cameras.Size = new System.Drawing.Size(512, 32);
             this.p2_comboBox_Cameras.TabIndex = 7;
@@ -784,7 +784,7 @@
             this.p2_comboBox_Networks.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.p2_comboBox_Networks.FormattingEnabled = true;
             this.p2_comboBox_Networks.Location = new System.Drawing.Point(15, 260);
-            this.p2_comboBox_Networks.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.p2_comboBox_Networks.Margin = new System.Windows.Forms.Padding(6);
             this.p2_comboBox_Networks.Name = "p2_comboBox_Networks";
             this.p2_comboBox_Networks.Size = new System.Drawing.Size(512, 32);
             this.p2_comboBox_Networks.TabIndex = 6;
@@ -803,7 +803,7 @@
             // p2_txtBox_RootStoragePath
             // 
             this.p2_txtBox_RootStoragePath.Location = new System.Drawing.Point(15, 188);
-            this.p2_txtBox_RootStoragePath.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.p2_txtBox_RootStoragePath.Margin = new System.Windows.Forms.Padding(6);
             this.p2_txtBox_RootStoragePath.Name = "p2_txtBox_RootStoragePath";
             this.p2_txtBox_RootStoragePath.ReadOnly = true;
             this.p2_txtBox_RootStoragePath.Size = new System.Drawing.Size(1038, 29);
@@ -822,7 +822,7 @@
             // p2_txtBox_AccountId
             // 
             this.p2_txtBox_AccountId.Location = new System.Drawing.Point(543, 116);
-            this.p2_txtBox_AccountId.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.p2_txtBox_AccountId.Margin = new System.Windows.Forms.Padding(6);
             this.p2_txtBox_AccountId.Name = "p2_txtBox_AccountId";
             this.p2_txtBox_AccountId.ReadOnly = true;
             this.p2_txtBox_AccountId.Size = new System.Drawing.Size(512, 29);
@@ -841,7 +841,7 @@
             // p2_txtBox_AuthToken
             // 
             this.p2_txtBox_AuthToken.Location = new System.Drawing.Point(15, 116);
-            this.p2_txtBox_AuthToken.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.p2_txtBox_AuthToken.Margin = new System.Windows.Forms.Padding(6);
             this.p2_txtBox_AuthToken.Name = "p2_txtBox_AuthToken";
             this.p2_txtBox_AuthToken.ReadOnly = true;
             this.p2_txtBox_AuthToken.Size = new System.Drawing.Size(512, 29);
@@ -860,7 +860,7 @@
             // p2_txtBox_Region
             // 
             this.p2_txtBox_Region.Location = new System.Drawing.Point(543, 44);
-            this.p2_txtBox_Region.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.p2_txtBox_Region.Margin = new System.Windows.Forms.Padding(6);
             this.p2_txtBox_Region.Name = "p2_txtBox_Region";
             this.p2_txtBox_Region.ReadOnly = true;
             this.p2_txtBox_Region.Size = new System.Drawing.Size(512, 29);
@@ -889,7 +889,7 @@
             // p2_txtBox_Email
             // 
             this.p2_txtBox_Email.Location = new System.Drawing.Point(15, 44);
-            this.p2_txtBox_Email.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.p2_txtBox_Email.Margin = new System.Windows.Forms.Padding(6);
             this.p2_txtBox_Email.Name = "p2_txtBox_Email";
             this.p2_txtBox_Email.ReadOnly = true;
             this.p2_txtBox_Email.Size = new System.Drawing.Size(512, 29);
@@ -902,7 +902,7 @@
             this.tabControl0_tabPage99_Quicktest.Controls.Add(this.p99_txtBox_Info);
             this.tabControl0_tabPage99_Quicktest.Controls.Add(this.label2);
             this.tabControl0_tabPage99_Quicktest.Location = new System.Drawing.Point(4, 33);
-            this.tabControl0_tabPage99_Quicktest.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.tabControl0_tabPage99_Quicktest.Margin = new System.Windows.Forms.Padding(4);
             this.tabControl0_tabPage99_Quicktest.Name = "tabControl0_tabPage99_Quicktest";
             this.tabControl0_tabPage99_Quicktest.Size = new System.Drawing.Size(2229, 1122);
             this.tabControl0_tabPage99_Quicktest.TabIndex = 2;
@@ -926,7 +926,7 @@
             // p99_btn_Start
             // 
             this.p99_btn_Start.Location = new System.Drawing.Point(4, 4);
-            this.p99_btn_Start.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.p99_btn_Start.Margin = new System.Windows.Forms.Padding(4);
             this.p99_btn_Start.Name = "p99_btn_Start";
             this.p99_btn_Start.Size = new System.Drawing.Size(105, 55);
             this.p99_btn_Start.TabIndex = 2;
@@ -937,7 +937,7 @@
             // p99_txtBox_Info
             // 
             this.p99_txtBox_Info.Location = new System.Drawing.Point(6, 68);
-            this.p99_txtBox_Info.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.p99_txtBox_Info.Margin = new System.Windows.Forms.Padding(6);
             this.p99_txtBox_Info.Multiline = true;
             this.p99_txtBox_Info.Name = "p99_txtBox_Info";
             this.p99_txtBox_Info.ReadOnly = true;
@@ -965,7 +965,7 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.HelpButton = true;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.MaximizeBox = false;
             this.Name = "Form1";
             this.Text = "Form1";

@@ -78,9 +78,8 @@ namespace Blink.Classes
 
             var mediaIdLIstBody = new MediaIdListBody
             {
-                media_list = new List<long>()
+                media_list = new List<long>(new long[] { 12345678, 23456789 })  // Example values
             };
-            mediaIdLIstBody.media_list.AddRange(new long[] { 123456875, 23542454 });
             var test = uweR70_Get.DeleteMediaCall(baseData, mediaIdLIstBody);
             */
         }
