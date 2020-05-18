@@ -203,7 +203,7 @@ Follow these steps to fix this (in Visual Studio):
   </li>
   <li>
     I own only one Blink XT2 system with three cameras and I am located in Germany.<br>
-    -> So, I have no clue whether my app will work outside Germany/Europe.<br>
+    -> So, I have no clue whether my app will work with the older Blink XT system and/or outside Germany/Europe.<br>
     <br>
   </li>
   <li>
