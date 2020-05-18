@@ -1,8 +1,26 @@
 # Blink-XT2
 Blink (XT2) Win 10 / C # application that still works after the last Blink changes of May 11, 2020.<br>
-<br>
-<a href="https://github.com/UweR70/Blink-XT2/blob/master/Blink-XT2/Compiled_Versions/UweR70_Blink-XT2_V_0.12.7z">(Click here to go directly to the latest and zipped setup.exe, verison 0.12)</a><br>
-<br>
+
+# Content
+This repository contains three parts:
+<ul>
+  <li>
+    The complete C# code of my app (see Detials)<br>
+    <br>
+  </li>
+  <li>
+    The latest runable version of this C# code / my application (currently version 0.12)<br>
+    <a href="https://github.com/UweR70/Blink-XT2/blob/master/Blink-XT2/Compiled_Versions/UweR70_Blink-XT2_V_0.12.7z">(Click here to go directly to the latest and zipped setup.exe, verison 0.12)</a><br>
+    <br>
+  </li>
+  <li>
+   A wiki that contains more (detailed) information than thos landing page.<br>
+   See ...
+   <br>
+  </li>
+</ul>
+
+# Details
 Keyfeatures:
 <ul>
 <li> <!-- ##### Open  ##### -->
