@@ -149,13 +149,8 @@ var test = uweR70_PostCallWithNonEmptyBody.DeleteMediaCall(baseData, mediaIdLIst
   </li>
 </ul>
 
-# How to install, compile and run
-Good news first:<br>
-<a href="https://github.com/UweR70/Blink-XT2/blob/master/Blink-XT2/Compiled_Versions/UweR70_Blink-XT2_V_0.12.7z" target="_blank">Here</a><br>
-you will find a zipped but runable setup.exe (version 0.12).<br>
-<br>
-The bad news:<br>
-Sorry, figured currently not out how to add these packages to the repository:<br>
+# How to compile and run
+Sorry, I figured currently not out how to add these packages to the repository:<br>
 <ul>
   <li>
     'Newtonsoft.Json'
