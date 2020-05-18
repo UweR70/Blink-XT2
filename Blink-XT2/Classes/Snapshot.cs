@@ -63,9 +63,10 @@ namespace Blink.Classes
 
         public void TakeSnapshots(BaseData baseData, int networkId, int cameraId)
         {
-            var uweR70_Command = new UweR70_Command();
+            var uweR70_Command = new UweR70_PostCallWithEmptyBody();
             var uweR70_Get = new UweR70_Get();
-           
+            var uweR70_GetData = new UweR70_GetData();
+            
             var minData = new MinimumData
             {
                 AuthToken = baseData.AuthToken,
@@ -111,7 +112,7 @@ namespace Blink.Classes
             Form.SetP2TxtBoxInfoText(string.Empty);
 
             var cameraThumbnailPathAndFileName = $"{BaseStoragePathSnapshot}\\{cameraThumbnailFileName}";
-            var cameraThumbnailByteArray = uweR70_Get.ThumbnailImageAsync(minData, cameraThumbnail).Result;
+            var cameraThumbnailByteArray = uweR70_GetData.ThumbnailImageAsync(minData, cameraThumbnail).Result;
             File.WriteAllBytes(cameraThumbnailPathAndFileName, cameraThumbnailByteArray);
         }
 
