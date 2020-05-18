@@ -21,7 +21,8 @@ This repository contains three parts:
         <a href="https://github.com/UweR70/Blink-XT2/wiki/All-original-Blink-URIs">All original Blink URIs.</a>
       </li>
       <li>
-        <a href="https://github.com/UweR70/Blink-XT2/wiki/Tutorial:-How-to-decompile-an-apk%3F">Tutorial: How to decompile an apk?</a>
+        <a href="https://github.com/UweR70/Blink-XT2/wiki/Tutorial:-How-to-decompile-an-apk%3F">Tutorial: How to decompile an apk?</a><br>
+        This tutorial demonstrates step-by-step how to get the code of the original Blink mobile phone app - which also contains the API calls.
       </li>
     </ul>
    <br>
