@@ -44,29 +44,18 @@ Like:
 Demo implementations like the following are available; see <a href="https://github.com/UweR70/Blink-XT2/blob/master/Blink-XT2/Classes/Quicktest.cs" target="_blank">Quicktest.cs</a>.
 <pre><code>
 ...
-var commandArm = uweR70_Command.CommandArmDisarmAsync(minData, UweR70_PostCallWithEmptyBody.ArmDisarm.arm).Result;
-var commandDisarm = uweR70_Command.CommandArmDisarmAsync(minData, UweR70_PostCallWithEmptyBody.ArmDisarm.disarm).Result;
-<br>
-var commandMotionDetectionEnable = uweR70_Command.CommandMotionDetectionAsync(minData, UweR70_PostCallWithEmptyBody.MotionDetection.enable).Result;
-var commandMotionDetectionDisable = uweR70_Command.CommandMotionDetectionAsync(minData, UweR70_PostCallWithEmptyBody.MotionDetection.disable).Result;
-<br>            
-var commandClip = uweR70_Command.CommandClipAsync(minData).Result;
-var commandThumbnail = uweR70_Command.CommandThumbnailAsync(minData).Result;
-<br>
-<br>
-var login = uweR70_PostCallWithNonEmptyBody.LoginAsync(baseData, new LoginBody
-{
-    email = "<your blink email address>",
-    password = "<your blink password>"
-}).Result;
-<br>
+var uweR70_Get = new UweR70_Get();
+var uweR70_GetData = new UweR70_GetData();
+var uweR70_PostCallWithEmptyBody = new UweR70_PostCallWithEmptyBody();
+var uweR70_PostCallWithNonEmptyBody = new UweR70_PostCallWithNonEmptyBody();
+...            
 var network = uweR70_Get.BatteryUssageAsync(baseData).Result;
-var thumbnailImage = uweR70_GetData.ThumbnailImageAsync(minData, "<enter valid data here>").Result;
-var video = uweR70_GetData.VideoAsync(baseData, "<enter valid data here>").Result;
 var changedMedia = uweR70_Get.ChangedMediaAsync(baseData, 0).Result;
-<br>            
 var cameraStatus = uweR70_Get.CameraStatusAsync(minData).Result;
 var signalStrength = uweR70_Get.SignalStrengthAsync(minData).Result;
+var homescreenV3 = uweR70_Get.HomescreenV3Async(baseData).Result;
+var quickRegionInfo = uweR70_Get.QuickRegionInfoAsync(baseData).Result;
+var syncModules = uweR70_Get.SyncModulesAsync(minData).Result;
 <br>
 var events = uweR70_Get.EventsAsync(minData).Result;
 var typeList = new[] { "first_boot", "battery", "armed", "disarmed", "scheduled_arm", "scheduled_disarm", "heartbeat", "sm_offline" };
@@ -78,9 +67,23 @@ for (int i = 0; i < typeList.Length; i++)
     count = blinkEvents.Length;
 }
 <br>
-var homescreenV3 = uweR70_Get.HomescreenV3Async(baseData).Result;
-var quickRegionInfo = uweR70_Get.QuickRegionInfoAsync(baseData).Result;
-var syncModules = uweR70_Get.SyncModulesAsync(minData).Result;
+<br>
+var thumbnailImage = uweR70_GetData.ThumbnailImageAsync(minData, "<enter valid data here>").Result;
+var video = uweR70_GetData.VideoAsync(baseData, "<enter valid data here>").Result;
+<br>
+<br>
+var commandArm = uweR70_PostCallWithEmptyBody.CommandArmDisarmAsync(minData, UweR70_PostCallWithEmptyBody.ArmDisarm.arm).Result;
+var commandDisarm = uweR70_PostCallWithEmptyBody.CommandArmDisarmAsync(minData, UweR70_PostCallWithEmptyBody.ArmDisarm.disarm).Result;
+var commandMotionDetectionEnable = uweR70_PostCallWithEmptyBody.CommandMotionDetectionAsync(minData, UweR70_PostCallWithEmptyBody.MotionDetection.enable).Result;
+var commandMotionDetectionDisable = uweR70_PostCallWithEmptyBody.CommandMotionDetectionAsync(minData, UweR70_PostCallWithEmptyBody.MotionDetection.disable).Result;
+var commandClip = uweR70_PostCallWithEmptyBody.CommandClipAsync(minData).Result;
+var commandThumbnail = uweR70_PostCallWithEmptyBody.CommandThumbnailAsync(minData).Result;
+<br>
+var login = uweR70_PostCallWithNonEmptyBody.LoginAsync(baseData, new LoginBody
+{
+    email = "<your blink email address>",
+    password = "<your blink password>"
+}).Result;
 <br>
 var mediaIdLIstBody = new MediaIdListBody
 {
@@ -232,7 +235,7 @@ Follow these steps to fix this (in Visual Studio):
     like 'Classes.Blink.CameraStatus.cs', 'Classes.Blink.HomescreenV3', etc.?<br>
     <br>
     Example:<br>
-    Open 'Classes.Blink.UweR70_Get.cs' (<a href="https://github.com/UweR70/Blink-XT2/blob/master/Blink-XT2/Classes/UweR70_Get.cs"  target="_blank">link</a>) and serach for the method 'LoginAsync(...)' ... <br>
+    Open 'Classes.Blink.UweR70_PostCallWithNonEmptyBody.cs' (<a href="https://github.com/UweR70/Blink-XT2/blob/master/Blink-XT2/Classes/UweR70_PostCallWithNonEmptyBody.cs"  target="_blank">link</a>) and serach for the method 'LoginAsync(...)' ... <br>
     <pre><code>
     public async Task&lt;LoginResponse&gt; LoginAsync(BaseData baseData, LoginBody loginBody)
     {
