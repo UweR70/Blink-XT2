@@ -133,8 +133,8 @@ This tutorial demonstrates step-by-step how to get the <b>code</b> of the <b>ori
 
 # How to install, compile and run
 Good news first:<br>
-<H1><marquee>
-<a href="https://github.com/UweR70/Blink-XT2/blob/master/Blink-XT2/Compiled_Versions/UweR70_Blink-XT2_V_0.12.7z" target="_blank">Here</a><br>
+<H1>
+<a href="https://github.com/UweR70/Blink-XT2/blob/master/Blink-XT2/Compiled_Versions/UweR70_Blink-XT2_V_0.12.7z" target="_blank">Here  (click me!)</a><br>
 </marquee></H1>
 you will find a zipped but runable setup.exe (version 0.12).<br>
 <br>
