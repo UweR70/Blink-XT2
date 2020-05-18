@@ -112,8 +112,10 @@
     <Compile Include="Classes\Quicktest.cs" />
     <Compile Include="Classes\Snapshot.cs" />
     <Compile Include="Classes\StoreIt.cs" />
-    <Compile Include="Classes\UweR70_Command.cs" />
+    <Compile Include="Classes\UweR70_GetData.cs" />
+    <Compile Include="Classes\UweR70_PostCallWithEmptyBody.cs" />
     <Compile Include="Classes\UweR70_Get.cs" />
+    <Compile Include="Classes\UweR70_PostCallWithNonEmptyBody.cs" />
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
     </Compile>

@@ -18,8 +18,10 @@ namespace Blink.Classes
                 form.SetP0TxtBoxInfoText(string.Empty);
 
                 var common = new Common();
-                var uweR70_Command = new UweR70_Command();
                 var uweR70_Get = new UweR70_Get();
+                var uweR70_GetData = new UweR70_GetData();
+                var uweR70_PostCallWithNonEmptyBody = new UweR70_PostCallWithNonEmptyBody();
+
                 var storeIt = new StoreIt();
 
                 var baseData = new BaseData
@@ -52,7 +54,7 @@ namespace Blink.Classes
                 if (!oldAuthTokenWorked)
                 { 
                     // Authentification api call
-                    var login = uweR70_Get.LoginAsync(baseData, new LoginBody
+                    var login = uweR70_PostCallWithNonEmptyBody.LoginAsync(baseData, new LoginBody
                     {
                         email = email,
                         password = password
@@ -124,7 +126,7 @@ namespace Blink.Classes
                         baseData.Networks[i].Cameras[n].Media.PathAndFileNameVideos = new List<string>();
                         if (!File.Exists(cameraThumbnailPathAndFileName))
                         {
-                            var cameraThumbnailByteArray = uweR70_Get.ThumbnailImageAsync(minData, cameraThumbnail).Result;
+                            var cameraThumbnailByteArray = uweR70_GetData.ThumbnailImageAsync(minData, cameraThumbnail).Result;
                             File.WriteAllBytes(cameraThumbnailPathAndFileName, cameraThumbnailByteArray);
                         }
                     }
@@ -195,7 +197,7 @@ namespace Blink.Classes
                         cameraObject[0].Media.PathAndFileNameVideos.Add(videoPathAndFileName);
                         if (!File.Exists(videoPathAndFileName))
                         {
-                            var videoByteArray = uweR70_Get.VideoAsync(baseData, changedMedia.media[i].media).Result;
+                            var videoByteArray = uweR70_GetData.VideoAsync(baseData, changedMedia.media[i].media).Result;
                             mediaIdListBody.media_list.Add(changedMedia.media[i].id);
                             File.WriteAllBytes(videoPathAndFileName, videoByteArray);
                             counterDownloaded++;

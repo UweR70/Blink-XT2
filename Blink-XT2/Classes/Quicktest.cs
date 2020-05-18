@@ -15,8 +15,10 @@ namespace Blink.Classes
         /// <returns></returns>
         public void Test(Form1 form, BaseData baseData)
         {
-            var uweR70_Command = new UweR70_Command();
+            var uweR70_Command = new UweR70_PostCallWithEmptyBody();
             var uweR70_Get = new UweR70_Get();
+            var uweR70_GetData = new UweR70_GetData();
+            var uweR70_PostCallWithNonEmptyBody = new UweR70_PostCallWithNonEmptyBody();
 
             var networkObject = baseData.Networks[0];
             /*
@@ -37,26 +39,26 @@ namespace Blink.Classes
                 CameraId = cameraObject.Id
             };
                         
-            /*
-            var commandArm = uweR70_Command.CommandArmDisarmAsync(minData, UweR70_Command.ArmDisarm.arm).Result;
-            var commandDisarm = uweR70_Command.CommandArmDisarmAsync(minData, UweR70_Command.ArmDisarm.disarm).Result;
+            
+            var commandArm = uweR70_Command.CommandArmDisarmAsync(minData, UweR70_PostCallWithEmptyBody.ArmDisarm.arm).Result;
+            var commandDisarm = uweR70_Command.CommandArmDisarmAsync(minData, UweR70_PostCallWithEmptyBody.ArmDisarm.disarm).Result;
 
-            var commandMotionDetectionEnable = uweR70_Command.CommandMotionDetectionAsync(minData, UweR70_Command.MotionDetection.enable).Result;
-            var commandMotionDetectionDisable = uweR70_Command.CommandMotionDetectionAsync(minData, UweR70_Command.MotionDetection.disable).Result;
+            var commandMotionDetectionEnable = uweR70_Command.CommandMotionDetectionAsync(minData, UweR70_PostCallWithEmptyBody.MotionDetection.enable).Result;
+            var commandMotionDetectionDisable = uweR70_Command.CommandMotionDetectionAsync(minData, UweR70_PostCallWithEmptyBody.MotionDetection.disable).Result;
             
             var commandClip = uweR70_Command.CommandClipAsync(minData).Result;
             var commandThumbnail = uweR70_Command.CommandThumbnailAsync(minData).Result;
 
 
-            var login = uweR70_Get.LoginAsync(baseData, new LoginBody
+            var login = uweR70_PostCallWithNonEmptyBody.LoginAsync(baseData, new LoginBody
             {
                 email = "<your blink email address>",
                 password = "<your blink password>"
             }).Result;
 
             var network = uweR70_Get.BatteryUssageAsync(baseData).Result;
-            var thumbnailImage = uweR70_Get.ThumbnailImageAsync(minData, "<enter valid data here>").Result;
-            var video = uweR70_Get.VideoAsync(baseData, "<enter valid data here>").Result;
+            var thumbnailImage = uweR70_GetData.ThumbnailImageAsync(minData, "<enter valid data here>").Result;
+            var video = uweR70_GetData.VideoAsync(baseData, "<enter valid data here>").Result;
             var changedMedia = uweR70_Get.ChangedMediaAsync(baseData, 0).Result;
             
             var cameraStatus = uweR70_Get.CameraStatusAsync(minData).Result;
@@ -80,8 +82,8 @@ namespace Blink.Classes
             {
                 media_list = new List<long>(new long[] { 12345678, 23456789 })  // Example values
             };
-            var test = uweR70_Get.DeleteMediaCall(baseData, mediaIdLIstBody);
-            */
+            var test = uweR70_PostCallWithNonEmptyBody.DeleteMediaCall(baseData, mediaIdLIstBody);
+            
         }
     }
 }

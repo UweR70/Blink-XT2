@@ -128,7 +128,7 @@ namespace Blink
                         }
                         if (MessageBox.Show(question, Config.TitleAppNameAndVersion, MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
                         {
-                            var message = new UweR70_Get().DeleteMediaCall(BaseData, mediaIdListBody).Result;
+                            var message = new UweR70_PostCallWithNonEmptyBody().DeleteMediaCall(BaseData, mediaIdListBody).Result;
                             MessageBox.Show($"Deleted! Server response:\r\n{message.message}", Config.TitleAppNameAndVersion, MessageBoxButtons.OK, MessageBoxIcon.Information);
                         }
                     }

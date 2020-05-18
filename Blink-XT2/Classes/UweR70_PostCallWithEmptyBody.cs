@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 
 namespace Blink.Classes
 {
-    public class UweR70_Command
+    public class UweR70_PostCallWithEmptyBody
     {
         public enum MotionDetection
         {
@@ -58,6 +58,8 @@ namespace Blink.Classes
             var ret = JsonConvert.DeserializeObject<CommandThumbnail>(retString);
             return ret;
         }
+
+
 
         public async Task<string> FirePostCallWithEmptyBodyAsync(string uri, string authToken)
         {
