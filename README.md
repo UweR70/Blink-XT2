@@ -299,7 +299,6 @@ Follow these steps to fix this (in Visual Studio):
     But of course do not remove the properties.<br>
     Done.<br>
     The class can than be used to deserialize 'retString' as shown above.<br>
-    <br>
   </li>
 </ul>
 
