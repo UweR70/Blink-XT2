@@ -63,10 +63,10 @@ namespace Blink.Classes
 
         public void TakeSnapshots(BaseData baseData, int networkId, int cameraId)
         {
-            var uweR70_Command = new UweR70_PostCallWithEmptyBody();
             var uweR70_Get = new UweR70_Get();
             var uweR70_GetData = new UweR70_GetData();
-            
+            var uweR70_PostCallWithEmptyBody = new UweR70_PostCallWithEmptyBody();
+
             var minData = new MinimumData
             {
                 AuthToken = baseData.AuthToken,
@@ -91,7 +91,7 @@ namespace Blink.Classes
             #endregion
 
             // Take the snapshot
-            var commandThumbnail_Test = uweR70_Command.CommandThumbnailAsync(minData).Result;
+            var commandThumbnail_Test = uweR70_PostCallWithEmptyBody.CommandThumbnailAsync(minData).Result;
             
             var cameraStatus = uweR70_Get.CameraStatusAsync(minData).Result;
 
