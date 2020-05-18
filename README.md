@@ -80,6 +80,12 @@ for (int i = 0; i < typeList.Length; i++)
 var homescreenV3 = uweR70_Get.HomescreenV3Async(baseData).Result;
 var quickRegionInfo = uweR70_Get.QuickRegionInfoAsync(baseData).Result;
 var syncModules = uweR70_Get.SyncModulesAsync(minData).Result;
+<br>
+var mediaIdLIstBody = new MediaIdListBody
+{
+    media_list = new List<long>(new long[] { 12345678, 23456789 })  // Example values!
+};
+var test = uweR70_Get.DeleteMediaCall(baseData, mediaIdLIstBody);
 ...
 </code></pre>
 <br>
