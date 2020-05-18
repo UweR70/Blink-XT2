@@ -44,26 +44,27 @@ Like:
 Demo implementations like the following are available; see <a href="https://github.com/UweR70/Blink-XT2/blob/master/Blink-XT2/Classes/Quicktest.cs" target="_blank">Quicktest.cs</a>.
 <pre><code>
 ...
-var commandArm = uweR70_Command.CommandArmDisarmAsync(minData, UweR70_Command.ArmDisarm.arm).Result;
-var commandDisarm = uweR70_Command.CommandArmDisarmAsync(minData, UweR70_Command.ArmDisarm.disarm).Result;
+var commandArm = uweR70_Command.CommandArmDisarmAsync(minData, UweR70_PostCallWithEmptyBody.ArmDisarm.arm).Result;
+var commandDisarm = uweR70_Command.CommandArmDisarmAsync(minData, UweR70_PostCallWithEmptyBody.ArmDisarm.disarm).Result;
 <br>
-var commandMotionDetectionEnable = uweR70_Command.CommandMotionDetectionAsync(minData, UweR70_Command.MotionDetection.enable).Result;
-var commandMotionDetectionDisable = uweR70_Command.CommandMotionDetectionAsync(minData, UweR70_Command.MotionDetection.disable).Result;
-<br>
+var commandMotionDetectionEnable = uweR70_Command.CommandMotionDetectionAsync(minData, UweR70_PostCallWithEmptyBody.MotionDetection.enable).Result;
+var commandMotionDetectionDisable = uweR70_Command.CommandMotionDetectionAsync(minData, UweR70_PostCallWithEmptyBody.MotionDetection.disable).Result;
+<br>            
 var commandClip = uweR70_Command.CommandClipAsync(minData).Result;
 var commandThumbnail = uweR70_Command.CommandThumbnailAsync(minData).Result;
 <br>
-var login = uweR70_Get.LoginAsync(baseData, new UweR70_Get.LoginBody
+<br>
+var login = uweR70_PostCallWithNonEmptyBody.LoginAsync(baseData, new LoginBody
 {
-    email = "&lt;your blink email address&gt;",
-    password = "&lt;your blink password&gt;"
+    email = "<your blink email address>",
+    password = "<your blink password>"
 }).Result;
 <br>
 var network = uweR70_Get.BatteryUssageAsync(baseData).Result;
-var thumbnailImage = uweR70_Get.ThumbnailImageAsync(minData, "&lt;enter valid data here&gt;").Result;
-var video = uweR70_Get.VideoAsync(baseData, "&lt;enter valid data here&gt;").Result;
+var thumbnailImage = uweR70_GetData.ThumbnailImageAsync(minData, "<enter valid data here>").Result;
+var video = uweR70_GetData.VideoAsync(baseData, "<enter valid data here>").Result;
 var changedMedia = uweR70_Get.ChangedMediaAsync(baseData, 0).Result;
-<br>        
+<br>            
 var cameraStatus = uweR70_Get.CameraStatusAsync(minData).Result;
 var signalStrength = uweR70_Get.SignalStrengthAsync(minData).Result;
 <br>
@@ -83,9 +84,9 @@ var syncModules = uweR70_Get.SyncModulesAsync(minData).Result;
 <br>
 var mediaIdLIstBody = new MediaIdListBody
 {
-    media_list = new List<long>(new long[] { 12345678, 23456789 })  // Example values!
+    media_list = new List<long>(new long[] { 12345678, 23456789 })  // Example values
 };
-var test = uweR70_Get.DeleteMediaCall(baseData, mediaIdLIstBody);
+var test = uweR70_PostCallWithNonEmptyBody.DeleteMediaCall(baseData, mediaIdLIstBody);
 ...
 </code></pre>
 <br>
