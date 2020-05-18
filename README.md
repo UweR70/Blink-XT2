@@ -7,7 +7,7 @@ Keyfeatures:
 This app is capable of 
 <ul>
   <li>
-    download all videos and thumbnails from each camera of all networks.
+    downloading all videos and thumbnails from each camera of all networks.
   </li>
   <li>
     deleting all downloaded videos on Blinks server on user request.
