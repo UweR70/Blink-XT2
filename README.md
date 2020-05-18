@@ -13,7 +13,7 @@ This app is capable of
     deleting all downloaded videos on Blinks server on user request.
   </li>
   <li>
-    take a snapshot/thumbnail every x seconds and <b>to create a video from these.</b> 
+    taking a snapshot/thumbnail every x seconds and <b>creating a video from these.</b> 
   </li>
 </ul>
 <br>
