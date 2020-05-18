@@ -19,7 +19,7 @@ This repository contains three parts:
     <ul>
       <li>
         <a href="https://github.com/UweR70/Blink-XT2/wiki/All-original-Blink-URIs">All original Blink URIs.</a><br>
-        Furthermore it contains a "documentation" class providing <a href="https://github.com/UweR70/Blink-XT2/wiki/All-original-Blink-URIs">all original API calls</a><br>
+        A "documentation" class providing <a href="https://github.com/UweR70/Blink-XT2/wiki/All-original-Blink-URIs">all original API calls</a><br>
 (incl. the therefore needed URLs) of the <a href="https://play.google.com/store/apps/details?id=com.immediasemi.android.blink&gl=US"> original Blink mobile phone app</a>.<br>
         <br>
         Script kiddies will love it.<br>
@@ -138,9 +138,6 @@ var test = uweR70_PostCallWithNonEmptyBody.DeleteMediaCall(baseData, mediaIdLIst
 ...
 </code></pre>
 <br>
-</li><!-- ##### Close ##### -->
-<li> <!-- ##### Open  ##### -->
-
 </li><!-- ##### Close ##### -->
 <li> <!-- ##### Open  ##### -->
 My wiki contains a 
