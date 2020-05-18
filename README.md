@@ -38,7 +38,8 @@ This repository contains three parts:
       </li>
       <li>
         <a href="https://github.com/UweR70/Blink-XT2/wiki/Tutorial:-How-to-decompile-an-apk%3F">Tutorial: How to decompile an apk?</a><br>
-        This tutorial demonstrates step-by-step how to get the code of the original Blink mobile phone app - which also contains the API calls.
+        This tutorial demonstrates step-by-step how to get the <b>code</b> of the <b>original Blink mobile phone app</b> - which also contains the API calls mentioned above.<br>
+        <br>
       </li>
     </ul>
    <br>
@@ -137,12 +138,6 @@ var mediaIdLIstBody = new MediaIdListBody
 var test = uweR70_PostCallWithNonEmptyBody.DeleteMediaCall(baseData, mediaIdLIstBody);
 ...
 </code></pre>
-<br>
-</li><!-- ##### Close ##### -->
-<li> <!-- ##### Open  ##### -->
-My wiki contains a 
-<a href="https://github.com/UweR70/Blink-XT2/wiki/Tutorial:-How-to-decompile-an-apk%3Fi" target="_blank">Tutorial: How to decompile an apk?</a><br>
-This tutorial demonstrates step-by-step how to get the <b>code</b> of the <b>original Blink mobile phone app</b> - which also contains the API calls mentioned above.<br>
 <br>
 </li><!-- ##### Close ##### -->
 </ul>
