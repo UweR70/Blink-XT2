@@ -196,10 +196,8 @@ Follow these steps to fix this (in Visual Studio):
   <li>
     Rebuild the solution.
   </li>
-  <li>
-    Done!
-  </li>
   </ul>
+  Done!
 
 # Remarks
 <ul>
