@@ -1,6 +1,8 @@
 # Blink-XT2
 Blink (XT2) Win 10 / C # application that still works after the last Blink changes of May 11, 2020.<br>
 <br>
+<a href="https://github.com/UweR70/Blink-XT2/blob/master/Blink-XT2/Compiled_Versions/UweR70_Blink-XT2_V_0.12.7z">(Quick lin to the zipped) setup.exe)</a><br>
+<br>
 Keyfeatures:
 <ul>
 <li> <!-- ##### Open  ##### -->
