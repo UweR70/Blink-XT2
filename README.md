@@ -162,6 +162,7 @@ Sorry, I figured currently not out how to add these packages to the repository:<
 Shame on me ...<br>
 <br>
 Follow these steps to fix this (in Visual Studio):<br>
+<br>
 <ul>
   <li>
     Download the repository as zip file and unzip it.
