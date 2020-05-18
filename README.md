@@ -7,10 +7,13 @@ Keyfeatures:
 This app is capable of 
 <ul>
   <li>
-    download all videos and the thumbnails from each camera of all networks.
+    downloading all videos and thumbnails from each camera of all networks.
   </li>
   <li>
-    take a snapshot/thumbnail every x seconds and <b>to create a video from these.</b> 
+    deleting all downloaded videos on Blinks server on user request.
+  </li>
+  <li>
+    taking a snapshot/thumbnail every x seconds and <b>creating a video from these.</b> 
   </li>
 </ul>
 <br>
@@ -23,7 +26,7 @@ Like:
     Take a snapshot (thumbnail) / download it.
   </li>
   <li>
-    Record a video / download videos.
+    Record / download / delete videos.
   </li>
   <li>
     Arm / disarm a complete (Blink) network.
@@ -32,7 +35,7 @@ Like:
     Enable / disable motion detection per camera.
   </li>
   <li>
-    etc.    
+    plus 15+ more
   </li>
 </ul>
 <br>
@@ -77,6 +80,12 @@ for (int i = 0; i < typeList.Length; i++)
 var homescreenV3 = uweR70_Get.HomescreenV3Async(baseData).Result;
 var quickRegionInfo = uweR70_Get.QuickRegionInfoAsync(baseData).Result;
 var syncModules = uweR70_Get.SyncModulesAsync(minData).Result;
+<br>
+var mediaIdLIstBody = new MediaIdListBody
+{
+    media_list = new List<long>(new long[] { 12345678, 23456789 })  // Example values!
+};
+var test = uweR70_Get.DeleteMediaCall(baseData, mediaIdLIstBody);
 ...
 </code></pre>
 <br>
@@ -102,7 +111,7 @@ Call<LoginResponse> loginCall(@Body LoginBody paramLoginBody, @Path("tier") Stri
 <li> <!-- ##### Open  ##### -->
 My wiki contains a 
 <a href="https://github.com/UweR70/Blink-XT2/wiki/Tutorial:-How-to-decompile-an-apk%3Fi" target="_blank">Tutorial: How to decompile an apk?</a><br>
-This tutorial demonstrates step-by-step how to get the original Blink mobile phone app <b>code</b> - which also contains the API calls mentioned above.<br>
+This tutorial demonstrates step-by-step how to get the <b>code</b> of the <b>original Blink mobile phone app</b> - which also contains the API calls mentioned above.<br>
 <br>
 </li><!-- ##### Close ##### -->
 </ul>
@@ -120,8 +129,8 @@ This tutorial demonstrates step-by-step how to get the original Blink mobile pho
 
 # How to install, compile and run
 Good news first:<br>
-<a href="https://github.com/UweR70/Blink-XT2/blob/master/Blink-XT2/Compiled_Versions/UweR70_Blink-XT2_V_0.11.7z" target="_blank">Here</a><br>
-you will find a ziped but runable setup.exe (version 0.11).<br>
+<a href="https://github.com/UweR70/Blink-XT2/blob/master/Blink-XT2/Compiled_Versions/UweR70_Blink-XT2_V_0.12.7z" target="_blank">Here</a><br>
+you will find a zipped but runable setup.exe (version 0.12).<br>
 <br>
 The bad news:<br>
 Sorry, figured currently not out how to add these packages to the repository:<br>
@@ -267,7 +276,7 @@ Follow these steps to fix this (in Visual Studio):
     After Visual Studio generated and added the new class remove the 'wrapping' Rootobject.<br>
     But of course do not remove the properties.<br>
     Done.<br>
-    The class can than be used to deserialize the 'retString' as shown above.<br>
+    The class can than be used to deserialize 'retString' as shown above.<br>
     <br>
   </li>
 </ul>
