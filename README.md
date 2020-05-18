@@ -68,8 +68,8 @@ for (int i = 0; i < typeList.Length; i++)
 }
 <br>
 <br>
-var thumbnailImage = uweR70_GetData.ThumbnailImageAsync(minData, "<enter valid data here>").Result;
-var video = uweR70_GetData.VideoAsync(baseData, "<enter valid data here>").Result;
+var thumbnailImage = uweR70_GetData.ThumbnailImageAsync(minData, "&lt;enter valid data here&gt;").Result;
+var video = uweR70_GetData.VideoAsync(baseData, "&lt;enter valid data here&gt;").Result;
 <br>
 <br>
 var commandArm = uweR70_PostCallWithEmptyBody.CommandArmDisarmAsync(minData, UweR70_PostCallWithEmptyBody.ArmDisarm.arm).Result;
@@ -81,13 +81,13 @@ var commandThumbnail = uweR70_PostCallWithEmptyBody.CommandThumbnailAsync(minDat
 <br>
 var login = uweR70_PostCallWithNonEmptyBody.LoginAsync(baseData, new LoginBody
 {
-    email = "<your blink email address>",
-    password = "<your blink password>"
+    email = "&lt;your blink email address&gt;",
+    password = "&lt;your blink password&gt;"
 }).Result;
 <br>
 var mediaIdLIstBody = new MediaIdListBody
 {
-    media_list = new List<long>(new long[] { 12345678, 23456789 })  // Example values
+    media_list = new List&lt;long&gt;(new long[] { 12345678, 23456789 })  // Example values
 };
 var test = uweR70_PostCallWithNonEmptyBody.DeleteMediaCall(baseData, mediaIdLIstBody);
 ...
