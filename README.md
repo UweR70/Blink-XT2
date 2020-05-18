@@ -18,7 +18,6 @@ This repository contains three parts:
    Like:
     <ul>
       <li>
-        <a href="https://github.com/UweR70/Blink-XT2/wiki/All-original-Blink-URIs">All original Blink URIs.</a><br>
         A "documentation" class providing <a href="https://github.com/UweR70/Blink-XT2/wiki/All-original-Blink-URIs">all original API calls</a> (incl. the therefore needed URLs)<br>
         of the <a href="https://play.google.com/store/apps/details?id=com.immediasemi.android.blink&gl=US">original Blink mobile phone app</a>.<br>
         <br>
