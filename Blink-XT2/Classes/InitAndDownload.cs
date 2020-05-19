@@ -44,6 +44,7 @@ namespace Blink.Classes
                         baseData.RegionDescription = alreadyStoredMainData.RegionDescription;
                         baseData.AuthToken = alreadyStoredAuthTokens[alreadyStoredAuthTokens.Count - 1].Token;
                         baseData.AccountId = alreadyStoredMainData.AccountId;
+                        baseData.ClientId = alreadyStoredMainData.ClientId;
 
                         batteryUssage = uweR70_Get.BatteryUssageAsync(baseData).Result;
 
@@ -64,6 +65,7 @@ namespace Blink.Classes
                     baseData.RegionDescription = login.region.description;
                     baseData.AuthToken = login.authtoken.authtoken;
                     baseData.AccountId = login.account.id;
+                    baseData.ClientId = login.client.id;
 
                     batteryUssage = uweR70_Get.BatteryUssageAsync(baseData).Result;
                     storeIt.StoreData(baseData, batteryUssage);

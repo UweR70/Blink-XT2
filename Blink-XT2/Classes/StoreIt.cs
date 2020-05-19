@@ -24,6 +24,7 @@ namespace Blink.Classes
             public string RegionTier;
             public string RegionDescription;
             public int AccountId;
+            public int ClientId;
             public List<Network> Networks;
         }
 
@@ -67,6 +68,7 @@ namespace Blink.Classes
                 RegionTier = baseData.RegionTier,
                 RegionDescription = baseData.RegionDescription,
                 AccountId = baseData.AccountId,
+                ClientId = baseData.ClientId,
                 Networks = new List<Network>()
             };
 
