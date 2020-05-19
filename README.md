@@ -1,6 +1,49 @@
 # Blink-XT2
 Blink (XT2) Win 10 / C # application that still works after the last Blink changes of May 11, 2020.<br>
-<br>
+
+# Content
+This repository contains three parts:
+<ul>
+  <li>
+    The complete C# code of my application (see <a href="https://github.com/UweR70/Blink-XT2/blob/master/README.md#details"  target="_blank">Details</a>).<br>
+    <br>
+  </li>
+  <li>
+    The latest runable version of my application.<br>
+    <a href="https://github.com/UweR70/Blink-XT2/blob/master/Blink-XT2/Compiled_Versions/UweR70_Blink-XT2_V_0.12.7z"  target="_blank">Click here to go directly to the latest and zipped setup.exe, verison 0.12.</a><br>
+    <br>
+  </li>
+  <li>
+   A wiki that contains more (detailed) information than this landing page.<br>
+   Like:
+    <ul>
+      <li>
+        A "documentation" class providing <a href="https://github.com/UweR70/Blink-XT2/wiki/All-original-Blink-URIs" target="_blank">all original API calls</a> (incl. the therefore needed URLs)<br>
+        of the <a href="https://play.google.com/store/apps/details?id=com.immediasemi.android.blink&gl=US" target="_blank">original Blink mobile phone app</a>.<br>
+        <br>
+        Script kiddies will love it.<br>
+        <br>
+        Login example as follows because it is most requested:<br>
+        <pre><code>
+        ...
+        @POST("https://rest-{tier}.immedia-semi.com/api/v4/account/login")
+        Observable<LoginResponse> login(@Body LoginBody paramLoginBody, @Path("tier") String paramString);
+        <br>
+        @POST("https://rest-{tier}.immedia-semi.com/api/v4/account/login")
+        Call<LoginResponse> loginCall(@Body LoginBody paramLoginBody, @Path("tier") String paramString);
+        ...
+        </code></pre>
+        <br>
+      </li>
+      <li>
+        A <a href="https://github.com/UweR70/Blink-XT2/wiki/Tutorial:-How-to-decompile-an-apk%3F" target="_blank">Tutorial: How to decompile an apk?</a> that demonstrates step-by-step how to get the <b>code</b><br>
+        from the <b>original Blink mobile phone app</b> - which also contains the API calls mentioned above.<br>
+      </li>
+    </ul>
+  </li>
+</ul>
+
+# Details
 Keyfeatures:
 <ul>
 <li> <!-- ##### Open  ##### -->
@@ -68,8 +111,8 @@ for (int i = 0; i < typeList.Length; i++)
 }
 <br>
 <br>
-var thumbnailImage = uweR70_GetData.ThumbnailImageAsync(minData, "<enter valid data here>").Result;
-var video = uweR70_GetData.VideoAsync(baseData, "<enter valid data here>").Result;
+var thumbnailImage = uweR70_GetData.ThumbnailImageAsync(minData, "&lt;enter valid data here&gt;").Result;
+var video = uweR70_GetData.VideoAsync(baseData, "&lt;enter valid data here&gt;").Result;
 <br>
 <br>
 var commandArm = uweR70_PostCallWithEmptyBody.CommandArmDisarmAsync(minData, UweR70_PostCallWithEmptyBody.ArmDisarm.arm).Result;
@@ -81,42 +124,17 @@ var commandThumbnail = uweR70_PostCallWithEmptyBody.CommandThumbnailAsync(minDat
 <br>
 var login = uweR70_PostCallWithNonEmptyBody.LoginAsync(baseData, new LoginBody
 {
-    email = "<your blink email address>",
-    password = "<your blink password>"
+    email = "&lt;your blink email address&gt;",
+    password = "&lt;your blink password&gt;"
 }).Result;
 <br>
 var mediaIdLIstBody = new MediaIdListBody
 {
-    media_list = new List<long>(new long[] { 12345678, 23456789 })  // Example values
+    media_list = new List&lt;long&gt;(new long[] { 12345678, 23456789 })  // Example values
 };
 var test = uweR70_PostCallWithNonEmptyBody.DeleteMediaCall(baseData, mediaIdLIstBody);
 ...
 </code></pre>
-<br>
-</li><!-- ##### Close ##### -->
-<li> <!-- ##### Open  ##### -->
-Furthermore it contains a "documentation" class providing <a href="https://github.com/UweR70/Blink-XT2/wiki/All-original-Blink-URIs">all original API calls</a><br>
-(incl. the therefore needed URLs) of the <a href="https://play.google.com/store/apps/details?id=com.immediasemi.android.blink&gl=US"> original Blink mobile phone app</a>.<br>
-<br>
-Script kiddies will love it.<br>
-<br>
-Login example as follows because it is most requested:<br>
-<pre><code>
-...
-@POST("https://rest-{tier}.immedia-semi.com/api/v4/account/login")
-Observable<LoginResponse> login(@Body LoginBody paramLoginBody, @Path("tier") String paramString);
-<br>
-@POST("https://rest-{tier}.immedia-semi.com/api/v4/account/login")
-Call<LoginResponse> loginCall(@Body LoginBody paramLoginBody, @Path("tier") String paramString);
-...
-</code></pre>
-<br>
-</li><!-- ##### Close ##### -->
-<li> <!-- ##### Open  ##### -->
-My wiki contains a 
-<a href="https://github.com/UweR70/Blink-XT2/wiki/Tutorial:-How-to-decompile-an-apk%3Fi" target="_blank">Tutorial: How to decompile an apk?</a><br>
-This tutorial demonstrates step-by-step how to get the <b>code</b> of the <b>original Blink mobile phone app</b> - which also contains the API calls mentioned above.<br>
-<br>
 </li><!-- ##### Close ##### -->
 </ul>
 
@@ -131,13 +149,8 @@ This tutorial demonstrates step-by-step how to get the <b>code</b> of the <b>ori
   </li>
 </ul>
 
-# How to install, compile and run
-Good news first:<br>
-<a href="https://github.com/UweR70/Blink-XT2/blob/master/Blink-XT2/Compiled_Versions/UweR70_Blink-XT2_V_0.12.7z" target="_blank">Here</a><br>
-you will find a zipped but runable setup.exe (version 0.12).<br>
-<br>
-The bad news:<br>
-Sorry, figured currently not out how to add these packages to the repository:<br>
+# How to compile and run
+Sorry, I figured currently not out how to add these packages to the repository:<br>
 <ul>
   <li>
     'Newtonsoft.Json'
@@ -147,7 +160,9 @@ Sorry, figured currently not out how to add these packages to the repository:<br
   </li>
 </ul>
 Shame on me ...<br>
-Follow these steps to fix this (in Visual Studio):
+<br>
+Follow these steps to fix this (in Visual Studio):<br>
+<br>
 <ul>
   <li>
     Download the repository as zip file and unzip it.
@@ -182,10 +197,8 @@ Follow these steps to fix this (in Visual Studio):
   <li>
     Rebuild the solution.
   </li>
-  <li>
-    Done!
-  </li>
   </ul>
+  Done!
 
 # Remarks
 <ul>
@@ -201,7 +214,7 @@ Follow these steps to fix this (in Visual Studio):
   </li>
   <li>
     I own only one Blink XT2 system with three cameras and I am located in Germany.<br>
-    -> So, I have no clue whether my app will work outside Germany/Europe.<br>
+    -> So, I have no clue whether my app will work with the older Blink XT system and/or outside Germany/Europe.<br>
     <br>
   </li>
   <li>
@@ -222,7 +235,7 @@ Follow these steps to fix this (in Visual Studio):
     Everything you need is provided in a well set instance of the class 'BaseData'.<br>
     <br>
     Advise:<br>
-    Search in 'Form1.cs' for ...
+    Search in 'Form1.cs' (<a href="https://github.com/UweR70/Blink-XT2/blob/master/Blink-XT2/Form1.cs" target="_blank">link</a>) for ...
     <pre><code>
     // ToDo: Do NOT remove this "ToDo" line and add here a "SetTabPage_xx_Values(BaseData);" method call in case a new tabPage is added to "tabControl0"!
     </code></pre>
@@ -232,10 +245,10 @@ Follow these steps to fix this (in Visual Studio):
   </li>
   <li>
     How do I get the 'Classes.Blink.<i>xxy</i>.cs' classes (<a href="https://github.com/UweR70/Blink-XT2/tree/master/Blink-XT2/Classes/Blink" target="_blank">link</a>)<br>
-    like 'Classes.Blink.CameraStatus.cs', 'Classes.Blink.HomescreenV3', etc.?<br>
+    like 'Classes.Blink.CameraStatus.cs' <a href="https://github.com/UweR70/Blink-XT2/blob/master/Blink-XT2/Classes/Blink/CameraStatus.cs" target="_blank">(link)</a>, 'Classes.Blink.HomescreenV3' <a href="https://github.com/UweR70/Blink-XT2/blob/master/Blink-XT2/Classes/Blink/HomescreenV3.cs">(link)</a>, etc.?<br>
     <br>
     Example:<br>
-    Open 'Classes.Blink.UweR70_PostCallWithNonEmptyBody.cs' (<a href="https://github.com/UweR70/Blink-XT2/blob/master/Blink-XT2/Classes/UweR70_PostCallWithNonEmptyBody.cs"  target="_blank">link</a>) and serach for the method 'LoginAsync(...)' ... <br>
+    Open 'Classes.Blink.UweR70_PostCallWithNonEmptyBody.cs' (<a href="https://github.com/UweR70/Blink-XT2/blob/master/Blink-XT2/Classes/UweR70_PostCallWithNonEmptyBody.cs" target="_blank">link</a>) and serach for the method 'LoginAsync(...)' ... <br>
     <pre><code>
     public async Task&lt;LoginResponse&gt; LoginAsync(BaseData baseData, LoginBody loginBody)
     {
@@ -281,7 +294,6 @@ Follow these steps to fix this (in Visual Studio):
     But of course do not remove the properties.<br>
     Done.<br>
     The class can than be used to deserialize 'retString' as shown above.<br>
-    <br>
   </li>
 </ul>
 
