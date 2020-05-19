@@ -55,8 +55,13 @@ namespace Blink.Classes
                 TakeSnapshots(baseData, networkId, cameraId);
                 IntervalTimer.Start();
             }
-            catch
+            catch (Exception ex)
             {
+                var errorMessage = ex.Message;
+                if (ex.InnerException != null && !string.IsNullOrEmpty(ex.InnerException.Message))
+                {
+                    errorMessage = ex.InnerException.Message;
+                }
                 // Fetching access try on already disposed "IntervalTimer".
             }
         }
@@ -80,14 +85,15 @@ namespace Blink.Classes
             // Just fire ".ThumbnailAsync(..)" to take a thumbnail.
             // Firing this command does NOT change any of these two properties.
             //
-            // var beforeHomescreen = uweR70_Get.HomeScreenAsync(minData).Result;
-            // // Eleminate first the sync modul, than search the correct device in the remaining items!
-            // var beforeDataList = beforeHomescreen.devices.Where(x => !string.IsNullOrEmpty(x.name)).Where(x => x.name.Equals(magicValueCameraName, StringComparison.InvariantCultureIgnoreCase)).ToList();
-            // if (beforeDataList == null || beforeDataList.Count != 1)
-            // {
-            //     throw new Exception("'Quicktest.cs', 'TestAsync(...)': Something went wrong! Could not find the serarched davice data!");
-            // }
-            // var beforeData = beforeDataList[0];
+            //var magicValueCameraName = "Garten";
+            //var beforeHomescreen = uweR70_Get.HomescreenV3Async(baseData).Result;
+            //// Eleminate first the sync modul, than search the correct device in the remaining items!
+            //var beforeDataList = beforeHomescreen.cameras.Where(x => !string.IsNullOrEmpty(x.name)).Where(x => x.name.Equals(magicValueCameraName, StringComparison.InvariantCultureIgnoreCase)).ToList();
+            //if (beforeDataList == null || beforeDataList.Count != 1)
+            //{
+            //    throw new Exception("'Snapshot.cs', 'TakeSnapshots(...)': Something went wrong!");
+            //}
+            //var beforeData = beforeDataList[0];
             #endregion
 
             // Take the snapshot

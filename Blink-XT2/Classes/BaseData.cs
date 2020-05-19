@@ -10,7 +10,8 @@ namespace Blink.Classes
         public string RegionTier;
         public string RegionDescription;
         public string AuthToken;
-        public int AccountId;     
+        public int AccountId;
+        public int ClientId;
 
         public string StoragePathNetwork;           // C:\Temp\Blink_XT2\Home
         public string StoragePathMain;              // C:\Temp\Blink_XT2\Home\Main

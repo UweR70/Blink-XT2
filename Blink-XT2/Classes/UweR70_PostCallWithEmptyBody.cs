@@ -59,6 +59,20 @@ namespace Blink.Classes
             return ret;
         }
 
+        public async Task<BlinkData> LogoutAsync(BaseData baseData)
+        {
+            if (baseData == null || baseData.AccountId == 0)
+            {
+                return null;
+            }
+            //  @POST("https://rest-{tier}.immedia-semi.com/api/v4/account/{accountId}/client/{clientId}/logout/")
+            //  Observable<BlinkData> logout(@Path("tier") String paramString, @Path("accountId") Long paramLong1, @Path("clientId") Long paramLong2);
+            var uri = $"https://rest-{baseData.RegionTier}.immedia-semi.com/api/v4/account/{baseData.AccountId}/client/{baseData.ClientId}/logout/";
+            var retString = await FirePostCallWithEmptyBodyAsync(uri, baseData.AuthToken);
+            var ret = JsonConvert.DeserializeObject<BlinkData>(retString);
+            return ret;
+        }
+
 
 
         public async Task<string> FirePostCallWithEmptyBodyAsync(string uri, string authToken)

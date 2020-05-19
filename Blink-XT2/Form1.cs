@@ -58,6 +58,7 @@ namespace Blink
         private void Form1_FormClosing(object sender, FormClosingEventArgs e)
         {
             new Snapshot().StopTakingSnapshots();
+            var blinkData = new UweR70_PostCallWithEmptyBody().LogoutAsync(BaseData).Result;
         }
 
         #region tabPage0 - "Download And Init"

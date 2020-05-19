@@ -130,9 +130,9 @@ are requiering some basic informations like 'region',
 While gathering all of them it makes sense to download 
 all thumbnails and videos of all networks and cameras.
 
-So please enter all on this page 'Init and Download' needed 
-information and press the 'Start' button to 'unlock' the other 
-pages.</value>
+So please enter your email address and password you used 
+during your Blink registration and press the 'Start' button 
+to get started and 'unlock' the other pages.</value>
   </data>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
   <data name="$this.Icon" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
