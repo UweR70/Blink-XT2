@@ -29,6 +29,6 @@
             "going to have a length of\r\n" +
             "{imageCount} / {frameRate} = {divisionResult} seconds.\r\n";
 
-
+        public const int VerifyPinLength = 6;
     }
 }
