@@ -3,7 +3,7 @@
     public class Config
     {
         private const string AppName = "Blink Video Download";
-        private const string AppVersion = "V. 0.12";
+        private const string AppVersion = "V. 0.13";
 
         public readonly static string TitleAppNameAndVersion = $"{AppName} {AppVersion}";
         public readonly static string TitleErrorAppNameAndVersion = $"{TitleAppNameAndVersion} - Error";

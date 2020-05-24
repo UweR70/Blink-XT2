@@ -230,8 +230,8 @@ namespace Blink
                     "Verification error:\r\n" +
                     $"{errorMessage}\r\n" +
                     "\r\n" +
-                    "Consider that the verificaton PIN expiered already.\r\n" +
-                    "Try to login again, wait for a newe verification PIN\r\n" +
+                    "Consider that the verification PIN expired already.\r\n" +
+                    "Try to login again, wait for a new verification PIN\r\n" +
                     "and try again with the new PIN.",
                     Config.TitleAppNameAndVersion,
                     MessageBoxButtons.OK,
