@@ -8,8 +8,9 @@ namespace Blink.Classes
     public class Snapshot
     {
         private Form1 Form;
-
         private Common Common;
+
+        private bool IsActive;
 
         private Timer IntervalTimer;
         public string BaseStoragePathSnapshot;
@@ -18,8 +19,8 @@ namespace Blink.Classes
         public void StartTakingSnapshots(Form1 form, BaseData baseData, int intervalInseconds, int networkId, int cameraId)
         {
             Form = form;
-
             Common = new Common();
+            IsActive = false;
 
             BaseStoragePathSnapshot = string.Empty;
             SnapshotCounter = 0;
@@ -29,7 +30,7 @@ namespace Blink.Classes
 
             TakeSnapshots(baseData, networkId, cameraId); // Call it once immediately
 
-            Action action = () => Wrapper(baseData, networkId, cameraId);
+            Action action = () => Wrapper(form, baseData, networkId, cameraId);
             IntervalTimer = new Common().SetInterval(action, intervalInseconds * 1000);
             IntervalTimer.Start();
         }
@@ -47,23 +48,59 @@ namespace Blink.Classes
             }
         }
 
-        private void Wrapper(BaseData baseData, int networkId, int cameraId)
+        private void Wrapper(Form1 form, BaseData baseData, int networkId, int cameraId)
         {
+            if(IsActive)
+            {
+                return;
+            }
+            IsActive = true;
+
+            const int maxErrorsBeforeLeaving = 5;
+            const int WaitTimeInSeconds = 10;
             try
             {
                 IntervalTimer.Stop();
-                TakeSnapshots(baseData, networkId, cameraId);
+
+                var errorCounter = 0;
+                do
+                {
+                    try
+                    {
+                        TakeSnapshots(baseData, networkId, cameraId);
+                        break;
+                    }
+                    catch (Exception ex)
+                    {
+                        var errorMessage = ex.Message;
+                        if (ex.InnerException != null && !string.IsNullOrEmpty(ex.InnerException.Message))
+                        {
+                            errorMessage = ex.InnerException.Message;
+                        }
+                        errorCounter++;
+                        Form.SetP2TxtBoxInfoText($"Error #{errorCounter} of max {maxErrorsBeforeLeaving}:");
+                        Form.SetP2TxtBoxInfoText(errorMessage);
+                        Form.SetP2TxtBoxInfoText($"-> Going to wait now {WaitTimeInSeconds} seconds!");
+                        System.Threading.Thread.Sleep(WaitTimeInSeconds * 1000);
+                        if (errorCounter < maxErrorsBeforeLeaving)
+                        {
+                            Form.SetP2TxtBoxInfoText("Retrying!");
+                        }
+                        else
+                        {
+                            Form.SetP2TxtBoxInfoText("Too many errors! Abort making snapshots!");
+                        }
+                    }
+                } while (errorCounter < maxErrorsBeforeLeaving);
+
                 IntervalTimer.Start();
             }
-            catch (Exception ex)
+            catch
             {
-                var errorMessage = ex.Message;
-                if (ex.InnerException != null && !string.IsNullOrEmpty(ex.InnerException.Message))
-                {
-                    errorMessage = ex.InnerException.Message;
-                }
                 // Fetching access try on already disposed "IntervalTimer".
             }
+
+            IsActive = false;
         }
 
         public void TakeSnapshots(BaseData baseData, int networkId, int cameraId)

@@ -44,6 +44,7 @@ namespace Blink
             IsDownloadRunning =  false;
             EmptyInfoText = true;
             p0_txtBox_SaveDirectory.Text = Config.DefaultRootStoragePart;
+            p0_txtBox_VerifyPin.Enabled = p0_txtBox_VerifyPin.Enabled = false;
             p0_txtBox_Email.Focus();
 
             p2_numUpDown_Seconds.Value = Config.IntervallMinimumTimeInSeconds;
@@ -92,8 +93,9 @@ namespace Blink
                     return;
                 }
                 EmptyInfoText = false;
-                p0_txtBox_Info.Text = string.Empty;
-                p0_txtBox_Email.Enabled = p0_txtBox_Password.Enabled = p0_checkBox_AreYouInGermany.Enabled = p0_btn_SelectSavePath.Enabled = p0_btn_Start.Enabled = false;
+                p0_txtBox_Info.Text = p0_txtBox_VerifyPin.Text = string.Empty;
+                p0_txtBox_Email.Enabled = p0_txtBox_Password.Enabled = p0_checkBox_AreYouInGermany.Enabled = p0_btn_SelectSavePath.Enabled = p0_btn_Start.Enabled 
+                   = p0_txtBox_VerifyPin.Enabled = p0_txtBox_VerifyPin.Enabled = false;
                 p0_btn_Start.Text = "Running ...";
 
                 DisableOrEnableallTabPagesExceptTheGiven(false, 0);
@@ -156,6 +158,9 @@ namespace Blink
                     p0_btn_Start.Enabled = true;
                     p0_btn_Start.Text = "Reset application";
 
+                    p0_txtBox_VerifyPin.Enabled = p0_txtBox_VerifyPin.Enabled = true;
+                    p0_txtBox_VerifyPin.Focus();
+
                     SetTabPage01Values(BaseData);
                     SetTabPage02Values(BaseData);
                     SetTabPage99Values(BaseData);
@@ -170,6 +175,8 @@ namespace Blink
                 EmptyInfoText = true;
                 p0_txtBox_Info.Text = HelpStart();
                 p0_txtBox_Email.Enabled = p0_txtBox_Password.Enabled = p0_checkBox_AreYouInGermany.Enabled = p0_btn_SelectSavePath.Enabled = p0_btn_Start.Enabled = true;
+                p0_txtBox_VerifyPin.Text = string.Empty;
+                p0_txtBox_VerifyPin.Enabled = p0_txtBox_VerifyPin.Enabled = false;
                 p0_btn_Start.Text = "Start";
 
                 DisableOrEnableallTabPagesExceptTheGiven(false, 0);
@@ -179,6 +186,57 @@ namespace Blink
                 // ToDo: Do NOT remove this "ToDo" line and add here a "ResetTabPage_xx_Values();" method call in case a new tabPage is added to "tabControl0"!
             }
             IsDownloadRunning = !IsDownloadRunning;
+        }
+
+        private void p0_btn_SendVerifyPin_Click(object sender, EventArgs e)
+        {
+            if (string.IsNullOrEmpty(p0_txtBox_VerifyPin.Text))
+            {
+                MessageBox.Show("Verification PIN could not be empty.", Config.TitleAppNameAndVersion, MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                p0_txtBox_VerifyPin.Focus();
+                return;
+            }
+            if (p0_txtBox_VerifyPin.Text.Length != Config.VerifyPinLength)
+            {
+                MessageBox.Show($"Verification PIN must have a length of {Config.VerifyPinLength} digits.", Config.TitleAppNameAndVersion, MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                p0_txtBox_VerifyPin.Focus();
+                return;
+            }
+            int intTest;
+            if (!int.TryParse(p0_txtBox_VerifyPin.Text, out intTest))
+            {
+                MessageBox.Show($"Verification PIN must be a {Config.VerifyPinLength} digit number.", Config.TitleAppNameAndVersion, MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                p0_txtBox_VerifyPin.Focus();
+                return;
+            }
+
+            var verifyPinBody = new VerifyPinBody
+            {
+                pin = p0_txtBox_VerifyPin.Text
+            };
+            try
+            {
+                var pinVerificationResponse = new UweR70_PostCallWithNonEmptyBody().VerifyClientPIN(BaseData, verifyPinBody).Result;
+                MessageBox.Show($"Verification succeeded:\r\nl{pinVerificationResponse.message}", Config.TitleAppNameAndVersion, MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            catch (Exception ex)
+            {
+                var errorMessage = ex.Message;
+                if (ex.InnerException != null && !string.IsNullOrEmpty(ex.InnerException.Message))
+                {
+                    errorMessage = ex.InnerException.Message;
+                }
+                MessageBox.Show(
+                    "Verification error:\r\n" +
+                    $"{errorMessage}\r\n" +
+                    "\r\n" +
+                    "Consider that the verificaton PIN expiered already.\r\n" +
+                    "Try to login again, wait for a newe verification PIN\r\n" +
+                    "and try again with the new PIN.",
+                    Config.TitleAppNameAndVersion,
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Error);
+            }
         }
 
         private void p0_btn_Start_MouseEnter(object sender, EventArgs e)
@@ -881,6 +939,7 @@ namespace Blink
                 // Currently nothing to do here
             }, TaskScheduler.FromCurrentSynchronizationContext());
         }
+
         #endregion
     }
 }

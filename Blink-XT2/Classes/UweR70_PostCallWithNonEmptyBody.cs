@@ -34,7 +34,17 @@ namespace Blink.Classes
             var ret = JsonConvert.DeserializeObject<Message>(retString);
             return ret;
         }
-        
+
+        public async Task<PinVerificationResponse> VerifyClientPIN(BaseData baseData, VerifyPinBody verifyPinBody)
+        {
+            //  @POST("https://rest-{tier}.immedia-semi.com/api/v4/account/{account}/client/{client}/pin/verify/")
+            //  Observable<PinVerificationResponse> verifyClientPIN(@Path("tier") String paramString, @Path("account") long paramLong1, @Path("client") long paramLong2, @Body VerifyPinBody paramVerifyPinBody);
+            var uri = $"https://rest-{baseData.RegionTier}.immedia-semi.com/api/v4/account/{baseData.AccountId}/client/{baseData.ClientId}/pin/verify";
+            var retString = await FirePostCallAsync(uri, verifyPinBody, baseData.AuthToken);
+            var ret = JsonConvert.DeserializeObject<PinVerificationResponse>(retString);
+            return ret;
+
+        }
 
 
         public async Task<string> FirePostCallAsync(string uri, object body, string authToken)

@@ -91,8 +91,10 @@
     <Compile Include="Classes\BaseData.cs" />
     <Compile Include="Classes\Blink\BlinkData.cs" />
     <Compile Include="Classes\Blink\Bodies\LoginBody.cs" />
+    <Compile Include="Classes\Blink\Bodies\VerifyPinBody.cs" />
     <Compile Include="Classes\Blink\CameraStatus.cs" />
     <Compile Include="Classes\Blink\Message.cs" />
+    <Compile Include="Classes\Blink\PinVerificationResponse.cs" />
     <Compile Include="Classes\Blink\SignalStrength.cs" />
     <Compile Include="Classes\Blink\CommandArmDisarm.cs" />
     <Compile Include="Classes\Blink\CommandClip.cs" />
