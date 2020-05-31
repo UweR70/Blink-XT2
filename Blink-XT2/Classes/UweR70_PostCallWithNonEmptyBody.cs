@@ -45,6 +45,22 @@ namespace Blink.Classes
             return ret;
 
         }
+        
+        public async Task<LiveVideoResponse> LiveView(MinimumData minData, VideoLiveViewBody verifyPinBody)
+        {
+            //  @POST("https://rest-{tier}.immedia-semi.com/api/v3/networks/{network}/cameras/{camera}/liveview")
+            //  Observable<LiveVideoResponse> liveView(@Body VideoLiveViewBody paramVideoLiveViewBody, @Path("tier") String paramString, @Path("network") long paramLong1, @Path("camera") long paramLong2);
+            var uri = $"https://rest-{minData.RegionTier}.immedia-semi.com/api/v3/networks/{minData.NetworkId}/cameras/{minData.CameraId}/liveview";
+            var retString = await FirePostCallAsync(uri, verifyPinBody, minData.AuthToken);
+            var ret = JsonConvert.DeserializeObject<LiveVideoResponse>(retString);
+            return ret;
+
+        }
+
+
+
+
+
 
 
         public async Task<string> FirePostCallAsync(string uri, object body, string authToken)

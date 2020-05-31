@@ -38,8 +38,55 @@ namespace Blink.Classes
                 NetworkId = networkObject.Id,
                 CameraId = cameraObject.Id
             };
-            
-            
+
+
+
+
+            var videoLiveViewBody = new VideoLiveViewBody
+            {
+                 id = minData.CameraId,
+                 network = minData.NetworkId,
+                 type = 4
+            };
+            try
+            {
+                var liveVideoResponse = new UweR70_PostCallWithNonEmptyBody().LiveView(minData, videoLiveViewBody).Result;
+
+                /*
+                 liveVideoResponse.server = "immis://18.196.123.157:443/jb2dzOlaeVLqLO5C__IMDS_811177681?client_id=146"
+                 http://help.imis.com/sdk/index.htm#!exampleusingc2.htm
+                 
+                 */
+                var dummy = 1;
+            }
+            catch (Exception ex)
+            {
+                var errorMessage = ex.Message;
+                if (ex.InnerException != null && !string.IsNullOrEmpty(ex.InnerException.Message))
+                {
+                    errorMessage = ex.InnerException.Message;
+                }
+                var xx = errorMessage;
+            }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+            /*
             var network = uweR70_Get.BatteryUssageAsync(baseData).Result;
             var changedMedia = uweR70_Get.ChangedMediaAsync(baseData, 0).Result;
             var cameraStatus = uweR70_Get.CameraStatusAsync(minData).Result;
@@ -81,7 +128,7 @@ namespace Blink.Classes
                 media_list = new List<long>(new long[] { 12345678, 23456789 })  // Example values
             };
             var test = uweR70_PostCallWithNonEmptyBody.DeleteMediaCall(baseData, mediaIdLIstBody);
-            
+            */
         }
     }
 }
