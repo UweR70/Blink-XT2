@@ -11,6 +11,8 @@ namespace Blink.Classes
         private Common Common;
 
         private bool IsActive;
+        private const int MaxErrorsBeforeLeaving = 5;
+        private const int WaitTimeInSeconds = 10;
 
         private Timer IntervalTimer;
         public string BaseStoragePathSnapshot;
@@ -56,8 +58,7 @@ namespace Blink.Classes
             }
             IsActive = true;
 
-            const int maxErrorsBeforeLeaving = 5;
-            const int WaitTimeInSeconds = 10;
+            
             try
             {
                 IntervalTimer.Stop();
@@ -78,11 +79,11 @@ namespace Blink.Classes
                             errorMessage = ex.InnerException.Message;
                         }
                         errorCounter++;
-                        Form.SetP2TxtBoxInfoText($"Error #{errorCounter} of max {maxErrorsBeforeLeaving}:");
+                        Form.SetP2TxtBoxInfoText($"Error #{errorCounter} of max {MaxErrorsBeforeLeaving}:");
                         Form.SetP2TxtBoxInfoText(errorMessage);
                         Form.SetP2TxtBoxInfoText($"-> Going to wait now {WaitTimeInSeconds} seconds!");
                         System.Threading.Thread.Sleep(WaitTimeInSeconds * 1000);
-                        if (errorCounter < maxErrorsBeforeLeaving)
+                        if (errorCounter < MaxErrorsBeforeLeaving)
                         {
                             Form.SetP2TxtBoxInfoText("Retrying!");
                         }
@@ -91,7 +92,7 @@ namespace Blink.Classes
                             Form.SetP2TxtBoxInfoText("Too many errors! Abort making snapshots!");
                         }
                     }
-                } while (errorCounter < maxErrorsBeforeLeaving);
+                } while (errorCounter < MaxErrorsBeforeLeaving);
 
                 IntervalTimer.Start();
             }
