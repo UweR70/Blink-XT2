@@ -90,6 +90,22 @@ namespace Blink.Classes
             return ret;
         }
 
+        public async Task<GetRegions> GetRegionsAsync(BaseData baseData, string locale)
+        {
+            /* The original URI implies to use the attribute "locale" which is implemented as shown below.
+             * On the other hand, it looks like that it does not matter whether its added or which attribute value is finally used.
+             * Means also these URIs are working fine:
+             *      https://rest-e001.immedia-semi.com/regions?local=Cheesecake
+             *      https://rest-e001.immedia-semi.com/regions
+             */
+            // @GET("https://rest-{tier}.immedia-semi.com/regions")
+            // Observable getRegions(@Path("tier") String paramString1, @Query("locale") String paramString2);
+            var uri = $"https://rest-{baseData.RegionTier}.immedia-semi.com/regions?local={locale}";
+            var retString = await FireGetCallAsync(uri, baseData.AuthToken);
+            var ret = JsonConvert.DeserializeObject<GetRegions>(retString);
+            return ret;
+        }
+
 
 
         public async Task<string> FireGetCallAsync(string url, string authToken)
