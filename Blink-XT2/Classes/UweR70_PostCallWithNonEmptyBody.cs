@@ -54,7 +54,6 @@ namespace Blink.Classes
             var retString = await FirePostCallAsync(uri, verifyPinBody, minData.AuthToken);
             var ret = JsonConvert.DeserializeObject<LiveVideoResponse>(retString);
             return ret;
-
         }
 
 

@@ -40,8 +40,7 @@ namespace Blink.Classes
             };
 
 
-
-
+            /*           
             var videoLiveViewBody = new VideoLiveViewBody
             {
                  id = minData.CameraId,
@@ -52,11 +51,10 @@ namespace Blink.Classes
             {
                 var liveVideoResponse = new UweR70_PostCallWithNonEmptyBody().LiveView(minData, videoLiveViewBody).Result;
 
-                /*
-                 liveVideoResponse.server = "immis://18.196.123.157:443/jb2dzOlaeVLqLO5C__IMDS_811177681?client_id=146"
-                 http://help.imis.com/sdk/index.htm#!exampleusingc2.htm
-                 
-                 */
+                // liveVideoResponse.server = "immis://18.196.123.157:443/jb2dzOlaeVLqLO5C__IMDS_811177681?client_id=146"
+                // iMMis != iMis, but found olny this ...
+                //http://help.imis.com/sdk/index.htm#!exampleusingc2.htm
+ 
                 var dummy = 1;
             }
             catch (Exception ex)
@@ -68,20 +66,7 @@ namespace Blink.Classes
                 }
                 var xx = errorMessage;
             }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+            */
 
 
 
@@ -94,6 +79,7 @@ namespace Blink.Classes
             var homescreenV3 = uweR70_Get.HomescreenV3Async(baseData).Result;
             var quickRegionInfo = uweR70_Get.QuickRegionInfoAsync(baseData).Result;
             var syncModules = uweR70_Get.SyncModulesAsync(minData).Result;
+            var regions = uweR70_Get.GetRegionsAsync(baseData, "US").Result;
 
             var events = uweR70_Get.EventsAsync(minData).Result;
             var typeList = new[] { "first_boot", "battery", "armed", "disarmed", "scheduled_arm", "scheduled_disarm", "heartbeat", "sm_offline" };
