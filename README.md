@@ -8,7 +8,7 @@ Thats the bad news.<br/>
 <br/>
 # The good news:<br/>
 I figured out why and going to change my app.<br/>
-Strange: It's not really related to the API change. Rather, with the fact that an API call that was introduced months ago is now absolutely necessary.<br/>
+Strange: Exept a changed login API call (to version 5) it's not really related to the API change. Rather, with the fact that an API call that was introduced months ago is now absolutely necessary.<br/>
 <br/>
 At least currently, I plan to update this repository and explain everything in detail.<br/>
 But due my overload it may take a while.<br/>
