@@ -15,7 +15,7 @@
     <IsWebBootstrapper>false</IsWebBootstrapper>
     <NuGetPackageImportStamp>
     </NuGetPackageImportStamp>
-    <PublishUrl>publish\V._0.13\</PublishUrl>
+    <PublishUrl>publish\V._0.14\</PublishUrl>
     <Install>true</Install>
     <InstallFrom>Disk</InstallFrom>
     <UpdateEnabled>false</UpdateEnabled>
@@ -25,7 +25,7 @@
     <UpdatePeriodically>false</UpdatePeriodically>
     <UpdateRequired>false</UpdateRequired>
     <MapFileExtensions>true</MapFileExtensions>
-    <ApplicationRevision>2</ApplicationRevision>
+    <ApplicationRevision>3</ApplicationRevision>
     <ApplicationVersion>0.0.13.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <PublishWizardCompleted>true</PublishWizardCompleted>
@@ -93,7 +93,10 @@
     <Compile Include="Classes\Blink\Bodies\LoginBody.cs" />
     <Compile Include="Classes\Blink\Bodies\VerifyPinBody.cs" />
     <Compile Include="Classes\Blink\Bodies\VideoLiveViewBody.cs" />
+    <Compile Include="Classes\Blink\BulkDownloadClips.cs" />
     <Compile Include="Classes\Blink\CameraStatus.cs" />
+    <Compile Include="Classes\Blink\CommandClipId.cs" />
+    <Compile Include="Classes\Blink\CommandClipListManifestId.cs" />
     <Compile Include="Classes\Blink\GetRegions.cs" />
     <Compile Include="Classes\Blink\LiveVideoResponse.cs" />
     <Compile Include="Classes\Blink\Message.cs" />
@@ -128,11 +131,21 @@
     <Compile Include="Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
+    <Compile Include="FormVerification.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormVerification.Designer.cs">
+      <DependentUpon>FormVerification.cs</DependentUpon>
+    </Compile>
     <Compile Include="Info\BlinkWebService.cs" />
+    <Compile Include="Info\BlinkWebService_6_2_6.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormVerification.resx">
+      <DependentUpon>FormVerification.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -144,7 +157,7 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
-    <None Include="Compiled_Versions\UweR70_Blink-XT2_V_0.13.7z" />
+    <None Include="Compiled_Versions\UweR70_Blink-XT2_V_0.14.7z" />
     <None Include="packages.config">
       <SubType>Designer</SubType>
     </None>

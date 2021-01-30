@@ -1,4 +1,5 @@
 ﻿using Blink.Classes.Blink;
+using Classes.Blink;
 using Newtonsoft.Json;
 using System.Net.Http;
 using System.Threading.Tasks;
@@ -63,7 +64,11 @@ namespace Blink.Classes
 
         public async Task<BlinkSyncModules> SyncModulesAsync(MinimumData minData)
         {
-            // ToDo: API NOT FOUND! ######################################################################################################################
+            // #################################################################################################################  ######################################################
+            // #####     This API call is not part of the "BlinkWebServiceClass.cs" taken from the original Blink apk!     #####  ######################################################
+            // #####     But luckily I found it.                                                                           #####  ######################################################
+            // #####     Because in the meanwhile is the returned (sync-module) ID very important!                         #####  ######################################################
+            // #################################################################################################################  ######################################################
             var uri = $"https://rest-{minData.RegionTier}.immedia-semi.com/network/{minData.NetworkId}/syncmodules";
             var retString = await FireGetCallAsync(uri, minData.AuthToken);
             var ret = JsonConvert.DeserializeObject<BlinkSyncModules>(retString);
@@ -105,6 +110,31 @@ namespace Blink.Classes
             var ret = JsonConvert.DeserializeObject<GetRegions>(retString);
             return ret;
         }
+
+        public async Task<Message> GetClipListManifest(BaseData baseData, MinimumData minData, BlinkSyncModules syncModules, CommandClipListManifestId commandClipListManifestId)
+        {
+            // @GET("https://rest-{tier}.immedia-semi.com/api/v1/accounts/{account_id}/networks/{network}/sync_modules/{sync_module_id}/local_storage/manifest/request/{command}")
+            // Single<ClipsResponse> getClipListManifest(@Path("tier") String paramString, @Path("account_id") long paramLong1, @Path("network") long paramLong2, @Path("sync_module_id") long paramLong3, @Path("command") long paramLong4);
+            var uri = $"https://rest-{baseData.RegionTier}.immedia-semi.com/api/v1/accounts/{baseData.AccountId}/networks/{minData.NetworkId}/sync_modules/{syncModules.syncmodule.id}/local_storage/manifest/request/{commandClipListManifestId.id}";
+            //          https://rest-{tier}               .immedia-semi.com/api/v1/accounts/{account_id}        /networks/{network}          /sync_modules/{sync_module_id}           /local_storage/manifest/request/{command}
+            var retString = await FireGetCallAsync(uri, baseData.AuthToken);
+            var ret = JsonConvert.DeserializeObject<Message>(retString);
+            return ret;
+            // ###########  ATTENTION!    Currently is the WRONG CLASS (= "Message") used due the fact that the uri is wrong and so the returned json string is type of error = "message"!   ##########################
+        }
+
+        public async Task<Message> GetClipListManifest_B(BaseData baseData, MinimumData minData, BlinkSyncModules syncModules, BulkDownloadClips bulkDownloadClips)
+        {
+            // @GET("https://rest-{tier}.immedia-semi.com/api/v1/accounts/{account_id}/networks/{network}/sync_modules/{sync_module_id}/local_storage/manifest/request/{command}")
+            // Single<ClipsResponse> getClipListManifest(@Path("tier") String paramString, @Path("account_id") long paramLong1, @Path("network") long paramLong2, @Path("sync_module_id") long paramLong3, @Path("command") long paramLong4);
+            var uri = $"https://rest-{baseData.RegionTier}.immedia-semi.com/api/v1/accounts/{baseData.AccountId}/networks/{minData.NetworkId}/sync_modules/{syncModules.syncmodule.id}/local_storage/manifest/request/{bulkDownloadClips.id}";
+            //          https://rest-{tier}               .immedia-semi.com/api/v1/accounts/{account_id}        /networks/{network}          /sync_modules/{sync_module_id}           /local_storage/manifest/request/{command}
+            var retString = await FireGetCallAsync(uri, baseData.AuthToken);
+            var ret = JsonConvert.DeserializeObject<Message>(retString);
+            return ret;
+            // ###########  ATTENTION!    Currently is the WRONG CLASS (= "Message") used due the fact that the uri is wrong and so the returned json string is type of error = "message"!   ##########################
+        }
+
 
 
 

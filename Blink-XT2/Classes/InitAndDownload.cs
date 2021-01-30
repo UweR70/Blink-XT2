@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Windows.Forms;
 
 namespace Blink.Classes
 {
@@ -20,8 +21,9 @@ namespace Blink.Classes
                 var common = new Common();
                 var uweR70_Get = new UweR70_Get();
                 var uweR70_GetData = new UweR70_GetData();
+                var uweR70_PostCallWithEmptyBody = new UweR70_PostCallWithEmptyBody();
                 var uweR70_PostCallWithNonEmptyBody = new UweR70_PostCallWithNonEmptyBody();
-
+                
                 var storeIt = new StoreIt();
 
                 var baseData = new BaseData
@@ -33,25 +35,25 @@ namespace Blink.Classes
 
                 Blink.BatteryUsage batteryUssage = null;
 
-                var alreadyStoredAuthTokens = storeIt.ReadAuthToken();
-                var alreadyStoredMainData = storeIt.ReadMainData();
+                //var alreadyStoredAuthTokens = storeIt.ReadAuthToken();
+                //var alreadyStoredMainData = storeIt.ReadMainData();
                 var oldAuthTokenWorked = false;
-                if (alreadyStoredAuthTokens != null && alreadyStoredAuthTokens.Count != 0 && alreadyStoredMainData != null)
-                {
-                    try
-                    {
-                        baseData.RegionTier = alreadyStoredMainData.RegionTier;
-                        baseData.RegionDescription = alreadyStoredMainData.RegionDescription;
-                        baseData.AuthToken = alreadyStoredAuthTokens[alreadyStoredAuthTokens.Count - 1].Token;
-                        baseData.AccountId = alreadyStoredMainData.AccountId;
-                        baseData.ClientId = alreadyStoredMainData.ClientId;
+                //if (alreadyStoredAuthTokens != null && alreadyStoredAuthTokens.Count != 0 && alreadyStoredMainData != null && false)
+                //{
+                //    try
+                //    {
+                //        baseData.RegionTier = alreadyStoredMainData.RegionTier;
+                //        baseData.RegionDescription = alreadyStoredMainData.RegionDescription;
+                //        baseData.AuthToken = alreadyStoredAuthTokens[alreadyStoredAuthTokens.Count - 1].Token;
+                //        baseData.AccountId = alreadyStoredMainData.AccountId;
+                //        baseData.ClientId = alreadyStoredMainData.ClientId;
 
-                        batteryUssage = uweR70_Get.BatteryUssageAsync(baseData).Result;
+                //        batteryUssage = uweR70_Get.BatteryUssageAsync(baseData).Result;
 
-                        oldAuthTokenWorked = true;
-                    }
-                    catch {}
-                }
+                //        oldAuthTokenWorked = true;
+                //    }
+                //    catch {}
+                //}
                 if (!oldAuthTokenWorked)
                 { 
                     // Authentification api call
@@ -61,16 +63,54 @@ namespace Blink.Classes
                         password = password
                     }).Result;
 
-                    baseData.RegionTier = login.region.tier;
-                    baseData.RegionDescription = login.region.description;
-                    baseData.AuthToken = login.authtoken.authtoken;
-                    baseData.AccountId = login.account.id;
-                    baseData.ClientId = login.client.id;
+                    baseData.RegionTier = login.account.tier;
+                    baseData.RegionDescription = "no longer provided";   //  login.region.description;
+                    baseData.AuthToken = login.auth.token;
+                    baseData.AccountId = login.account.account_id;
+                    baseData.ClientId = login.account.client_id;
+                    baseData.VerificationPin = null;
+
+                    var isSystemVverified = false;
+                    do
+                    {
+                        using (var formVerification = new FormVerification(baseData))
+                        {
+                            if (formVerification.ShowDialog() == DialogResult.OK)
+                            {
+                                var verifyPinBody = new VerifyPinBody
+                                {
+                                    pin = baseData.VerificationPin
+                                };
+                                try
+                                {
+                                    var pinVerificationResponse = new UweR70_PostCallWithNonEmptyBody().VerifyClientPIN(baseData, verifyPinBody).Result;
+                                    form.SetP0TxtBoxInfoText("System has been successfully verified via verification PIN!");
+                                    form.SetP0TxtBoxInfoText(string.Empty);
+                                    isSystemVverified = true;
+                                }
+                                catch
+                                {
+                                    // In my opinion again a BLINK design error. 
+                                    // Instead of returning an error (message, etc.) triggers the BLINK API call 
+                                    // an error in case a non valid Verification PIN was provided.
+                                    form.SetP0TxtBoxInfoText("System could not be verified with the given verification PIN!");
+                                    form.SetP0TxtBoxInfoText("Try again or cancel.");
+                                    form.SetP0TxtBoxInfoText(string.Empty);
+                                }
+                            }
+                            else
+                            {
+                                form.SetP0TxtBoxInfoText("System verification via verification PIN was user canceled!");
+                                form.SetP0TxtBoxInfoText(string.Empty);
+                                return null;
+                            }
+                        }
+                    } while (!isSystemVverified);
 
                     batteryUssage = uweR70_Get.BatteryUssageAsync(baseData).Result;
                     storeIt.StoreData(baseData, batteryUssage);
                 }
-               
+
                 for (var i = 0; i < batteryUssage.networks.Length; i++)
                 {
                     baseData.Networks.Add(new BaseData.Network
