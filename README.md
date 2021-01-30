@@ -1,4 +1,4 @@
-# Annoouncement
+# Announcement
 Wait for it!<br/>
 At January 14th, 2021, apk Version 6.2.6, the API was changed - again.<br/>
 (Activated January, 29th, 2021)<br/>
