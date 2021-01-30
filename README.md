@@ -1,3 +1,21 @@
+# Annoouncement
+Wait for it!
+At January 14th, 2021, apk Version 6.2.6, the API was changed - again. 
+(Activated January, 29th, 2021)
+This results in the fact that also my application does not work anymore.
+
+Thats the bad news.
+
+#The good news:
+I figured out why and going to change my app.
+Strange: It's not really related to the API change. Rather, with the fact that an API call that was introduced months ago is now absolutely necessary.
+
+At least currently, I plan to update this repository and explain everything in detail.
+But due my overload it may take a while.
+Sorry.
+
+
+
 # Blink-XT2
 Blink (XT2) Win 10 / C # application that still works after the last Blink changes of May 11, 2020.<br>
 
