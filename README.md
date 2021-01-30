@@ -10,7 +10,7 @@ This repository contains three parts:
   </li>
   <li>
     The latest runable version of my application.<br>
-    <a href="https://github.com/UweR70/Blink-XT2/blob/master/Blink-XT2/Compiled_Versions/UweR70_Blink-XT2_V_0.12.7z"  target="_blank">Click here to go directly to the latest and zipped setup.exe, verison 0.12.</a><br>
+    <a href="https://github.com/UweR70/Blink-XT2/blob/master/Blink-XT2/Compiled_Versions/UweR70_Blink-XT2_V_0.14.7z" target="_blank">Click here to go directly to the latest and zipped setup.exe, verison 0.14.</a><br>
     <br>
   </li>
   <li>
