@@ -6,7 +6,7 @@ This results in the fact that also my application does not work anymore.<br/>
 <br/>
 Thats the bad news.<br/>
 <br/>
-#The good news:<br/>
+# The good news:<br/>
 I figured out why and going to change my app.<br/>
 Strange: It's not really related to the API change. Rather, with the fact that an API call that was introduced months ago is now absolutely necessary.<br/>
 <br/>
