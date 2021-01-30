@@ -114,6 +114,17 @@ namespace Blink.Classes
                 media_list = new List<long>(new long[] { 12345678, 23456789 })  // Example values
             };
             var test = uweR70_PostCallWithNonEmptyBody.DeleteMediaCall(baseData, mediaIdLIstBody);
+            
+            // The here called API calls are available since Blink apk version 6.2.6, release January, 14th 2021.
+            // But it seems that they currently not working, on the BLINK side not fully implemented or they are related to another, newer camera generation.
+            var syncmodules = uweR70_Get.SyncModulesAsync(minData).Result;
+            var bulkDownloadClips = uweR70_PostCallWithEmptyBody.BulkDownloadClips(baseData, minData, syncmodules).Result;
+
+            var clipListManifestCommandId = uweR70_PostCallWithEmptyBody.GetClipListManifestCommandId(baseData, minData, syncmodules).Result;
+            var clipCommandId = uweR70_PostCallWithEmptyBody.GetClipCommandId(baseData, minData, syncmodules, clipListManifestCommandId, 4711).Result;
+
+            var test_B = uweR70_Get.GetClipListManifest_B(baseData, minData, syncmodules, bulkDownloadClips).Result;
+            var test = uweR70_Get.GetClipListManifest(baseData, minData, syncmodules, clipListManifestCommandId).Result;
             */
         }
     }

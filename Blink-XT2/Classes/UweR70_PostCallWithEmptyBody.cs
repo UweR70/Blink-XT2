@@ -1,4 +1,5 @@
 ﻿using Blink.Classes.Blink;
+using Classes.Blink;
 using Newtonsoft.Json;
 using System.Net.Http;
 using System.Threading.Tasks;
@@ -72,6 +73,47 @@ namespace Blink.Classes
             var ret = JsonConvert.DeserializeObject<BlinkData>(retString);
             return ret;
         }
+
+        public async Task<CommandClipListManifestId> GetClipListManifestCommandId(BaseData baseData, MinimumData minData, BlinkSyncModules syncModules)
+        {
+            //  @POST("https://rest-{tier}.immedia-semi.com/api/v1/accounts/{account_id}/networks/{network}/sync_modules/{sync_module_id}/local_storage/manifest/request")
+            //  Single<Command> getClipListManifestCommandId(@Path("tier") String paramString, @Path("account_id") long paramLong1, @Path("network") long paramLong2, @Path("sync_module_id") long paramLong3);
+            var uri = $"https://rest-{baseData.RegionTier}.immedia-semi.com/api/v1/accounts/{baseData.AccountId}/networks/{minData.NetworkId}/sync_modules/{syncModules.syncmodule.id}/local_storage/manifest/request";
+            //          https://rest-{tier}               .immedia-semi.com/api/v1/accounts/{account_id}        /networks/{network}          /sync_modules/{sync_module_id}           /local_storage/manifest/request
+            var retString = await FirePostCallWithEmptyBodyAsync(uri, baseData.AuthToken);
+            var ret = JsonConvert.DeserializeObject<CommandClipListManifestId>(retString);
+            return ret;
+        }
+
+        public async Task<CommandClipId> GetClipCommandId(BaseData baseData, MinimumData minData, BlinkSyncModules syncModules, CommandClipListManifestId commandClipListManifestId, long clipId)
+        {
+            //  @POST("https://rest-{tier}.immedia-semi.com/api/v1/accounts/{account_id}/networks/{network}/sync_modules/{sync_module_id}/local_storage/manifest/{manifest_id}/clip/request/{clip_id}")
+            //  Single<Command> getClipCommandId(@Path("tier") String paramString, @Path("account_id") long paramLong1, @Path("network") long paramLong2, @Path("sync_module_id") long paramLong3, @Path("clip_id") long paramLong4, @Path("manifest_id") long paramLong5);
+            var uri = $"https://rest-{baseData.RegionTier}.immedia-semi.com/api/v1/accounts/{baseData.AccountId}/networks/{minData.NetworkId}/sync_modules/{syncModules.syncmodule.id}/local_storage/manifest/{commandClipListManifestId.id}/clip/request/{clipId}";
+            var retString = await FirePostCallWithEmptyBodyAsync(uri, baseData.AuthToken);
+            var ret = JsonConvert.DeserializeObject<CommandClipId>(retString);
+            return ret;
+        }
+
+        public async Task<BulkDownloadClips> BulkDownloadClips(BaseData baseData, MinimumData minData, BlinkSyncModules syncModules)
+        {
+            //  @POST("https://rest-{tier}.immedia-semi.com/api/v1/accounts/{account_id}/networks/{network}/sync_modules/{sync_module_id}/local_storage/bulk_download")
+            //  Single<Command> bulkDownloadClips(@Path("tier") String paramString, @Path("account_id") long paramLong1, @Path("network") long paramLong2, @Path("sync_module_id") long paramLong3);
+            var uri = $"https://rest-{baseData.RegionTier}.immedia-semi.com/api/v1/accounts/{baseData.AccountId}/networks/{minData.NetworkId}/sync_modules/{syncModules.syncmodule.id}/local_storage/bulk_download";
+            //          https://rest-{tier}               .immedia-semi.com/api/v1/accounts/{account_id        }/networks/{network}          /sync_modules/{sync_module_id}           /local_storage/bulk_download
+            var retString = await FirePostCallWithEmptyBodyAsync(uri, baseData.AuthToken);
+            var ret = JsonConvert.DeserializeObject<BulkDownloadClips>(retString);
+            return ret;
+        }
+
+
+
+
+
+
+
+
+
 
 
 
