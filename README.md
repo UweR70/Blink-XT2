@@ -1,5 +1,5 @@
 # Blink-XT2
-Blink (XT2) Win 10 / C # application that still works after the last Blink apk version 6.2.6 published January 14th, 2021.<br>
+Blink (XT2) Win 10 / C # application that still works after the last Blink apk version 6.4.0 published April 12th, 2021.<br>
 
 # Content
 This repository contains three parts:
