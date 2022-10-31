@@ -1,85 +1,61 @@
-﻿//  #####################################################################
-//  #####################################################################
-//  #####                                                           #####
-//  #####   URIs are taken form here                                #####
-//  #####       Matt Weinecke                                       #####
-//  #####       MattTW                                              #####
-//  #####       https://github.com/MattTW                           #####
-//  #####                                                           #####
-//  #####       Blink Monitor Protocol                              #####
-//  #####       https://github.com/MattTW/BlinkMonitorProtocol      #####
-//  #####                                                           #####
-//  #####   but adjusted by                                         #####
-//  #####       UweR70                                              #####
-//  #####       https://github.com/UweR70                           #####
-//  #####                                                           #####
-//  #####################################################################
-//  #####################################################################
-
-using Blink.Classes.Blink;
+﻿using Blink.Classes.Blink;
 using Newtonsoft.Json;
 using System.Net.Http;
 using System.Threading.Tasks;
 
 namespace Blink.Classes
 {
-    public class UweR70_FireCommand
+    public class UweR70_Command
     {
-        public enum BlinkMotionDetection
+        public enum MotionDetection
         {
-            enable = 0,
+            enable = 0,     // Do NOT change it to uppercase letter!
             disable
         }
 
-        public async Task<BlinkCommandArm> ArmAsync(MinimumData minData)
+        public enum ArmDisarm
         {
-            var uri = $"https://rest.{minData.RegionPropertyName}.immedia-semi.com/network/{minData.NetworkId}/arm";
+            arm = 0,        // Do NOT change it to uppercase letter!
+            disarm
+        }
+
+        public async Task<CommandArmDisarm> CommandArmDisarmAsync(MinimumData minData, ArmDisarm armDisarm)
+        {
+            // @POST("https://rest-{tier}.immedia-semi.com/api/v1/accounts/{accountId}/networks/{networkId}/state/{type}")
+            // Observable<Command> armDisarmNetwork(@Path("tier") String paramString1, @Path("accountId") long paramLong1, @Path("networkId") long paramLong2, @Path("type") String paramString2);
+            var uri = $"https://rest-{minData.RegionTier}.immedia-semi.com/network/{minData.NetworkId}/{armDisarm}";
             var retString = await FirePostCallWithEmptyBodyAsync(uri, minData);
-            var ret = JsonConvert.DeserializeObject<BlinkCommandArm>(retString);
+            var ret = JsonConvert.DeserializeObject<CommandArmDisarm>(retString);
             return ret;
         }
 
-        public async Task<BlinkCommandDisarm> DisarmAsync(MinimumData minData)
+        public async Task<CommandMotionDetection> CommandMotionDetectionAsync(MinimumData minData, MotionDetection blinkMotionDetection)
         {
-            var uri = $"https://rest.{minData.RegionPropertyName}.immedia-semi.com/network/{minData.NetworkId}/disarm";
+            var uri = $"https://rest-{minData.RegionTier}.immedia-semi.com/network/{minData.NetworkId}/camera/{minData.CameraId}/{blinkMotionDetection}";
             var retString = await FirePostCallWithEmptyBodyAsync(uri, minData);
-            var ret = JsonConvert.DeserializeObject<BlinkCommandDisarm>(retString);
+            var ret = JsonConvert.DeserializeObject<CommandMotionDetection>(retString);
             return ret;
         }
 
-        public async Task<BlinkCommandMotionDetection> MotionDetectionAsync(MinimumData minData, BlinkMotionDetection blinkMotionDetection)
+        /* "CommandClip.cs" and "CommandThumbnail.cs" are only different in "target" and "target_id".
+         * The two classes can not be merged due "null can not be mapped to a specific type" error. 
+         * -> In my opinion is returning "null" for both "CommandClip" properties a design error made by Blink!
+        */
+        public async Task<CommandClip> CommandClipAsync(MinimumData minData)
         {
-            var uri = $"https://rest.{minData.RegionPropertyName}.immedia-semi.com/network/{minData.NetworkId}/camera/{minData.CameraId}/{blinkMotionDetection}";
+            var uri = $"https://rest-{minData.RegionTier}.immedia-semi.com/network/{minData.NetworkId}/camera/{minData.CameraId}/clip";
             var retString = await FirePostCallWithEmptyBodyAsync(uri, minData);
-            var ret = JsonConvert.DeserializeObject<BlinkCommandMotionDetection>(retString);
+            var ret = JsonConvert.DeserializeObject<CommandClip>(retString);
             return ret;
         }
 
-        public async Task<BlinkCommandThumbnail> Lv_relayAsync(MinimumData minData)
+        public async Task<CommandThumbnail> CommandThumbnailAsync(MinimumData minData)
         {
-            // None of these are working:
-            // var uri = $"https://rest.{minData.RegionPropertyName}.immedia-semi.com/network/{minData.NetworkId}/lv_relay";
-            // var uri = $"https://rest.{minData.RegionPropertyName}.immedia-semi.com/network/{minData.NetworkId}/command/lv_relay";
-            // var uri = $"https://rest.{minData.RegionPropertyName}.immedia-semi.com/network/{minData.NetworkId}/camera/{minData.CameraId}/lv_relay";
-            var uri = $"https://rest.{minData.RegionPropertyName}.immedia-semi.com/network/{minData.NetworkId}/camera/{minData.CameraId}/command/lv_relay";
+            //  @POST("https://rest-{tier}.immedia-semi.com/network/{network}/camera/{camera}/thumbnail")
+            //  Observable<Command> takeThumbnail(@Path("tier") String paramString, @Path("network") long paramLong1, @Path("camera") long paramLong2);
+            var uri = $"https://rest-{minData.RegionTier}.immedia-semi.com/network/{minData.NetworkId}/camera/{minData.CameraId}/thumbnail";
             var retString = await FirePostCallWithEmptyBodyAsync(uri, minData);
-            var ret = JsonConvert.DeserializeObject<BlinkCommandThumbnail>(retString);
-            return ret;
-        }
-
-        public async Task<BlinkCommandClip> ClipAsync(MinimumData minData)
-        {
-            var uri = $"https://rest.{minData.RegionPropertyName}.immedia-semi.com/network/{minData.NetworkId}/camera/{minData.CameraId}/clip";
-            var retString = await FirePostCallWithEmptyBodyAsync(uri, minData);
-            var ret = JsonConvert.DeserializeObject<BlinkCommandClip>(retString);
-            return ret;
-        }
-
-        public async Task<BlinkCommandThumbnail> ThumbnailAsync(MinimumData minData)
-        {
-            var uri = $"https://rest.{minData.RegionPropertyName}.immedia-semi.com/network/{minData.NetworkId}/camera/{minData.CameraId}/thumbnail";
-            var retString = await FirePostCallWithEmptyBodyAsync(uri, minData);
-            var ret = JsonConvert.DeserializeObject<BlinkCommandThumbnail>(retString);
+            var ret = JsonConvert.DeserializeObject<CommandThumbnail>(retString);
             return ret;
         }
 
@@ -87,7 +63,6 @@ namespace Blink.Classes
         {
             using (var client = new HttpClient())
             {
-                client.DefaultRequestHeaders.Add("Host", minData.ApiServer);
                 client.DefaultRequestHeaders.Add("TOKEN_AUTH", minData.AuthToken);
 
                 var response = client.PostAsync(uri, null);

@@ -5,7 +5,7 @@ namespace Blink.Classes.Blink
     public class ChangedMedia
     {
         public int limit { get; set; }
-        public int purge_id { get; set; }
+        public long purge_id { get; set; }
         public int refresh_count { get; set; }
         public Medium[] media { get; set; }
 

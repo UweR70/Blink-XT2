@@ -89,7 +89,21 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Classes\BaseData.cs" />
+    <Compile Include="Classes\BlinkRegionsAdjustedByUweR70.cs" />
+    <Compile Include="Classes\Blink\BlinkCamera.cs" />
+    <Compile Include="Classes\Blink\BlinkCameraSignals.cs" />
+    <Compile Include="Classes\Blink\BlinkCommandArm.cs" />
+    <Compile Include="Classes\Blink\BlinkCommandClip.cs" />
+    <Compile Include="Classes\Blink\BlinkCommandDisarm.cs" />
+    <Compile Include="Classes\Blink\BlinkCommandMotionDetection.cs" />
+    <Compile Include="Classes\Blink\BlinkCommandThumbnail.cs" />
     <Compile Include="Classes\Blink\BlinkData.cs" />
+    <Compile Include="Classes\Blink\BlinkHomescreen.cs" />
+    <Compile Include="Classes\Blink\BlinkLogin.cs" />
+    <Compile Include="Classes\Blink\BlinkMedia.cs" />
+    <Compile Include="Classes\Blink\BlinkMessage.cs" />
+    <Compile Include="Classes\Blink\BlinkNEtwork.cs" />
+    <Compile Include="Classes\Blink\BlinkRegions.cs" />
     <Compile Include="Classes\Blink\Bodies\LoginBody.cs" />
     <Compile Include="Classes\Blink\Bodies\VerifyPinBody.cs" />
     <Compile Include="Classes\Blink\Bodies\VideoLiveViewBody.cs" />
@@ -116,11 +130,14 @@
     <Compile Include="Classes\Common.cs" />
     <Compile Include="Classes\Config.cs" />
     <Compile Include="Classes\ImagesToVideo.cs" />
+    <Compile Include="Classes\ImageToVideo.cs" />
+    <Compile Include="Classes\ImisImplementation.cs" />
     <Compile Include="Classes\InitAndDownload.cs" />
     <Compile Include="Classes\Blink\Bodies\MediaIdListBody.cs" />
     <Compile Include="Classes\Quicktest.cs" />
     <Compile Include="Classes\Snapshot.cs" />
     <Compile Include="Classes\StoreIt.cs" />
+    <Compile Include="Classes\UweR70_FireCommand.cs" />
     <Compile Include="Classes\UweR70_GetData.cs" />
     <Compile Include="Classes\UweR70_PostCallWithEmptyBody.cs" />
     <Compile Include="Classes\UweR70_Get.cs" />
@@ -130,6 +147,12 @@
     </Compile>
     <Compile Include="Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormInfo.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormInfo.Designer.cs">
+      <DependentUpon>FormInfo.cs</DependentUpon>
     </Compile>
     <Compile Include="FormVerification.cs">
       <SubType>Form</SubType>
@@ -146,6 +169,9 @@
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="FormInfo.resx">
+      <DependentUpon>FormInfo.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FormVerification.resx">
       <DependentUpon>FormVerification.cs</DependentUpon>
     </EmbeddedResource>
@@ -159,6 +185,10 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
+    <None Include="Compiled_Versions\UweR70_Blink-XT2_V_0.02.7z" />
+    <None Include="Compiled_Versions\UweR70_Blink-XT2_V_0.06.7z" />
+    <None Include="Compiled_Versions\UweR70_Blink-XT2_V_0.12.7z" />
+    <None Include="Compiled_Versions\UweR70_Blink-XT2_V_0.13.7z" />
     <None Include="Compiled_Versions\UweR70_Blink-XT2_V_0.14.7z" />
     <None Include="packages.config">
       <SubType>Designer</SubType>
@@ -178,6 +208,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Blink-XT2.sln" />
+    <Content Include="Info\Oracle_ReadMe\jdk-8u161-windows-x64.exe" />
   </ItemGroup>
   <ItemGroup>
     <BootstrapperPackage Include=".NETFramework,Version=v4.8">
