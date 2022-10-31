@@ -178,7 +178,6 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Blink-XT2.sln" />
-    <Content Include="Info\Oracle_ReadMe\jdk-8u161-windows-x64.exe" />
   </ItemGroup>
   <ItemGroup>
     <BootstrapperPackage Include=".NETFramework,Version=v4.8">
