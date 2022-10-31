@@ -1,23 +1,5 @@
-# Announcement
-Wait for it!<br/>
-At January 14th, 2021, apk Version 6.2.6, the API was changed - again.<br/>
-(Activated January, 29th, 2021)<br/>
-This results in the fact that also my application does not work anymore.<br/>
-<br/>
-Thats the bad news.<br/>
-<br/>
-# The good news:<br/>
-I figured out why and going to change my app.<br/>
-Strange: Exept a changed login API call (to version 5) it's not really related to the API change. Rather, with the fact that an API call that was introduced months ago is now absolutely necessary.<br/>
-<br/>
-At least currently, I plan to update this repository and explain everything in detail.<br/>
-But due my overload it may take a while.<br/>
-Sorry.<br/>
-<br/>
-<br/>
-<br/>
 # Blink-XT2
-Blink (XT2) Win 10 / C # application that still works after the last Blink changes of May 11, 2020.<br>
+Blink (XT2) Win 10 / C # application that still works after the last Blink apk version 6.4.0 published April 12th, 2021.<br>
 
 # Content
 This repository contains three parts:
@@ -28,7 +10,7 @@ This repository contains three parts:
   </li>
   <li>
     The latest runable version of my application.<br>
-    <a href="https://github.com/UweR70/Blink-XT2/blob/master/Blink-XT2/Compiled_Versions/UweR70_Blink-XT2_V_0.12.7z"  target="_blank">Click here to go directly to the latest and zipped setup.exe, verison 0.12.</a><br>
+    <a href="https://github.com/UweR70/Blink-XT2/blob/master/Blink-XT2/Compiled_Versions/UweR70_Blink-XT2_V_0.14.7z" target="_blank">Click here to go directly to the latest and zipped setup.exe, verison 0.14.</a><br>
     <br>
   </li>
   <li>
@@ -44,11 +26,11 @@ This repository contains three parts:
         Login example as follows because it is most requested:<br>
         <pre><code>
         ...
-        @POST("https://rest-{tier}.immedia-semi.com/api/v4/account/login")
-        Observable<LoginResponse> login(@Body LoginBody paramLoginBody, @Path("tier") String paramString);
-        <br>
-        @POST("https://rest-{tier}.immedia-semi.com/api/v4/account/login")
-        Call<LoginResponse> loginCall(@Body LoginBody paramLoginBody, @Path("tier") String paramString);
+        @POST("https://rest-{tier}.immedia-semi.com/api/v5/account/login")
+        Single<AuthenticationResponse> login(@Body LoginBody paramLoginBody, @Path("tier") String paramString);
+      <br/>
+        @POST("https://rest-{tier}.immedia-semi.com/api/v5/account/login")
+        Call<AuthenticationResponse> loginCall(@Body LoginBody paramLoginBody, @Path("tier") String paramString);
         ...
         </code></pre>
         <br>
