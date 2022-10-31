@@ -100,6 +100,7 @@
             this.p99_btn_Start = new System.Windows.Forms.Button();
             this.p99_txtBox_Info = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
+            this.chkBox_AcPowered = new System.Windows.Forms.CheckBox();
             this.tabControl0.SuspendLayout();
             this.tabControl0_tabPage0_InitAndDownload.SuspendLayout();
             this.tabControl0_tabPage1_InitSummary.SuspendLayout();
@@ -146,6 +147,7 @@
             this.p0_txtBox_Email.Name = "p0_txtBox_Email";
             this.p0_txtBox_Email.Size = new System.Drawing.Size(175, 20);
             this.p0_txtBox_Email.TabIndex = 1;
+            this.p0_txtBox_Email.Text = "uweraatz@gmx.de";
             this.p0_txtBox_Email.MouseEnter += new System.EventHandler(this.p0_txtBox_Email_MouseEnter);
             // 
             // lbl_Email
@@ -176,6 +178,7 @@
             this.p0_txtBox_Password.PasswordChar = '*';
             this.p0_txtBox_Password.Size = new System.Drawing.Size(175, 20);
             this.p0_txtBox_Password.TabIndex = 2;
+            this.p0_txtBox_Password.Text = "SchnEe_+kuchen3-Q";
             this.p0_txtBox_Password.MouseEnter += new System.EventHandler(this.p0_txtBox_Password_MouseEnter);
             // 
             // p0_txtBox_Info
@@ -223,6 +226,7 @@
             // 
             // tabControl0_tabPage0_InitAndDownload
             // 
+            this.tabControl0_tabPage0_InitAndDownload.Controls.Add(this.chkBox_AcPowered);
             this.tabControl0_tabPage0_InitAndDownload.Controls.Add(this.label24);
             this.tabControl0_tabPage0_InitAndDownload.Controls.Add(this.p0_btn_SelectSavePath);
             this.tabControl0_tabPage0_InitAndDownload.Controls.Add(this.label1);
@@ -919,6 +923,16 @@
             this.label2.TabIndex = 0;
             this.label2.Text = "Just a test tabPage to demonstrate \r\nhow new tabPages should/must be handled!";
             // 
+            // chkBox_AcPowered
+            // 
+            this.chkBox_AcPowered.AutoSize = true;
+            this.chkBox_AcPowered.Location = new System.Drawing.Point(406, 26);
+            this.chkBox_AcPowered.Name = "chkBox_AcPowered";
+            this.chkBox_AcPowered.Size = new System.Drawing.Size(90, 17);
+            this.chkBox_AcPowered.TabIndex = 10;
+            this.chkBox_AcPowered.Text = "AC powered?";
+            this.chkBox_AcPowered.UseVisualStyleBackColor = true;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1026,6 +1040,7 @@
         private System.Windows.Forms.NumericUpDown p2_numericUpDown_FrameRate;
         private System.Windows.Forms.Label label26;
         private System.Windows.Forms.Label label27;
+        private System.Windows.Forms.CheckBox chkBox_AcPowered;
     }
 }
 

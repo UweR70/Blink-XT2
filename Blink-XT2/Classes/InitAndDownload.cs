@@ -55,14 +55,14 @@ namespace Blink.Classes
                 //    catch {}
                 //}
                 if (!oldAuthTokenWorked)
-                { 
+                {
                     // Authentification api call
                     var login = uweR70_PostCallWithNonEmptyBody.LoginAsync(baseData, new LoginBody
-                    {
-                        email = email,
-                        password = password
-                    }).Result;
-
+                        {
+                            email = email,
+                            password = password
+                        }).Result;
+                    
                     baseData.RegionTier = login.account.tier;
                     baseData.RegionDescription = "no longer provided";   //  login.region.description;
                     baseData.AuthToken = login.auth.token;

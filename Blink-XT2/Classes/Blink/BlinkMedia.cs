@@ -2,7 +2,7 @@
 
 namespace Blink.Classes.Blink
 {
-    public class ChangedMedia
+    public class BlinkMedia
     {
         public int limit { get; set; }
         public int purge_id { get; set; }
@@ -11,7 +11,7 @@ namespace Blink.Classes.Blink
 
         public class Medium
         {
-            public long id { get; set; }
+            public int id { get; set; }
             public DateTime created_at { get; set; }
             public DateTime updated_at { get; set; }
             public bool deleted { get; set; }
@@ -22,11 +22,10 @@ namespace Blink.Classes.Blink
             public string network_name { get; set; }
             public string type { get; set; }
             public string source { get; set; }
-            public bool partial { get; set; }
             public bool watched { get; set; }
+            public bool? partial { get; set; }
             public string thumbnail { get; set; }
             public string media { get; set; }
-            public object metadata { get; set; }
             public object[] additional_devices { get; set; }
             public string time_zone { get; set; }
         }

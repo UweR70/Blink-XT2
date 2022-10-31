@@ -145,6 +145,16 @@ namespace Blink
                             Process.Start(BaseData.StoragePathMain);
                         }
                     }
+
+                    if (MessageBox.Show(
+                                "Should this application be closed?",
+                                Config.TitleAppNameAndVersion,
+                                MessageBoxButtons.YesNo,
+                                MessageBoxIcon.Question)
+                            == DialogResult.Yes)
+                    {
+                        Application.Exit();
+                    }
                 }).ContinueWith(result =>
                 {
                     // Controls are handled here to avoid a "cross-thread" error.
@@ -155,6 +165,27 @@ namespace Blink
                     }
                     p0_btn_Start.Enabled = true;
                     p0_btn_Start.Text = "Reset application";
+
+                    // HACK ######################################################################################################################################
+                    var uweR70_Get = new UweR70_Get();
+                    var cameraName = "Arbeitszimmer";
+                    //  cameraName = "Keller";
+                    // cameraName = "Garten";
+                    var specificCamera = BaseData.Networks[0].Cameras.Where(x => x.Name.Equals(cameraName, StringComparison.InvariantCultureIgnoreCase)).ToList();
+                    if (specificCamera != null && specificCamera.Count == 1)
+                    {
+                        var minData = new MinimumData
+                        {
+                            AuthToken = BaseData.AuthToken,
+                            RegionTier = BaseData.RegionTier,
+                            NetworkId = BaseData.Networks[0].Id,
+                            CameraId = specificCamera[0].Id
+                        };
+                        var cameraStatus = uweR70_Get.CameraStatusAsync(minData).Result;
+                        chkBox_AcPowered.Checked = cameraStatus.camera_status.ac_power;
+                    }
+                    // HACK ######################################################################################################################################
+
 
                     SetTabPage01Values(BaseData);
                     SetTabPage02Values(BaseData);
